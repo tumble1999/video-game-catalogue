@@ -11,5 +11,12 @@ namespace VideoGameCatalogue
     {
         private int id;
         private string username, password;
+
+        public User(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+            id = 
+        }
     }
 }
