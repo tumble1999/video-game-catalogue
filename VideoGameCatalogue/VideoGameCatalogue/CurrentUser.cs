@@ -8,8 +8,8 @@ namespace VideoGameCatalogue
 {
     class CurrentUser
     {
-        public static  User user = User.empty;
-        public static  int userID;
+        public static User user = User.empty;
+        public static int userID;
         public static string username, password;
 
         public static void Update()
