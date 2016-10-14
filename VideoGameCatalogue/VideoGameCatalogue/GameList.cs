@@ -13,14 +13,13 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-        User u = new User();
         public GamesList()
         {
             CurrentUser.Update();
             InitializeComponent();
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
             loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-            userIDStatusLabel.Text = CurrentUser.userID;
+            userIDStatusLabel.Text = CurrentUser.userID.ToString(); ;
             usernameStatusLabel.Text = CurrentUser.username;         
 
         }

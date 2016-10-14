@@ -8,9 +8,9 @@ namespace VideoGameCatalogue
 {
     class CurrentUser
     {
-        public User user = User.empty;
-        public int userID;
-        public string username, password;
+        public static  User user = User.empty;
+        public static  int userID;
+        public static string username, password;
 
         public static void Update()
         {

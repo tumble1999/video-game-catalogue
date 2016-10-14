@@ -68,7 +68,7 @@ namespace VideoGameCatalogue
 
             if (id == -1)
             {
-                loggedIn = true
+                loggedIn = true;
             }
         }
 
