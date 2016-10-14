@@ -8,18 +8,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
+        User u = new User();
         public GamesList()
         {
+            CurrentUser.Update();
             InitializeComponent();
+            statusBar.Visible = statusBarToolStripMenuItem.Checked;
+            loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            userIDStatusLabel.Text = CurrentUser.userID;
+            usernameStatusLabel.Text = CurrentUser.username;         
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            uint.
+            Application.Exit();
+        }
+
+        private void statusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            statusBar.Visible = statusBarToolStripMenuItem.Checked;
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

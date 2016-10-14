@@ -14,16 +14,67 @@ namespace VideoGameCatalogue
     {
         private int id;
         private string username, password;
+        private bool loggedIn;
+        internal static readonly User empty = new User("Guest","");
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
+        public bool LoggedIn
+        {
+            get
+            {
+                return loggedIn;
+            }
+        }
 
         public User(string username, string password)
         {
             this.username = username;
             this.password = password;
+            this.loggedIn = false;
+            
+        }
+
+        public void Login()
+        {
             id = getID(username, password);
 
-            if (id == -1) {
-
+            if (id == -1)
+            {
+                loggedIn = true
             }
+        }
+
+        public void Logout()
+        {
+            loggedIn = false;
         }
 
         private static int getID(string u, string p)
