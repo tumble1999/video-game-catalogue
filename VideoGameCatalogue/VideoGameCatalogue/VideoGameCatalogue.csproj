@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutWindow.Designer.cs">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurrentUser.cs" />
     <Compile Include="GameList.cs">
       <SubType>Form</SubType>
@@ -61,6 +67,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VGCDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameList.resx">
       <DependentUpon>GameList.cs</DependentUpon>
     </EmbeddedResource>

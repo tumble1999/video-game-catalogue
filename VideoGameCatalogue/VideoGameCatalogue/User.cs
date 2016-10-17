@@ -64,12 +64,13 @@ namespace VideoGameCatalogue
 
         public void Login()
         {
-            id = getID(username, password);
+            loggedIn = true;
+            /*id = getID(username, password);
 
             if (id == -1)
             {
                 loggedIn = true;
-            }
+            }*/
         }
 
         public void Logout()
