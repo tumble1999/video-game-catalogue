@@ -15,6 +15,7 @@ namespace VideoGameCatalogue
     public partial class GamesList : Form
     {
         AboutWindow aboutWindow = new AboutWindow();
+        UserLogin userLogin = new UserLogin();
         public GamesList()
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace VideoGameCatalogue
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentUser.user.Login();
+            userLogin.Show();
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
