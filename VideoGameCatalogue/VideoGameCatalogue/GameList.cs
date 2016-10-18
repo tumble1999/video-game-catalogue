@@ -15,7 +15,6 @@ namespace VideoGameCatalogue
     public partial class GamesList : Form
     {
         AboutWindow aboutWindow = new AboutWindow();
-        UserLogin userLogin = new UserLogin();
         public GamesList()
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace VideoGameCatalogue
         {
             while (true)
             {
-                CurrentUser.Update();
                 accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
                 accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
                 loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
@@ -56,12 +54,12 @@ namespace VideoGameCatalogue
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            userLogin.Show();
+            new UserLogin().Show();
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,12 +70,13 @@ namespace VideoGameCatalogue
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentUser.user.Logout();
+            CurrentUser.Update();
         }
 
         private void aboutVideoGameCatalogueToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            aboutWindow.Show();
+            aboutWindow.ShowDialog();
         }
     }
 }

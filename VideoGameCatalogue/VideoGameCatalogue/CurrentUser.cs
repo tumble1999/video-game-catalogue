@@ -18,6 +18,11 @@ namespace VideoGameCatalogue
             username = user.Username;
             password = user.Password;
             userID = user.Id;
+            if(!user.Exists() && user != User.empty)
+            {
+                user = User.empty;
+                Update();
+            }
         }
     }
     

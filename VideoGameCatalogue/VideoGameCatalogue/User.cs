@@ -59,18 +59,30 @@ namespace VideoGameCatalogue
             this.username = username;
             this.password = password;
             this.loggedIn = false;
+            this.id = -1;
             
         }
 
         public void Login()
         {
-            loggedIn = true;
-            /*id = getID(username, password);
+            id = getID(username, password);
 
             if (id == -1)
             {
                 loggedIn = true;
-            }*/
+            }
+        }
+
+        public bool Exists()
+        {
+            if (getID(username, password) == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void Logout()
