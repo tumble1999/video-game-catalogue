@@ -53,6 +53,7 @@
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="GameItem.cs" />
     <Compile Include="GameList.cs">
       <SubType>Form</SubType>
     </Compile>
