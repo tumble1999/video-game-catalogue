@@ -59,14 +59,14 @@
             this.usernameStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.gameTitle = new System.Windows.Forms.Label();
+            this.genreText = new System.Windows.Forms.Label();
+            this.gameDescriptionLabel = new System.Windows.Forms.Label();
+            this.viewGameButton = new System.Windows.Forms.Button();
+            this.gameItemPanel = new System.Windows.Forms.Panel();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.gameItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -310,59 +310,63 @@
             this.loggedInStatusLabel.Size = new System.Drawing.Size(118, 19);
             this.loggedInStatusLabel.Text = "loggedInStatusLabel";
             // 
-            // panel1
+            // gameTitle
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 48);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(274, 124);
-            this.panel1.TabIndex = 2;
+            this.gameTitle.AutoSize = true;
+            this.gameTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameTitle.Location = new System.Drawing.Point(21, 11);
+            this.gameTitle.Name = "gameTitle";
+            this.gameTitle.Size = new System.Drawing.Size(133, 31);
+            this.gameTitle.TabIndex = 0;
+            this.gameTitle.Text = "gameTitle";
             // 
-            // label1
+            // genreText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.genreText.AutoSize = true;
+            this.genreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genreText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.genreText.Location = new System.Drawing.Point(24, 43);
+            this.genreText.Name = "genreText";
+            this.genreText.Size = new System.Drawing.Size(55, 13);
+            this.genreText.TabIndex = 1;
+            this.genreText.Text = "genreText";
             // 
-            // label2
+            // gameDescriptionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.gameDescriptionLabel.AutoSize = true;
+            this.gameDescriptionLabel.Location = new System.Drawing.Point(27, 60);
+            this.gameDescriptionLabel.Name = "gameDescriptionLabel";
+            this.gameDescriptionLabel.Size = new System.Drawing.Size(112, 13);
+            this.gameDescriptionLabel.TabIndex = 2;
+            this.gameDescriptionLabel.Text = "gameDescriptionLabel";
             // 
-            // label3
+            // viewGameButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.viewGameButton.Location = new System.Drawing.Point(133, 98);
+            this.viewGameButton.Name = "viewGameButton";
+            this.viewGameButton.Size = new System.Drawing.Size(138, 23);
+            this.viewGameButton.TabIndex = 3;
+            this.viewGameButton.Text = "viewGameButton";
+            this.viewGameButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // gameItemPanel
             // 
-            this.button1.Location = new System.Drawing.Point(196, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.gameItemPanel.BackColor = System.Drawing.Color.Transparent;
+            this.gameItemPanel.Controls.Add(this.viewGameButton);
+            this.gameItemPanel.Controls.Add(this.gameDescriptionLabel);
+            this.gameItemPanel.Controls.Add(this.genreText);
+            this.gameItemPanel.Controls.Add(this.gameTitle);
+            this.gameItemPanel.Location = new System.Drawing.Point(12, 48);
+            this.gameItemPanel.Name = "gameItemPanel";
+            this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
+            this.gameItemPanel.TabIndex = 2;
             // 
             // GamesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 550);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.gameItemPanel);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
@@ -372,8 +376,8 @@
             this.menuBar.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.gameItemPanel.ResumeLayout(false);
+            this.gameItemPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,7 +396,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem aboutVideoGameCatalogueToolStripMenuItem;
-        private VGCDataSet vgcDataSet1;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -413,11 +416,11 @@
         private System.Windows.Forms.ToolStripStatusLabel userIDStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel userInfoLabelLabel;
         private System.Windows.Forms.ToolStripStatusLabel loggedInStatusLabelLabel;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label gameTitle;
+        private System.Windows.Forms.Label genreText;
+        private System.Windows.Forms.Label gameDescriptionLabel;
+        private System.Windows.Forms.Button viewGameButton;
+        private System.Windows.Forms.Panel gameItemPanel;
     }
 }
 
