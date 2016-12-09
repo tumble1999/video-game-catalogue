@@ -12,7 +12,7 @@ namespace VideoGameCatalogue
 {
     public partial class GameInfo : Form
     {
-        public GameInfo()
+        public GameInfo(string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
         {
             InitializeComponent();
         }

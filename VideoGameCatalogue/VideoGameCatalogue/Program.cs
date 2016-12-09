@@ -17,7 +17,7 @@ namespace VideoGameCatalogue
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new GamesList());
-            Application.Run(new GameInfo("Hello i am a game", "Action", "This game is about the fact that it is a game", "Wow Studios"));
+            Application.Run(new GameInfo("Hello i am a game", "Action", "This game is about the fact that it is a game", "Wow Studios","Pi (3.1415...)", DateTime.Now));
         }
     }
 }
