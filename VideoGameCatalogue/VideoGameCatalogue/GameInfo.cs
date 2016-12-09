@@ -16,10 +16,5 @@ namespace VideoGameCatalogue
         {
             InitializeComponent();
         }
-
-        private void gameGenreLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

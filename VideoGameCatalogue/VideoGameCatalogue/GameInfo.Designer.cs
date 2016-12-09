@@ -47,7 +47,7 @@
             // gameGenreLabel
             // 
             this.gameGenreLabel.AutoSize = true;
-            this.gameGenreLabel.Location = new System.Drawing.Point(515, 13);
+            this.gameGenreLabel.Location = new System.Drawing.Point(176, 52);
             this.gameGenreLabel.Name = "gameGenreLabel";
             this.gameGenreLabel.Size = new System.Drawing.Size(88, 13);
             this.gameGenreLabel.TabIndex = 1;
@@ -66,7 +66,7 @@
             // gamePublisherLabel
             // 
             this.gamePublisherLabel.AutoSize = true;
-            this.gamePublisherLabel.Location = new System.Drawing.Point(501, 39);
+            this.gamePublisherLabel.Location = new System.Drawing.Point(12, 52);
             this.gamePublisherLabel.Name = "gamePublisherLabel";
             this.gamePublisherLabel.Size = new System.Drawing.Size(102, 13);
             this.gamePublisherLabel.TabIndex = 3;
