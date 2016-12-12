@@ -16,6 +16,8 @@ namespace VideoGameCatalogue
     public partial class GamesList : Form
     {
         AboutWindow aboutWindow = new AboutWindow();
+        GameItem gameItem = new GameItem();
+        GameInfo gameInfo;
         public GamesList()
         {
             InitializeComponent();
@@ -44,11 +46,24 @@ namespace VideoGameCatalogue
             {
                 //reader.GetInt32(0); -> id
                 //reader.GetString(1); -> name
-
-
+                PlaceGame(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+                //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+                //gameInfo.ShowDialog();
             }
             reader.Close();
             conn.Close();
+        }
+
+        public void PlaceGame(string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
+        {
+            gameItem.GameName.Text = gameTitle;
+            gameItem.GameGenre.Text = gameGenre;
+            gameItem.GameDescription.Text = gameDescription;
+            gameItem.ViewGameInfo.Click += new EventHandler(ButtonClick, (gameItem.ViewGameInfo, reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+            
+            //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+            //gameInfo.ShowDialog();
+
         }
 
         private void UpdateLoop()
@@ -102,6 +117,18 @@ namespace VideoGameCatalogue
         {
 
             aboutWindow.ShowDialog();
+        }
+
+        private void gameItemPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        void ButtonClick (object sender, EventArgs e)
+        {
+
+            gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+            gameInfo.ShowDialog()
         }
     }
 }

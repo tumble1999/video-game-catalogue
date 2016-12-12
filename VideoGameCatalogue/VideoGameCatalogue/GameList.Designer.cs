@@ -333,10 +333,10 @@
             // 
             // gameDescriptionLabel
             // 
-            this.gameDescriptionLabel.AutoSize = true;
+            this.gameDescriptionLabel.AutoEllipsis = true;
             this.gameDescriptionLabel.Location = new System.Drawing.Point(27, 60);
             this.gameDescriptionLabel.Name = "gameDescriptionLabel";
-            this.gameDescriptionLabel.Size = new System.Drawing.Size(112, 13);
+            this.gameDescriptionLabel.Size = new System.Drawing.Size(244, 35);
             this.gameDescriptionLabel.TabIndex = 2;
             this.gameDescriptionLabel.Text = "gameDescriptionLabel";
             // 
@@ -356,10 +356,11 @@
             this.gameItemPanel.Controls.Add(this.gameDescriptionLabel);
             this.gameItemPanel.Controls.Add(this.genreText);
             this.gameItemPanel.Controls.Add(this.gameTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(12, 48);
+            this.gameItemPanel.Location = new System.Drawing.Point(0, 27);
             this.gameItemPanel.Name = "gameItemPanel";
             this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
             this.gameItemPanel.TabIndex = 2;
+            this.gameItemPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gameItemPanel_Paint);
             // 
             // GamesList
             // 
