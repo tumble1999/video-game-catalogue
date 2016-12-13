@@ -15,8 +15,6 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-
-        int i = 1;
         int width = 0;
         int height = 10;
         int fullX = 0;
@@ -49,10 +47,10 @@ namespace VideoGameCatalogue
 
             OleDbDataReader reader;
             reader = cmd.ExecuteReader();
-            
+
+            int i = 1;
             while (reader.Read())
             {
-
                 fullX = i * width;
                 x += (fullX % this.Width);
                 y += (fullX / this.Width) * height;
