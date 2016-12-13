@@ -12,6 +12,7 @@ namespace VideoGameCatalogue
 {
     public class SuperGameItem
     {
+        
         public Panel GameContainer = new Panel()
         {
             Width = 278,
@@ -25,6 +26,7 @@ namespace VideoGameCatalogue
         public Label GameName = new Label()
         {
             Text = "Gamename",
+            Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
             AutoSize = true,
             Location = new Point()
             {
@@ -66,6 +68,7 @@ namespace VideoGameCatalogue
                 Y = 23
             }
         };
+
     }
     public class GameItem : SuperGameItem
     {

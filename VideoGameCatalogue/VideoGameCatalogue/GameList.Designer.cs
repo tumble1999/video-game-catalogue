@@ -361,7 +361,6 @@
             this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
             this.gameItemPanel.TabIndex = 2;
             this.gameItemPanel.Visible = false;
-            this.gameItemPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gameItemPanel_Paint);
             // 
             // GamesList
             // 
