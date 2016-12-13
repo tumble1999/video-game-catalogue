@@ -42,25 +42,61 @@ namespace VideoGameCatalogue
             OleDbDataReader reader;
             reader = cmd.ExecuteReader();
 
+            int i = 0;
+            int width = 10;
+            int x = 0;
+            int y = 0;
             while (reader.Read())
             {
+                x = i * width;
                 //reader.GetInt32(0); -> id
                 //reader.GetString(1); -> name
-                PlaceGame(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+                PlaceGame(x, y, reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
                 //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
                 //gameInfo.ShowDialog();
+                i++;
             }
             reader.Close();
             conn.Close();
         }
 
-        public void PlaceGame(string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
+        public void PlaceGame(int x, int y, string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
         {
+
             gameItem.GameName.Text = gameTitle;
+            gameItem.GameName.Location = new Point()
+            {
+                X = x,
+                Y = y
+            };
+
             gameItem.GameGenre.Text = gameGenre;
+            gameItem.GameGenre.Location = new Point()
+            {
+                X = x,
+                Y = y
+            };
+
             gameItem.GameDescription.Text = gameDescription;
-            gameItem.ViewGameInfo.Click += new EventHandler(ButtonClick, (gameItem.ViewGameInfo, reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-            
+            gameItem.GameDescription.Location = new Point()
+            {
+                X = x,
+                Y = y
+            };
+
+            gameItem.ViewGameInfo.Click += ButtonClick;
+            gameItem.ViewGameInfo.Location = new Point()
+            {
+                X = x,
+                Y = y
+            };
+
+
+            this.Controls.Add(gameItem.GameGenre);
+            this.Controls.Add(gameItem.ViewGameInfo);
+            this.Controls.Add(gameItem.GameName);
+            this.Controls.Add(gameItem.GameDescription);
+
             //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
             //gameInfo.ShowDialog();
 
@@ -124,11 +160,9 @@ namespace VideoGameCatalogue
 
         }
 
-        void ButtonClick (object sender, EventArgs e)
+        void ButtonClick(object sender, EventArgs e)
         {
-
-            gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-            gameInfo.ShowDialog()
+            gameInfo.ShowDialog();
         }
     }
 }
