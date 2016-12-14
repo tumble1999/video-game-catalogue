@@ -15,15 +15,17 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-        int width = 0;
-        int height = 10;
-        int fullX = 0;
+        int width = 10;
+        int height = 20;
         int x = 0;
         int y = 24;
 
         AboutWindow aboutWindow = new AboutWindow();
-        GameItem gameItem = new GameItem();
         GameInfo gameInfo;
+
+        IList<Game> games = new List<Game>();
+        private int fullX;
+
         public GamesList()
         {
             InitializeComponent();
@@ -38,7 +40,6 @@ namespace VideoGameCatalogue
             updateLoop.Start();
 
 
-
             //List games
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
             string sql = "SELECT * FROM Games";
@@ -51,59 +52,13 @@ namespace VideoGameCatalogue
             int i = 1;
             while (reader.Read())
             {
-                fullX = i * width;
-                x += (fullX % this.Width);
-                y += (fullX / this.Width) * height;
-                //reader.GetInt32(0); -> id
-                //reader.GetString(1); -> name
-                //PlaceGame(x, y, reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-                gameItem.GameName.Text = reader.GetString(1);
-                gameItem.GameName.Location = new Point()
-                {
-                    X = x + 21,
-                    Y = y + 11
-                };
-
-                gameItem.GameGenre.Text = reader.GetString(2);
-                gameItem.GameGenre.Location = new Point()
-                {
-                    X = x + 24,
-                    Y = y + 43
-                };
-
-                gameItem.GameDescription.Text = reader.GetString(3);
-                gameItem.GameDescription.Location = new Point()
-                {
-                    X = x + 27,
-                    Y = y + 60
-                };
-
-                //gameItem.ViewGameInfo.Click += ButtonClick(gameTitle,gameGenre,gameDescription,gamePublisher,gamePlatform,gameReleaseDate);
-                //new EventHandler(ButtonClick(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-                gameItem.ViewGameInfo.Click += new System.EventHandler(this.ButtonClick);
-                gameItem.ViewGameInfo.Location = new Point()
-                {
-                    X = x + 33,
-                    Y = y + 98
-                };
-
-
-                this.Controls.Add(gameItem.GameName);
-                this.Controls.Add(gameItem.GameGenre);
-                this.Controls.Add(gameItem.ViewGameInfo);
-                this.Controls.Add(gameItem.GameDescription);
-
-                //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-                //gameInfo.ShowDialog();
-
-
-                //gameInfo = new GameInfo(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
-                //gameInfo.ShowDialog();
-                //MessageBox.Show(reader.GetString(1));
-                i++;
+                games.Add(new Game(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
             }
             reader.Close();
             conn.Close();
+
+
+            Place(x, y, 0, games.ToArray<Game>());
         }
 
         private void UpdateLoop()
@@ -115,11 +70,54 @@ namespace VideoGameCatalogue
                 loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
                 userIDStatusLabel.Text = CurrentUser.userID.ToString();
                 usernameStatusLabel.Text = CurrentUser.username;
-
-
-
-
             }
+        }
+
+        void Place(int x, int y, int index, Game[] g)
+        {
+            if(index == g.Length)
+            {
+                return;
+            }
+            else
+            {
+                g[index].GameName.Location = new Point()
+                {
+                    X = x + 13,
+                    Y = y + 13
+                };
+                this.Controls.Add(g[index].GameName);
+
+                g[index].GameGenre.Location = new Point()
+                {
+                    X = x + 13,
+                    Y = y + 13
+                };
+                this.Controls.Add(g[index].GameGenre);
+
+                g[index].GameDescription.Location = new Point()
+                {
+                    X = x + 12,
+                    Y = y + 13
+                };
+                this.Controls.Add(g[index].GameDescription);
+
+                g[index].ViewGameInfo.Location = new Point()
+                {
+                    X = x + 75,
+                    Y = y + 23
+                };
+                g[index].ViewGameInfo.Click += ButtonClick;
+                this.Controls.Add(g[index].ViewGameInfo);
+
+                fullX = (index - 1) * width;
+                Place(this.x + (fullX % this.Width), this.y + ((fullX / this.Width) * height),index + 1, g);
+            }
+        }
+
+        private void ViewGameInfo_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,9 +160,9 @@ namespace VideoGameCatalogue
 
         private void ButtonClick(object sender, EventArgs e)
         {
-            
+
             //gameInfo = new GameInfo(gameTitle, gameGenre, gameDescription, gamePublisher, gamePlatform, gameReleaseDate);
-            gameInfo.ShowDialog();
+            MessageBox.Show(sender.GetType().ToString());
         }
     }
 }

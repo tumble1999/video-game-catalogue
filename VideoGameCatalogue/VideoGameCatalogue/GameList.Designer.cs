@@ -314,7 +314,7 @@
             // 
             this.gameTitle.AutoSize = true;
             this.gameTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameTitle.Location = new System.Drawing.Point(21, 11);
+            this.gameTitle.Location = new System.Drawing.Point(12, 12);
             this.gameTitle.Name = "gameTitle";
             this.gameTitle.Size = new System.Drawing.Size(133, 31);
             this.gameTitle.TabIndex = 0;
