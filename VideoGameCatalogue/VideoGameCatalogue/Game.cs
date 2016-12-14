@@ -44,8 +44,8 @@ namespace VideoGameCatalogue
             AutoEllipsis = true,
             Location = new Point()
             {
-                X = 13,
-                Y = 13
+                X = 12,
+                Y = 1
             }
         };
         public Button ViewGameInfo = new Button()

@@ -15,8 +15,8 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-        int width = 10;
-        int height = 20;
+        int gameWidth = 278;
+        int gameHeight = 127;
         int x = 0;
         int y = 24;
 
@@ -38,8 +38,7 @@ namespace VideoGameCatalogue
             userIDStatusLabel.Text = CurrentUser.userID.ToString();
             usernameStatusLabel.Text = CurrentUser.username;
             updateLoop.Start();
-
-
+            
             //List games
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
             string sql = "SELECT * FROM Games";
@@ -83,35 +82,35 @@ namespace VideoGameCatalogue
             {
                 g[index].GameName.Location = new Point()
                 {
-                    X = x + 13,
-                    Y = y + 13
+                    X = x + 12,
+                    Y = y + 12
                 };
                 this.Controls.Add(g[index].GameName);
 
                 g[index].GameGenre.Location = new Point()
                 {
-                    X = x + 13,
-                    Y = y + 13
+                    X = x + 12,
+                    Y = y + 43
                 };
                 this.Controls.Add(g[index].GameGenre);
 
                 g[index].GameDescription.Location = new Point()
                 {
                     X = x + 12,
-                    Y = y + 13
+                    Y = y + 60
                 };
                 this.Controls.Add(g[index].GameDescription);
 
                 g[index].ViewGameInfo.Location = new Point()
                 {
-                    X = x + 75,
-                    Y = y + 23
+                    X = x + 133,
+                    Y = y + 98
                 };
                 g[index].ViewGameInfo.Click += ButtonClick;
                 this.Controls.Add(g[index].ViewGameInfo);
 
-                fullX = (index - 1) * width;
-                Place(this.x + (fullX % this.Width), this.y + ((fullX / this.Width) * height),index + 1, g);
+                fullX = (index - 1) * -gameWidth;
+                Place(this.x + (fullX % this.Width), this.y + ((fullX / this.Width) * gameHeight),index + 1, g);
             }
         }
 
