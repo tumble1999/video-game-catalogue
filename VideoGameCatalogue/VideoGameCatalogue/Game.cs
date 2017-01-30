@@ -52,7 +52,7 @@ namespace VideoGameCatalogue
         {
             Width = 75,
             Height = 23,
-            Text = "Filler Button",
+            Text = "Game Info",
 
             Location = new Point()
             {
