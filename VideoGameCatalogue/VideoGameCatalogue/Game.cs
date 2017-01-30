@@ -48,7 +48,7 @@ namespace VideoGameCatalogue
                 Y = 1
             }
         };
-        public Button ViewGameInfo = new Button()
+        public GameButton ViewGameInfo = new GameButton()
         {
             Width = 75,
             Height = 23,
@@ -75,27 +75,111 @@ namespace VideoGameCatalogue
     }
     public class Game : SuperGame 
     {
-        string title, genre, description, publisher, platform;
-        DateTime releaseDate;
+        
         //int x, y;
 
         IList<Reviews> games = new List<Reviews>();
+        private string title;
+        private string genre;
+        private string description;
+        private string publisher;
+        private string platform;
+
+        DateTime releaseDate;
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+            }
+        }
+
+        public string Genre
+        {
+            get
+            {
+                return genre;
+            }
+
+            set
+            {
+                genre = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
+        public string Publisher
+        {
+            get
+            {
+                return publisher;
+            }
+
+            set
+            {
+                publisher = value;
+            }
+        }
+
+        public string Platform
+        {
+            get
+            {
+                return platform;
+            }
+
+            set
+            {
+                platform = value;
+            }
+        }
+
+        public DateTime ReleaseDate
+        {
+            get
+            {
+                return releaseDate;
+            }
+
+            set
+            {
+                releaseDate = value;
+            }
+        }
 
         public Game(/*int x, int y,*/ string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
         {
             //this.x = x;
             ///this.y = y;
 
-            title = gameTitle;
-            genre = gameGenre;
-            description = gameDescription;
-            publisher = gamePublisher;
-            platform = gamePlatform;
-            releaseDate = gameReleaseDate;
+            Title = gameTitle;
+            Genre = gameGenre;
+            Description = gameDescription;
+            Publisher = gamePublisher;
+            Platform = gamePlatform;
+            ReleaseDate = gameReleaseDate;
 
-            this.GameName.Text = title;
-            this.GameGenre.Text = genre;
-            this.GameDescription.Text = description;
+            this.GameName.Text = Title;
+            this.GameGenre.Text = Genre;
+            this.GameDescription.Text = Description;
 
             this.GameContainer.Controls.Add(this.GameName);
             this.GameContainer.Controls.Add(this.GameGenre);
@@ -113,5 +197,10 @@ namespace VideoGameCatalogue
 
     internal class Reviews
     {
+    }
+
+    public class GameButton : Button
+    {
+        public Game Game { get; internal set; }
     }
 }

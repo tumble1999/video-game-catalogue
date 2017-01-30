@@ -15,7 +15,7 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-        int gameWidth = 278;
+        public int gameWidth = 278;
         int gameHeight = 127;
         int x = 0;
         int y = 24;
@@ -48,7 +48,7 @@ namespace VideoGameCatalogue
             OleDbDataReader reader;
             reader = cmd.ExecuteReader();
 
-            int i = 1;
+            //int i = 1;
             while (reader.Read())
             {
                 games.Add(new Game(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
@@ -107,6 +107,7 @@ namespace VideoGameCatalogue
                     Y = y + 98
                 };
                 g[index].ViewGameInfo.Click += ButtonClick;
+                g[index].ViewGameInfo.Game = g[index];
                 this.Controls.Add(g[index].ViewGameInfo);
 
                 fullX = (index + 1) * gameWidth;
@@ -159,9 +160,9 @@ namespace VideoGameCatalogue
 
         private void ButtonClick(object sender, EventArgs e)
         {
-
-            //gameInfo = new GameInfo(gameTitle, gameGenre, gameDescription, gamePublisher, gamePlatform, gameReleaseDate);
-            MessageBox.Show(sender.ToString());
+            Game gameBtn = (sender as GameButton).Game;
+            gameInfo = new GameInfo(gameBtn.Title, gameBtn.Genre, gameBtn.Description, gameBtn.Publisher, gameBtn.Platform, gameBtn.ReleaseDate);
+            gameInfo.Show();
         }
     }
 }
