@@ -81,7 +81,7 @@
             this.testToolStripMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
-            this.menuBar.Size = new System.Drawing.Size(1031, 24);
+            this.menuBar.Size = new System.Drawing.Size(1096, 24);
             this.menuBar.TabIndex = 0;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -269,7 +269,7 @@
             this.loggedInStatusLabel});
             this.statusBar.Location = new System.Drawing.Point(0, 526);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(1031, 24);
+            this.statusBar.Size = new System.Drawing.Size(1096, 24);
             this.statusBar.TabIndex = 1;
             this.statusBar.Text = "statusStrip1";
             // 
@@ -366,7 +366,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 550);
+            this.ClientSize = new System.Drawing.Size(1096, 550);
             this.Controls.Add(this.gameItemPanel);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuBar);

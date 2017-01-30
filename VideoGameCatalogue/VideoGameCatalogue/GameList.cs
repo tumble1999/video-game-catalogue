@@ -109,7 +109,7 @@ namespace VideoGameCatalogue
                 g[index].ViewGameInfo.Click += ButtonClick;
                 this.Controls.Add(g[index].ViewGameInfo);
 
-                fullX = (index - 1) * -gameWidth;
+                fullX = (index + 1) * gameWidth;
                 Place(this.x + (fullX % this.Width), this.y + ((fullX / this.Width) * gameHeight),index + 1, g);
             }
         }
@@ -161,7 +161,7 @@ namespace VideoGameCatalogue
         {
 
             //gameInfo = new GameInfo(gameTitle, gameGenre, gameDescription, gamePublisher, gamePlatform, gameReleaseDate);
-            MessageBox.Show(sender.GetType().ToString());
+            MessageBox.Show(sender.ToString());
         }
     }
 }
