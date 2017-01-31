@@ -13,8 +13,8 @@ namespace VideoGameCatalogue
 {
     public class SuperGame
     {
-        
-        
+
+
         public Label GameName = new Label()
         {
             Text = "Gamename",
@@ -73,17 +73,18 @@ namespace VideoGameCatalogue
         };
 
     }
-    public class Game : SuperGame 
+    public class Game : SuperGame
     {
-        
-        //int x, y;
 
-        IList<Reviews> games = new List<Reviews>();
+        //int x, y;
+        
         private string title;
         private string genre;
         private string description;
         private string publisher;
         private string platform;
+        private int avarageReview;
+        Review[] reviews;
 
         DateTime releaseDate;
 
@@ -177,6 +178,7 @@ namespace VideoGameCatalogue
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
 
+
             this.GameName.Text = Title;
             this.GameGenre.Text = Genre;
             this.GameDescription.Text = Description;
@@ -195,9 +197,14 @@ namespace VideoGameCatalogue
 
     }
 
-    internal class Reviews
+    public class SuperReview
     {
-        private int userID, gameID, raiting;
+
+    }
+
+    public class Review : SuperReview
+    {
+        private int userID, gameID, rating;
         private string reviewText;
 
         public int UserID
@@ -226,16 +233,16 @@ namespace VideoGameCatalogue
             }
         }
 
-        public int Raiting
+        public int Rating
         {
             get
             {
-                return raiting;
+                return rating;
             }
 
             set
             {
-                raiting = value;
+                rating = value;
             }
         }
 
@@ -255,6 +262,9 @@ namespace VideoGameCatalogue
 
     public class GameButton : Button
     {
-        public Game Game { get; internal set; }
+        public Game Game { get; internal set; }// added game property to Button class
     }
+
+
+
 }

@@ -34,6 +34,7 @@
             this.gamePublisherLabel = new System.Windows.Forms.Label();
             this.gamePlatformLabel = new System.Windows.Forms.Label();
             this.gameReleaseDateLabel = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // gameTitleLabel
@@ -97,11 +98,19 @@
             this.gameReleaseDateLabel.Text = "gameReleaseDateLabel";
             this.gameReleaseDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(388, 72);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 6;
+            // 
             // GameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 489);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.gameReleaseDateLabel);
             this.Controls.Add(this.gamePlatformLabel);
             this.Controls.Add(this.gamePublisherLabel);
@@ -123,5 +132,6 @@
         private System.Windows.Forms.Label gamePublisherLabel;
         private System.Windows.Forms.Label gamePlatformLabel;
         private System.Windows.Forms.Label gameReleaseDateLabel;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -12,9 +12,14 @@ namespace VideoGameCatalogue
 {
     public partial class ReviewList : Form
     {
-        public ReviewList()
+        public ReviewList(Review[] reviews)
         {
             InitializeComponent();
+
+            foreach(Review review in reviews)
+            {
+                
+            }
         }
     }
 }

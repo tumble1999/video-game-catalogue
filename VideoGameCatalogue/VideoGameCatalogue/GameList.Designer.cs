@@ -64,6 +64,9 @@
             this.gameDescriptionLabel = new System.Windows.Forms.Label();
             this.viewGameButton = new System.Windows.Forms.Button();
             this.gameItemPanel = new System.Windows.Forms.Panel();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.gameListPanel = new System.Windows.Forms.Panel();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
@@ -78,6 +81,7 @@
             this.accountLoggedInToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem,
+            this.refreshToolStripMenuItem,
             this.testToolStripMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
@@ -266,7 +270,8 @@
             this.userIDStatusLabel,
             this.usernameStatusLabel,
             this.loggedInStatusLabelLabel,
-            this.loggedInStatusLabel});
+            this.loggedInStatusLabel,
+            this.refreshProgressBar});
             this.statusBar.Location = new System.Drawing.Point(0, 526);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(1096, 24);
@@ -356,11 +361,34 @@
             this.gameItemPanel.Controls.Add(this.gameDescriptionLabel);
             this.gameItemPanel.Controls.Add(this.genreText);
             this.gameItemPanel.Controls.Add(this.gameTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(0, 27);
+            this.gameItemPanel.Location = new System.Drawing.Point(0, 26);
             this.gameItemPanel.Name = "gameItemPanel";
             this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
             this.gameItemPanel.TabIndex = 2;
             this.gameItemPanel.Visible = false;
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // refreshProgressBar
+            // 
+            this.refreshProgressBar.Name = "refreshProgressBar";
+            this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
+            this.refreshProgressBar.Visible = false;
+            // 
+            // gameListPanel
+            // 
+            this.gameListPanel.AutoScroll = true;
+            this.gameListPanel.AutoSize = true;
+            this.gameListPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gameListPanel.Location = new System.Drawing.Point(0, 24);
+            this.gameListPanel.Name = "gameListPanel";
+            this.gameListPanel.Size = new System.Drawing.Size(1096, 502);
+            this.gameListPanel.TabIndex = 3;
             // 
             // GamesList
             // 
@@ -369,6 +397,7 @@
             this.AutoScrollMargin = new System.Drawing.Size(0, 24);
             this.ClientSize = new System.Drawing.Size(1096, 550);
             this.Controls.Add(this.gameItemPanel);
+            this.Controls.Add(this.gameListPanel);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
@@ -423,6 +452,9 @@
         private System.Windows.Forms.Label gameDescriptionLabel;
         private System.Windows.Forms.Button viewGameButton;
         private System.Windows.Forms.Panel gameItemPanel;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripProgressBar refreshProgressBar;
+        private System.Windows.Forms.Panel gameListPanel;
     }
 }
 

@@ -51,13 +51,15 @@ namespace VideoGameCatalogue
             //int i = 1;
             while (reader.Read())
             {
+                // currentGameId = reader.GetString(0);
                 games.Add(new Game(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
+
             }
             reader.Close();
             conn.Close();
 
 
-            Place(x, y, 0, games.ToArray<Game>());
+            RefreshGames();
         }
 
         private void UpdateLoop()
@@ -74,7 +76,8 @@ namespace VideoGameCatalogue
 
         void Place(int x, int y, int index, Game[] g)
         {
-            if(index == g.Length)
+            refreshProgressBar.Value += (index + 1) / (g.Length * 200);
+            if (index == g.Length)
             {
                 return;
             }
@@ -85,21 +88,21 @@ namespace VideoGameCatalogue
                     X = x + 12,
                     Y = y + 12
                 };
-                this.Controls.Add(g[index].GameName);
+                gameListPanel.Controls.Add(g[index].GameName);
 
                 g[index].GameGenre.Location = new Point()
                 {
                     X = x + 12,
                     Y = y + 43
                 };
-                this.Controls.Add(g[index].GameGenre);
+                gameListPanel.Controls.Add(g[index].GameGenre);
 
                 g[index].GameDescription.Location = new Point()
                 {
                     X = x + 12,
                     Y = y + 60
                 };
-                this.Controls.Add(g[index].GameDescription);
+                gameListPanel.Controls.Add(g[index].GameDescription);
 
                 g[index].ViewGameInfo.Location = new Point()
                 {
@@ -108,11 +111,34 @@ namespace VideoGameCatalogue
                 };
                 g[index].ViewGameInfo.Click += ButtonClick;
                 g[index].ViewGameInfo.Game = g[index];
-                this.Controls.Add(g[index].ViewGameInfo);
+                gameListPanel.Controls.Add(g[index].ViewGameInfo);
 
                 fullX = (index + 1) * gameWidth;
-                Place(this.x + (fullX % this.Width), this.y + ((fullX / this.Width) * gameHeight),index + 1, g);
+                Place(this.x + (fullX+gameWidth % this.Width)-gameWidth, this.y + ((fullX / this.Width) * gameHeight),index + 1, g);
             }
+        }
+        void UnPlace(int index, Game[] g)
+        {
+            refreshProgressBar.Value += (index + 1) / (g.Length * 200);
+            if (index == g.Length)
+            {
+                return;
+            }
+            else
+            {
+                gameListPanel.Controls.Remove(g[index].GameName);
+                gameListPanel.Controls.Remove(g[index].GameGenre);
+                gameListPanel.Controls.Remove(g[index].GameDescription);
+                gameListPanel.Controls.Remove(g[index].ViewGameInfo);
+                UnPlace(index + 1, g);
+            }
+        }
+        void RefreshGames()
+        {
+            refreshProgressBar.Visible = true;
+            UnPlace(0, games.ToArray<Game>());
+            Place(this.x, this.y, 0, games.ToArray<Game>());
+            refreshProgressBar.Visible = false;
         }
 
         private void ViewGameInfo_Click(object sender, EventArgs e)
@@ -137,7 +163,7 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,6 +189,11 @@ namespace VideoGameCatalogue
             Game gameBtn = (sender as GameButton).Game;
             gameInfo = new GameInfo(gameBtn.Title, gameBtn.Genre, gameBtn.Description, gameBtn.Publisher, gameBtn.Platform, gameBtn.ReleaseDate);
             gameInfo.Show();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RefreshGames();
         }
     }
 }
