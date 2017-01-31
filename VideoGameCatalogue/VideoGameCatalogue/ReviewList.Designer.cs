@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gameTitleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // gameTitleLabel
+            // 
+            this.gameTitleLabel.AutoSize = true;
+            this.gameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameTitleLabel.Location = new System.Drawing.Point(29, 9);
+            this.gameTitleLabel.Name = "gameTitleLabel";
+            this.gameTitleLabel.Size = new System.Drawing.Size(207, 39);
+            this.gameTitleLabel.TabIndex = 1;
+            this.gameTitleLabel.Text = "reviews Title";
             // 
             // ReviewList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 358);
+            this.Controls.Add(this.gameTitleLabel);
             this.Name = "ReviewList";
             this.Text = "ReviewList";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label gameTitleLabel;
     }
 }
