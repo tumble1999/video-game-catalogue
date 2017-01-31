@@ -197,6 +197,60 @@ namespace VideoGameCatalogue
 
     internal class Reviews
     {
+        private int userID, gameID, raiting;
+        private string reviewText;
+
+        public int UserID
+        {
+            get
+            {
+                return userID;
+            }
+
+            set
+            {
+                userID = value;
+            }
+        }
+
+        public int GameID
+        {
+            get
+            {
+                return gameID;
+            }
+
+            set
+            {
+                gameID = value;
+            }
+        }
+
+        public int Raiting
+        {
+            get
+            {
+                return raiting;
+            }
+
+            set
+            {
+                raiting = value;
+            }
+        }
+
+        public string ReviewText
+        {
+            get
+            {
+                return reviewText;
+            }
+
+            set
+            {
+                reviewText = value;
+            }
+        }
     }
 
     public class GameButton : Button
