@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -78,14 +79,10 @@ namespace VideoGameCatalogue
 
         //int x, y;
         
-        private string title;
-        private string genre;
-        private string description;
-        private string publisher;
-        private string platform;
-        private int avarageReview;
+        private string title, genre, description, publisher, platform;
+        private int id = -1;
+        private int avarageReview = -1;
         Review[] reviews;
-
         DateTime releaseDate;
 
         public string Title
@@ -166,17 +163,46 @@ namespace VideoGameCatalogue
             }
         }
 
-        public Game(/*int x, int y,*/ string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public int AvarageReview
+        {
+            get
+            {
+                return avarageReview;
+            }
+
+            set
+            {
+                avarageReview = value;
+            }
+        }
+
+        public Game(/*int x, int y,*/int gameId, string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
         {
             //this.x = x;
             ///this.y = y;
 
+            Id = gameId;
             Title = gameTitle;
             Genre = gameGenre;
             Description = gameDescription;
             Publisher = gamePublisher;
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
+            reviews = Review.GetReviews(id);
+            avarageReview = Review.GetAverage(reviews);
 
 
             this.GameName.Text = Title;
@@ -258,12 +284,50 @@ namespace VideoGameCatalogue
                 reviewText = value;
             }
         }
+
+        public Review[] GetReviews(int gameId)
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Reviews";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            IList<Review> tmpGames = new List<Review>();
+            //int i = 1;
+
+            ///add only game ID
+            while (reader.Read())
+            {
+                if (reader.GetInt32(2) == ) {
+                    // currentGameId = reader.GetString(0);
+                    tmpGames.Add(new Review());
+                }
+            }
+            games = tmpGames.ToArray();
+            reader.Close();
+            conn.Close();
+        }
+        public  int GetAverage(Review[] rArray)
+        {
+            int a = 0;
+            foreach(Review r in rArray )
+            {
+                a += r.Rating;
+            }
+            a = a / rArray.Length;
+            return a;
+        }
     }
 
     public class GameButton : Button
     {
         public Game Game { get; internal set; }// added game property to Button class
     }
+    
+
 
 
 

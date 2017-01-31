@@ -23,7 +23,7 @@ namespace VideoGameCatalogue
         AboutWindow aboutWindow = new AboutWindow();
         GameInfo gameInfo;
 
-        IList<Game> games = new List<Game>();
+        Game[] games;
         private int fullX;
 
         public GamesList()
@@ -48,18 +48,18 @@ namespace VideoGameCatalogue
             OleDbDataReader reader;
             reader = cmd.ExecuteReader();
 
+            IList<Game> tmpGames = new List<Game>();
             //int i = 1;
             while (reader.Read())
             {
                 // currentGameId = reader.GetString(0);
-                games.Add(new Game(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
+                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
 
             }
+            games = tmpGames.ToArray();
             reader.Close();
             conn.Close();
-
-
-            RefreshGames();
+            
         }
 
         private void UpdateLoop()
@@ -136,8 +136,8 @@ namespace VideoGameCatalogue
         void RefreshGames()
         {
             refreshProgressBar.Visible = true;
-            UnPlace(0, games.ToArray<Game>());
-            Place(this.x, this.y, 0, games.ToArray<Game>());
+            UnPlace(0, games);
+            Place(this.x, this.y, 0, games);
             refreshProgressBar.Visible = false;
         }
 
