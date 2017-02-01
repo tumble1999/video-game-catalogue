@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Drawing;
@@ -21,6 +19,11 @@ namespace VideoGameCatalogue
             Text = "Gamename",
             Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
             AutoSize = true,
+            MaximumSize = new Size()
+            {
+                Width = GamesList.gameWidth - 13,
+                Height = 0
+            },
             Location = new Point()
             {
                 X = 13,
@@ -189,6 +192,19 @@ namespace VideoGameCatalogue
             }
         }
 
+        public Review[] Reviews
+        {
+            get
+            {
+                return reviews;
+            }
+
+            set
+            {
+                reviews = value;
+            }
+        }
+
         public Game(/*int x, int y,*/int gameId, string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
         {
             //this.x = x;
@@ -201,8 +217,8 @@ namespace VideoGameCatalogue
             Publisher = gamePublisher;
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
-            reviews = Review.GetReviews.Game(Id);
-            avarageReview = Review.GetAverage(reviews);
+            Reviews = Review.GetReviews.Game(Id);
+            avarageReview = Review.GetAverage(Reviews);
 
 
             this.GameName.Text = Title;
@@ -222,16 +238,9 @@ namespace VideoGameCatalogue
         }
 
     }
-
-    
-
     public class GameButton : Button
     {
         public Game Game { get; internal set; }// added game property to Button class
     }
     
-
-
-
-
 }

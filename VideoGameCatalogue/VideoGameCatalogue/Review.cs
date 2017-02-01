@@ -10,13 +10,40 @@ namespace VideoGameCatalogue
 {
     public class SuperReview
     {
+        private static string owner;
 
+        public string Owner
+        {
+            get
+            {
+                return owner;
+            }
+
+            set
+            {
+                owner = value;
+            }
+        }
     }
+
 
     public class Review : SuperReview
     {
-        private int userID, gameID, rating;
-        private string reviewText;
+        private int iD, userID, gameID, rating;
+        private string text;
+
+        public int ID
+        {
+            get
+            {
+                return iD;
+            }
+
+            set
+            {
+                iD = value;
+            }
+        }
 
         public int UserID
         {
@@ -44,6 +71,19 @@ namespace VideoGameCatalogue
             }
         }
 
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+
+            set
+            {
+                text = value;
+            }
+        }
+
         public int Rating
         {
             get
@@ -56,18 +96,14 @@ namespace VideoGameCatalogue
                 rating = value;
             }
         }
-
-        public string ReviewText
+        public Review(int reviewId, int reviewUserId, int reviewGameId, string reviewText, int reviewRating)
         {
-            get
-            {
-                return reviewText;
-            }
+            iD = reviewId;
+            userID = reviewUserId;
+            gameID = reviewGameId;
+            text = reviewText;
+            rating = reviewRating;
 
-            set
-            {
-                reviewText = value;
-            }
         }
 
         public static class GetReviews
@@ -91,10 +127,9 @@ namespace VideoGameCatalogue
                     if (reader.GetInt32(2) == gameId)
                     {
                         // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review());
+                        tmpReviews.Add(new Review(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4)));
                     }
                 }
-
                 reader.Close();
                 conn.Close();
                 return tmpReviews.ToArray();
@@ -119,7 +154,7 @@ namespace VideoGameCatalogue
                     if (reader.GetInt32(1) == userId)
                     {
                         // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review(reader.GetInt32(0),reader));
+                        tmpReviews.Add(new Review(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4)));
                     }
                 }
 
@@ -131,12 +166,19 @@ namespace VideoGameCatalogue
         public static int GetAverage(Review[] rArray)
         {
             int a = 0;
-            foreach (Review r in rArray )
+            foreach (Review r in rArray)
             {
                 a += r.Rating;
             }
-            a = a / rArray.Length;
-            return a;
+
+            if (rArray.Length == 0)
+            {
+                return a;
+            }
+            else
+            {
+                return a / rArray.Length;
+            }
         }
     }
 }

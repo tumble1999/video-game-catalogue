@@ -35,11 +35,12 @@
             // 
             this.gameTitleLabel.AutoSize = true;
             this.gameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameTitleLabel.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.gameTitleLabel.Location = new System.Drawing.Point(29, 9);
             this.gameTitleLabel.Name = "gameTitleLabel";
-            this.gameTitleLabel.Size = new System.Drawing.Size(207, 39);
+            this.gameTitleLabel.Size = new System.Drawing.Size(289, 39);
             this.gameTitleLabel.TabIndex = 1;
-            this.gameTitleLabel.Text = "reviews Title";
+            this.gameTitleLabel.Text = "Reviews from/for: ";
             // 
             // ReviewList
             // 

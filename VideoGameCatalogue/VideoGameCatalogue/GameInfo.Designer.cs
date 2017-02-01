@@ -34,7 +34,8 @@
             this.gamePublisherLabel = new System.Windows.Forms.Label();
             this.gamePlatformLabel = new System.Windows.Forms.Label();
             this.gameReleaseDateLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.gameReviewBar = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // gameTitleLabel
@@ -98,19 +99,27 @@
             this.gameReleaseDateLabel.Text = "gameReleaseDateLabel";
             this.gameReleaseDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // progressBar1
+            // gameReviewBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(388, 72);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.TabIndex = 6;
+            this.gameReviewBar.Location = new System.Drawing.Point(388, 72);
+            this.gameReviewBar.Name = "gameReviewBar";
+            this.gameReviewBar.Size = new System.Drawing.Size(100, 23);
+            this.gameReviewBar.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(-76, 208);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(235, 100);
+            this.panel1.TabIndex = 7;
             // 
             // GameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 489);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.gameReviewBar);
             this.Controls.Add(this.gameReleaseDateLabel);
             this.Controls.Add(this.gamePlatformLabel);
             this.Controls.Add(this.gamePublisherLabel);
@@ -132,6 +141,7 @@
         private System.Windows.Forms.Label gamePublisherLabel;
         private System.Windows.Forms.Label gamePlatformLabel;
         private System.Windows.Forms.Label gameReleaseDateLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar gameReviewBar;
+        private System.Windows.Forms.Panel panel1;
     }
 }

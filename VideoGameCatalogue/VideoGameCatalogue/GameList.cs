@@ -15,7 +15,7 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-        public int gameWidth = 278;
+        public static int gameWidth = 278;
         int gameHeight = 127;
         int x = 0;
         int y = 24;
@@ -59,6 +59,8 @@ namespace VideoGameCatalogue
             games = tmpGames.ToArray();
             reader.Close();
             conn.Close();
+
+            RefreshGames();
             
         }
 
@@ -114,7 +116,8 @@ namespace VideoGameCatalogue
                 gameListPanel.Controls.Add(g[index].ViewGameInfo);
 
                 fullX = (index + 1) * gameWidth;
-                Place(this.x + (fullX+gameWidth % this.Width)-gameWidth, this.y + ((fullX / this.Width) * gameHeight),index + 1, g);
+                int tmpX = (gameWidth + this.x + (fullX % gameListPanel.Width)) / gameWidth;
+                Place((tmpX-1) * gameWidth, this.y + ((fullX / gameListPanel.Width) * gameHeight),index + 1, g);
             }
         }
         void UnPlace(int index, Game[] g)

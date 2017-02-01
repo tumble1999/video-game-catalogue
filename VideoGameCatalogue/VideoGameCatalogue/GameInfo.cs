@@ -22,6 +22,7 @@ namespace VideoGameCatalogue
             gamePublisherLabel.Text = g.Publisher;
             gamePlatformLabel.Text = g.Platform;
             gameReleaseDateLabel.Text = DateToString(g.ReleaseDate);
+            gameReviewBar.Value = 10 * g.AvarageReview;
         }
 
         public static string DateToString(DateTime date)
