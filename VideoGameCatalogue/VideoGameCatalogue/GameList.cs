@@ -186,8 +186,8 @@ namespace VideoGameCatalogue
 
         private void ButtonClick(object sender, EventArgs e)
         {
-            Game gameBtn = (sender as GameButton).Game;
-            gameInfo = new GameInfo(gameBtn.Title, gameBtn.Genre, gameBtn.Description, gameBtn.Publisher, gameBtn.Platform, gameBtn.ReleaseDate);
+            GameButton gameBtn = (sender as GameButton);
+            gameInfo = new GameInfo(gameBtn.Game);
             gameInfo.Show();
         }
 
