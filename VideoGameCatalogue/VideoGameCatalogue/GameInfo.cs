@@ -12,16 +12,16 @@ namespace VideoGameCatalogue
 {
     public partial class GameInfo : Form
     {
-        public GameInfo(string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
+        public GameInfo(Game g)
         {
             InitializeComponent();
-            this.Text = gameTitle;
-            gameTitleLabel.Text = gameTitle;
-            gameGenreLabel.Text = gameGenre;
-            gameDescriptionLabel.Text = gameDescription;
-            gamePublisherLabel.Text = gamePublisher;
-            gamePlatformLabel.Text = gamePlatform;
-            gameReleaseDateLabel.Text = DateToString(gameReleaseDate);
+            this.Text = g.Title;
+            gameTitleLabel.Text = g.Title;
+            gameGenreLabel.Text = g.Genre;
+            gameDescriptionLabel.Text = g.Description;
+            gamePublisherLabel.Text = g.Publisher;
+            gamePlatformLabel.Text = g.Platform;
+            gameReleaseDateLabel.Text = DateToString(g.ReleaseDate);
         }
 
         public static string DateToString(DateTime date)
