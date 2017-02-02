@@ -35,7 +35,10 @@
             this.gamePlatformLabel = new System.Windows.Forms.Label();
             this.gameReleaseDateLabel = new System.Windows.Forms.Label();
             this.gameReviewBar = new System.Windows.Forms.ProgressBar();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelReviewbuttons = new System.Windows.Forms.Panel();
+            this.panelReviews = new System.Windows.Forms.Panel();
+            this.buttonAllReviews = new System.Windows.Forms.Button();
+            this.panelReviewbuttons.SuspendLayout();
             this.SuspendLayout();
             // 
             // gameTitleLabel
@@ -106,19 +109,41 @@
             this.gameReviewBar.Size = new System.Drawing.Size(100, 23);
             this.gameReviewBar.TabIndex = 6;
             // 
-            // panel1
+            // panelReviewbuttons
             // 
-            this.panel1.Location = new System.Drawing.Point(-76, 208);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(235, 100);
-            this.panel1.TabIndex = 7;
+            this.panelReviewbuttons.Controls.Add(this.buttonAllReviews);
+            this.panelReviewbuttons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelReviewbuttons.Location = new System.Drawing.Point(0, 450);
+            this.panelReviewbuttons.Name = "panelReviewbuttons";
+            this.panelReviewbuttons.Size = new System.Drawing.Size(603, 39);
+            this.panelReviewbuttons.TabIndex = 7;
+            // 
+            // panelReviews
+            // 
+            this.panelReviews.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelReviews.Location = new System.Drawing.Point(0, 142);
+            this.panelReviews.Name = "panelReviews";
+            this.panelReviews.Size = new System.Drawing.Size(603, 308);
+            this.panelReviews.TabIndex = 8;
+            // 
+            // buttonAllReviews
+            // 
+            this.buttonAllReviews.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonAllReviews.Location = new System.Drawing.Point(0, 0);
+            this.buttonAllReviews.Name = "buttonAllReviews";
+            this.buttonAllReviews.Size = new System.Drawing.Size(603, 39);
+            this.buttonAllReviews.TabIndex = 0;
+            this.buttonAllReviews.Text = "All Reviews";
+            this.buttonAllReviews.UseVisualStyleBackColor = true;
+            this.buttonAllReviews.Click += new System.EventHandler(this.buttonAllReviews_Click);
             // 
             // GameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 489);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelReviews);
+            this.Controls.Add(this.panelReviewbuttons);
             this.Controls.Add(this.gameReviewBar);
             this.Controls.Add(this.gameReleaseDateLabel);
             this.Controls.Add(this.gamePlatformLabel);
@@ -128,6 +153,7 @@
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "GameInfo";
             this.Text = "GameInfo";
+            this.panelReviewbuttons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,6 +168,8 @@
         private System.Windows.Forms.Label gamePlatformLabel;
         private System.Windows.Forms.Label gameReleaseDateLabel;
         private System.Windows.Forms.ProgressBar gameReviewBar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelReviewbuttons;
+        private System.Windows.Forms.Panel panelReviews;
+        private System.Windows.Forms.Button buttonAllReviews;
     }
 }

@@ -12,21 +12,30 @@ namespace VideoGameCatalogue
 {
     public partial class ReviewList : Form
     {
-        public ReviewList(Game g)
+        ReviewOwner reviewsOwner;
+
+        public ReviewList(Game game)
         {
             InitializeComponent();
 
-            this.Text = "Reviews for: " + g.Title;
+            reviewsOwner = game;
 
-            foreach (Review review in g.Reviews)
+            Go();
+        }
+        public ReviewList(User user)
+        {
+            InitializeComponent();
+
+            reviewsOwner = user;
+        }
+        private void Go()
+        {
+            this.Text = "Reviews for: " + reviewsOwner.Name;
+
+            foreach (Review review in reviewsOwner.ga )
             {
 
             }
         }
-        /*
-        public ReviewList(Review[] reviews, User u)
-        {
-
-        }*/
     }
 }

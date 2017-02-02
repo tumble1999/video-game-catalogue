@@ -75,6 +75,7 @@
     <Compile Include="ReviewList.Designer.cs">
       <DependentUpon>ReviewList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReviewOwner.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserLogin.cs">
       <SubType>Form</SubType>

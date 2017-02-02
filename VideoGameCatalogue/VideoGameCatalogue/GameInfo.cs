@@ -12,17 +12,22 @@ namespace VideoGameCatalogue
 {
     public partial class GameInfo : Form
     {
+        private ReviewList reviewList;
+        Game game;
+
         public GameInfo(Game g)
         {
             InitializeComponent();
-            this.Text = g.Title;
-            gameTitleLabel.Text = g.Title;
+            this.Text = g.Name;
+            gameTitleLabel.Text = g.Name;
             gameGenreLabel.Text = g.Genre;
             gameDescriptionLabel.Text = g.Description;
             gamePublisherLabel.Text = g.Publisher;
             gamePlatformLabel.Text = g.Platform;
             gameReleaseDateLabel.Text = DateToString(g.ReleaseDate);
             gameReviewBar.Value = 10 * g.AvarageReview;
+            game = g;
+            reviewList = new ReviewList(g);
         }
 
         public static string DateToString(DateTime date)
@@ -60,6 +65,12 @@ namespace VideoGameCatalogue
             }
 
             return output;
+        }
+
+        private void buttonAllReviews_Click(object sender, EventArgs e)
+        {
+            reviewList = new ReviewList(game);
+            reviewList.Show();
         }
     }
 }

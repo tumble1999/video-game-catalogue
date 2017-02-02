@@ -82,22 +82,22 @@ namespace VideoGameCatalogue
 
         //int x, y;
         
-        private string title, genre, description, publisher, platform;
+        private string name, genre, description, publisher, platform;
         private int id = -1;
         private int avarageReview = -1;
         Review[] reviews;
         DateTime releaseDate;
 
-        public string Title
+        public string Name
         {
             get
             {
-                return title;
+                return name;
             }
 
             set
             {
-                title = value;
+                name = value;
             }
         }
 
@@ -211,7 +211,7 @@ namespace VideoGameCatalogue
             ///this.y = y;
 
             Id = gameId;
-            Title = gameTitle;
+            Name = gameTitle;
             Genre = gameGenre;
             Description = gameDescription;
             Publisher = gamePublisher;
@@ -221,7 +221,7 @@ namespace VideoGameCatalogue
             avarageReview = Review.GetAverage(Reviews);
 
 
-            this.GameName.Text = Title;
+            this.GameName.Text = Name;
             this.GameGenre.Text = Genre;
             this.GameDescription.Text = Description;
 

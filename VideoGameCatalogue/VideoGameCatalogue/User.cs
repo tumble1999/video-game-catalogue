@@ -10,12 +10,13 @@ using VideoGameCatalogue.Properties;
 namespace VideoGameCatalogue
 {
 
-    class User
+    public class User
     {
         private int id;
         private string username, password;
         private bool loggedIn;
         internal static readonly User empty = new User("Guest","");
+        private Review[] reviews;
 
         public int Id
         {
@@ -26,6 +27,14 @@ namespace VideoGameCatalogue
         }
 
         public string Username
+        {
+            get
+            {
+                return username;
+            }
+        }
+
+        public string Name
         {
             get
             {
@@ -54,6 +63,19 @@ namespace VideoGameCatalogue
             }
         }
 
+        public Review[] Reviews
+        {
+            get
+            {
+                return reviews;
+            }
+
+            set
+            {
+                reviews = value;
+            }
+        }
+
         public User(string username, string password)
         {
             this.username = username;
@@ -67,6 +89,8 @@ namespace VideoGameCatalogue
             id = getID(username, password);
             
             loggedIn = id != -1;
+
+            Reviews = Review.GetReviews.User(id);
         }
 
         public bool Exists()
