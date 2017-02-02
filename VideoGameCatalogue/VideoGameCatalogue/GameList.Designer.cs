@@ -52,6 +52,7 @@
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutVideoGameCatalogueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.userInfoLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,13 +60,12 @@
             this.usernameStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.gameTitle = new System.Windows.Forms.Label();
             this.genreText = new System.Windows.Forms.Label();
             this.gameDescriptionLabel = new System.Windows.Forms.Label();
             this.viewGameButton = new System.Windows.Forms.Button();
             this.gameItemPanel = new System.Windows.Forms.Panel();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.gameListPanel = new System.Windows.Forms.Panel();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -164,14 +164,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
@@ -191,6 +191,7 @@
             this.listReviewsToolStripMenuItem.Name = "listReviewsToolStripMenuItem";
             this.listReviewsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.listReviewsToolStripMenuItem.Text = "List Reviews";
+            this.listReviewsToolStripMenuItem.Click += new System.EventHandler(this.listReviewsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -256,6 +257,13 @@
             this.aboutVideoGameCatalogueToolStripMenuItem.Text = "About Video Game Catalogue";
             this.aboutVideoGameCatalogueToolStripMenuItem.Click += new System.EventHandler(this.aboutVideoGameCatalogueToolStripMenuItem_Click);
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
@@ -315,6 +323,12 @@
             this.loggedInStatusLabel.Size = new System.Drawing.Size(118, 19);
             this.loggedInStatusLabel.Text = "loggedInStatusLabel";
             // 
+            // refreshProgressBar
+            // 
+            this.refreshProgressBar.Name = "refreshProgressBar";
+            this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
+            this.refreshProgressBar.Visible = false;
+            // 
             // gameTitle
             // 
             this.gameTitle.AutoSize = true;
@@ -366,19 +380,6 @@
             this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
             this.gameItemPanel.TabIndex = 2;
             this.gameItemPanel.Visible = false;
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // refreshProgressBar
-            // 
-            this.refreshProgressBar.Name = "refreshProgressBar";
-            this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
-            this.refreshProgressBar.Visible = false;
             // 
             // gameListPanel
             // 

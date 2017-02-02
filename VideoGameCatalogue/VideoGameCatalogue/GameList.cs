@@ -25,6 +25,7 @@ namespace VideoGameCatalogue
 
         Game[] games;
         private int fullX;
+        private ReviewList reviewList;
 
         public GamesList()
         {
@@ -197,6 +198,12 @@ namespace VideoGameCatalogue
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RefreshGames();
+        }
+
+        private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reviewList = new ReviewList(CurrentUser.user);
+            reviewList.Show();
         }
     }
 }
