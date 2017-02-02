@@ -49,7 +49,7 @@ namespace VideoGameCatalogue
             AutoSize = true,
             Location = new Point()
             {
-                X = 160,
+                X = 200,
                 Y = 18
             }
         };
@@ -61,8 +61,8 @@ namespace VideoGameCatalogue
             AutoEllipsis = true,
             Location = new Point()
             {
-                X = 12,
-                Y = 1
+                X = 15,
+                Y = 34
             }
         };
         public ReviewButton ViewFullReview = new ReviewButton()
@@ -96,6 +96,7 @@ namespace VideoGameCatalogue
         private int iD, userID, gameID, rating;
         private string text;
         private string goodBad;
+        private string reviewUserId;
 
         public int ID
         {
@@ -110,33 +111,7 @@ namespace VideoGameCatalogue
             }
         }
 
-        public int UserID
-        {
-            get
-            {
-                return userID;
-            }
-
-            set
-            {
-                userID = value;
-            }
-        }
-
-        public int GameID
-        {
-            get
-            {
-                return gameID;
-            }
-
-            set
-            {
-                gameID = value;
-            }
-        }
-
-        public string Text
+        public string TextContent
         {
             get
             {
@@ -175,15 +150,27 @@ namespace VideoGameCatalogue
             }
         }
 
-        public Review( int reviewId, int reviewUserId, int reviewGameId, string reviewText, int reviewRating)
+        public string ReviewUserId
         {
-            iD = reviewId;
-            userID = reviewUserId;
-            gameID = reviewGameId;
-            text = reviewText;
-            rating = reviewRating;
+            get
+            {
+                return reviewUserId;
+            }
+
+            set
+            {
+                reviewUserId = value;
+            }
+        }
+
+        public Review(int reviewId, string gameName, string userName, string reviewText, int reviewRating)
+        {
+            ID = reviewId;
+            Owner = ReviewUserId;
+            TextContent = reviewText;
+            Rating = reviewRating;
             
-            if (5 >= rating)
+            if (Rating >= 5)
             {
                 GoodBad = "Good";
             } else if (rating < 5) {
@@ -193,13 +180,13 @@ namespace VideoGameCatalogue
             }
             
             this.ReviewGoodBad.Text = GoodBad;
-            this.ReviewText.Text = text;
+            this.ReviewText.Text = TextContent;
 
         }
 
         public static class GetReviews
         {
-            public static Review[] Game(int gameId)
+            public static Review[] Game(int gameId, string gameName)
             {
                 OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
                 string sql = "SELECT * FROM Reviews";
@@ -218,7 +205,7 @@ namespace VideoGameCatalogue
                     if (reader.GetInt32(2) == gameId)
                     {
                         // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4)));
+                        tmpReviews.Add(new Review(reader.GetInt32(0), gameName, null , reader.GetString(3), reader.GetInt32(4)));
                     }
                 }
                 reader.Close();
@@ -226,7 +213,7 @@ namespace VideoGameCatalogue
                 return tmpReviews.ToArray();
             }
 
-            public static Review[] User(int userId)
+            public static Review[] User(int userId, string userName)
             {
                 OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
                 string sql = "SELECT * FROM Reviews";
@@ -245,7 +232,7 @@ namespace VideoGameCatalogue
                     if (reader.GetInt32(1) == userId)
                     {
                         // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4)));
+                        tmpReviews.Add(new Review(reader.GetInt32(0), null , userName, reader.GetString(3), reader.GetInt32(4)));
                     }
                 }
 

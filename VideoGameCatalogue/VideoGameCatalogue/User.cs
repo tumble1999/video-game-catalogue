@@ -90,7 +90,7 @@ namespace VideoGameCatalogue
             
             loggedIn = id != -1;
 
-            Reviews = Review.GetReviews.User(id);
+            Reviews = Review.GetReviews.User(id, username);
         }
 
         public bool Exists()
@@ -103,7 +103,7 @@ namespace VideoGameCatalogue
             loggedIn = false;
         }
 
-        private static int getID(string u, string p)
+        public static int getID(string u, string p)
         {
             int output = -1;
 

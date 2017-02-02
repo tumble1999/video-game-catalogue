@@ -24,6 +24,7 @@ namespace VideoGameCatalogue
             this.Text = "Reviews - " + game.Name;
             gameTitleLabel.Text = "Reviews for " + game.Name;
             reviews = game.Reviews;
+            RefreshReviews();
 
         }
         public ReviewList(User user)
@@ -33,6 +34,7 @@ namespace VideoGameCatalogue
             this.Text = "Reviews - " + user.Name;
             gameTitleLabel.Text = "Reviews from " + user.Name;
             reviews = user.Reviews;
+            RefreshReviews();
         }
 
         void Place(int x, int y, int index, Review[] r)
@@ -54,16 +56,16 @@ namespace VideoGameCatalogue
                 r[index].ReviewGoodBad.Location = new Point()
                 {
                     X = x + 160,
-                    Y = y + 18
+                    Y = y + 30
                 };
-                reviewListPanel.Controls.Add(r[index].ReviewTitle);
+                reviewListPanel.Controls.Add(r[index].ReviewGoodBad);
 
                 r[index].ReviewText.Location = new Point()
                 {
                     X = x + 15,
                     Y = y + 34
                 };
-                reviewListPanel.Controls.Add(r[index].ReviewTitle);
+                reviewListPanel.Controls.Add(r[index].ReviewText);
 
                 r[index].ViewFullReview.Location = new Point()
                 {
