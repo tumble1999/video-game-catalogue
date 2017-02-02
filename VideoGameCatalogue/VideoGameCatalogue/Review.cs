@@ -95,6 +95,7 @@ namespace VideoGameCatalogue
     {
         private int iD, userID, gameID, rating;
         private string text;
+        private string goodBad;
 
         public int ID
         {
@@ -160,13 +161,39 @@ namespace VideoGameCatalogue
                 rating = value;
             }
         }
-        public Review(int reviewId, int reviewUserId, int reviewGameId, string reviewText, int reviewRating)
+
+        public string GoodBad
+        {
+            get
+            {
+                return goodBad;
+            }
+
+            set
+            {
+                goodBad = value;
+            }
+        }
+
+        public Review( int reviewId, int reviewUserId, int reviewGameId, string reviewText, int reviewRating)
         {
             iD = reviewId;
             userID = reviewUserId;
             gameID = reviewGameId;
             text = reviewText;
             rating = reviewRating;
+            
+            if (5 >= rating)
+            {
+                GoodBad = "Good";
+            } else if (rating < 5) {
+                GoodBad = "Bad";
+            } else {
+                GoodBad = "I don't know.";
+            }
+            
+            this.ReviewGoodBad.Text = GoodBad;
+            this.ReviewText.Text = text;
 
         }
 

@@ -65,10 +65,10 @@
             this.gameItemPanel.AutoSize = true;
             this.gameItemPanel.BackColor = System.Drawing.Color.Transparent;
             this.gameItemPanel.Controls.Add(this.viewReviewButton);
-            this.gameItemPanel.Controls.Add(this.reviewTextLabel);
             this.gameItemPanel.Controls.Add(this.reviewGoodBadText);
+            this.gameItemPanel.Controls.Add(this.reviewTextLabel);
             this.gameItemPanel.Controls.Add(this.reviewTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(3, 3);
+            this.gameItemPanel.Location = new System.Drawing.Point(6, 3);
             this.gameItemPanel.Name = "gameItemPanel";
             this.gameItemPanel.Size = new System.Drawing.Size(769, 127);
             this.gameItemPanel.TabIndex = 3;

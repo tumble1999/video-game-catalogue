@@ -12,9 +12,9 @@ namespace VideoGameCatalogue
 {
     public partial class ReviewList : Form
     {
-        private int reviewHeight;
-        private int x;
-        private int y;
+        private int reviewHeight = 127;
+        private int x = 6;
+        private int y = 3;
         private Review[] reviews;
 
         public ReviewList(Game game)
@@ -23,6 +23,7 @@ namespace VideoGameCatalogue
 
             this.Text = "Reviews - " + game.Name;
             gameTitleLabel.Text = "Reviews for " + game.Name;
+            reviews = game.Reviews;
 
         }
         public ReviewList(User user)
@@ -31,6 +32,7 @@ namespace VideoGameCatalogue
 
             this.Text = "Reviews - " + user.Name;
             gameTitleLabel.Text = "Reviews from " + user.Name;
+            reviews = user.Reviews;
         }
 
         void Place(int x, int y, int index, Review[] r)
@@ -44,34 +46,34 @@ namespace VideoGameCatalogue
             {
                 r[index].ReviewTitle.Location = new Point()
                 {
-                    X = x + 12,
-                    Y = y + 12
+                    X = x + 9,
+                    Y = y + 3
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewGoodBad.Location = new Point()
                 {
-                    X = x + 12,
-                    Y = y + 43
+                    X = x + 160,
+                    Y = y + 18
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewText.Location = new Point()
                 {
-                    X = x + 12,
-                    Y = y + 60
+                    X = x + 15,
+                    Y = y + 34
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ViewFullReview.Location = new Point()
                 {
-                    X = x + 133,
-                    Y = y + 98
+                    X = x + 622,
+                    Y = y + 101
                 };
                 r[index].ViewFullReview.Click += ButtonClick;
                 r[index].ViewFullReview.review = r[index];
                 reviewListPanel.Controls.Add(r[index].ViewFullReview);
-                Place(x, this.y +  reviewHeight, index + 1, r);
+                Place(x, this.y + reviewHeight, index + 1, r);
             }
         }
         void UnPlace(int index, Review[] r)
