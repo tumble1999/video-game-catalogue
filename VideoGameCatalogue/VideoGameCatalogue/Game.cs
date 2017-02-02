@@ -14,9 +14,9 @@ namespace VideoGameCatalogue
     {
 
 
-        public Label GameName = new Label()
+        public Label ReviewTitle = new Label()
         {
-            Text = "Gamename",
+            Text = "ReviewTitle",
             Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
             AutoSize = true,
             MaximumSize = new Size()
@@ -26,23 +26,23 @@ namespace VideoGameCatalogue
             },
             Location = new Point()
             {
-                X = 13,
-                Y = 13
+                X = 9,
+                Y = 3
             }
         };
-        public Label GameGenre = new Label()
+        public Label ReviewGoodBad = new Label()
         {
-            Text = "GameGenre",
+            Text = "ReviewGoodBad",
             AutoSize = true,
             Location = new Point()
             {
-                X = 13,
-                Y = 13
+                X = 160,
+                Y = 18
             }
         };
-        public Label GameDescription = new Label()
+        public Label ReviewText = new Label()
         {
-            Text = "GameDescription",
+            Text = "ReviewText",
             Width = 244,
             Height = 35,
             AutoEllipsis = true,
@@ -52,11 +52,11 @@ namespace VideoGameCatalogue
                 Y = 1
             }
         };
-        public GameButton ViewGameInfo = new GameButton()
+        public GameButton ViewFullReview = new GameButton()
         {
             Width = 75,
             Height = 23,
-            Text = "Game Info",
+            Text = "Full Review",
 
             Location = new Point()
             {
@@ -64,7 +64,7 @@ namespace VideoGameCatalogue
                 Y = 23
             }
         };
-        public Panel GameContainer = new Panel()
+        public Panel ReviewContainer = new Panel()
         {
             Width = 278,
             Height = 127,
