@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using VideoGameCatalogue.Properties;
 
 namespace VideoGameCatalogue
@@ -63,7 +65,7 @@ namespace VideoGameCatalogue
                 Y = 1
             }
         };
-        public GameButton ViewFullReview = new GameButton()
+        public ReviewButton ViewFullReview = new ReviewButton()
         {
             Width = 75,
             Height = 23,
@@ -242,5 +244,10 @@ namespace VideoGameCatalogue
                 return a / rArray.Length;
             }
         }
+        
+    }
+    public class ReviewButton : Button
+    {
+        public Review review { get; internal set; }// added review property to Button class
     }
 }

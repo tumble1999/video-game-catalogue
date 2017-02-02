@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.gameTitleLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.reviewListPanel = new System.Windows.Forms.Panel();
             this.gameItemPanel = new System.Windows.Forms.Panel();
             this.viewReviewButton = new System.Windows.Forms.Button();
             this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewGoodBadText = new System.Windows.Forms.Label();
             this.reviewTitle = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.reviewListPanel.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,14 +50,14 @@
             this.gameTitleLabel.TabIndex = 1;
             this.gameTitleLabel.Text = "Reviews from/for: ";
             // 
-            // panel1
+            // reviewListPanel
             // 
-            this.panel1.Controls.Add(this.gameItemPanel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 51);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 520);
-            this.panel1.TabIndex = 2;
+            this.reviewListPanel.Controls.Add(this.gameItemPanel);
+            this.reviewListPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.reviewListPanel.Location = new System.Drawing.Point(0, 51);
+            this.reviewListPanel.Name = "reviewListPanel";
+            this.reviewListPanel.Size = new System.Drawing.Size(775, 520);
+            this.reviewListPanel.TabIndex = 2;
             // 
             // gameItemPanel
             // 
@@ -118,12 +118,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 571);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.reviewListPanel);
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "ReviewList";
             this.Text = "ReviewList";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.reviewListPanel.ResumeLayout(false);
+            this.reviewListPanel.PerformLayout();
             this.gameItemPanel.ResumeLayout(false);
             this.gameItemPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -134,7 +134,7 @@
         #endregion
 
         private System.Windows.Forms.Label gameTitleLabel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel reviewListPanel;
         private System.Windows.Forms.Panel gameItemPanel;
         private System.Windows.Forms.Button viewReviewButton;
         private System.Windows.Forms.Label reviewTextLabel;
