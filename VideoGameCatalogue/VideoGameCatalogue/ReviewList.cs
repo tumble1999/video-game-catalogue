@@ -51,6 +51,13 @@ namespace VideoGameCatalogue
                     X = x + 9,
                     Y = y + 3
                 };
+                if(r[index].Owner == "Game")
+                {
+                    r[index].ReviewTitle.Text = r[index].UserName;
+                } else if (r[index].Owner == "User")
+                {
+                    r[index].ReviewTitle.Text = r[index].GameName;
+                }
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewGoodBad.Location = new Point()
