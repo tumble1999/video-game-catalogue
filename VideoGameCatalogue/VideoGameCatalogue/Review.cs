@@ -220,7 +220,7 @@ namespace VideoGameCatalogue
                 try
                 {
                     OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                    string sql = "SELECT * FROM Reviews WHERE GameID='" + gameId + "'";
+                    string sql = "SELECT * FROM Reviews WHERE GameID=" + gameId;
                     OleDbCommand cmd = new OleDbCommand(sql, conn);
                     conn.Open();
 
@@ -244,7 +244,7 @@ namespace VideoGameCatalogue
                         readerUser = cmdUser.ExecuteReader();
                         while (readerUser.Read())
                         {
-                            tmpName = readerUser.GetString(2);
+                            tmpName = readerUser.GetString(1);
                         }
                         readerUser.Close();
                         connUser.Close();
@@ -270,7 +270,7 @@ namespace VideoGameCatalogue
             public static Review[] User(int userId, string userName)
             {
                 OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                string sql = "SELECT * FROM Reviews WHERE UserID='" + userId + "'";
+                string sql = "SELECT * FROM Reviews WHERE UserID=" + userId;
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 conn.Open();
 
@@ -294,7 +294,7 @@ namespace VideoGameCatalogue
                     readerGame = cmdUser.ExecuteReader();
                     while (readerGame.Read())
                     {
-                        tmpName = readerGame.GetString(2);
+                        tmpName = readerGame.GetString(1);
                     }
                     readerGame.Close();
                     connGame.Close();
