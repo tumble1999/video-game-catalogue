@@ -79,7 +79,7 @@ namespace VideoGameCatalogue
         internal void Register()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-            string sql = "INSERT INTO Users (Username, Password) VALUES ('" + username + "', '" + password + "')";
+            string sql = "INSERT INTO User (Username, Password) VALUES ('" + username + "', '" + password + "')";
             OleDbCommand cmd = new OleDbCommand(sql, conn);
 
             conn.Open();
