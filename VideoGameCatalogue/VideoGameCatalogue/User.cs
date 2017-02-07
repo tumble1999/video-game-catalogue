@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoGameCatalogue;
 using VideoGameCatalogue.Properties;
+using VideoGameCatalogue.VGCDataSetTableAdapters;
 
 namespace VideoGameCatalogue
 {
@@ -17,6 +19,8 @@ namespace VideoGameCatalogue
         private bool loggedIn;
         internal static readonly User empty = new User("Guest","");
         private Review[] reviews;
+        private VGCDataSet vgcDataSet = new VGCDataSet();
+        private UsersTableAdapter usersTableAdapter = new UsersTableAdapter();
 
         public int Id
         {
@@ -78,13 +82,21 @@ namespace VideoGameCatalogue
 
         internal void Register()
         {
-            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-            string sql = "INSERT INTO User (Username, Password) VALUES ('" + username + "', '" + password + "')";
-            OleDbCommand cmd = new OleDbCommand(sql, conn);
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            // Create a new row.
+            VGCDataSet.UsersRow newUsersRow;
+            newUsersRow = vgcDataSet.Users.NewUsersRow();
+            newUsersRow.Username = username;
+            newUsersRow.Password = password;
+
+            // Add the row to the Region table
+            this.vgcDataSet.Users.Rows.Add(newUsersRow);
+
+            // Save the new row to the database
+            this.usersTableAdapter.Update(this.vgcDataSet.Users);
+
+
+
             Login();
         }
 
