@@ -164,14 +164,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
@@ -327,7 +327,6 @@
             // 
             this.refreshProgressBar.Name = "refreshProgressBar";
             this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
-            this.refreshProgressBar.Visible = false;
             // 
             // gameTitle
             // 
@@ -404,6 +403,9 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "GamesList";
             this.Text = "Games List";
+            this.ResizeBegin += new System.EventHandler(this.GamesList_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.GamesList_ResizeEnd);
+            this.Resize += new System.EventHandler(this.GamesList_Resize);
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
             this.statusBar.ResumeLayout(false);

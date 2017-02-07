@@ -109,5 +109,9 @@ namespace VideoGameCatalogue
             //reviewInfo.Show();
         }
 
+        private void ReviewList_Resize(object sender, EventArgs e)
+        {
+            RefreshReviews();
+        }
     }
 }

@@ -32,8 +32,8 @@
             this.reviewListPanel = new System.Windows.Forms.Panel();
             this.gameItemPanel = new System.Windows.Forms.Panel();
             this.viewReviewButton = new System.Windows.Forms.Button();
-            this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewGoodBadText = new System.Windows.Forms.Label();
+            this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewTitle = new System.Windows.Forms.Label();
             this.reviewListPanel.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
@@ -83,15 +83,6 @@
             this.viewReviewButton.Text = "viewReviewButton";
             this.viewReviewButton.UseVisualStyleBackColor = true;
             // 
-            // reviewTextLabel
-            // 
-            this.reviewTextLabel.AutoEllipsis = true;
-            this.reviewTextLabel.Location = new System.Drawing.Point(15, 34);
-            this.reviewTextLabel.Name = "reviewTextLabel";
-            this.reviewTextLabel.Size = new System.Drawing.Size(745, 64);
-            this.reviewTextLabel.TabIndex = 2;
-            this.reviewTextLabel.Text = "reviewTextLabel";
-            // 
             // reviewGoodBadText
             // 
             this.reviewGoodBadText.AutoSize = true;
@@ -102,6 +93,15 @@
             this.reviewGoodBadText.Size = new System.Drawing.Size(104, 13);
             this.reviewGoodBadText.TabIndex = 1;
             this.reviewGoodBadText.Text = "reviewGoodBadText";
+            // 
+            // reviewTextLabel
+            // 
+            this.reviewTextLabel.AutoEllipsis = true;
+            this.reviewTextLabel.Location = new System.Drawing.Point(15, 34);
+            this.reviewTextLabel.Name = "reviewTextLabel";
+            this.reviewTextLabel.Size = new System.Drawing.Size(745, 64);
+            this.reviewTextLabel.TabIndex = 2;
+            this.reviewTextLabel.Text = "reviewTextLabel";
             // 
             // reviewTitle
             // 
@@ -122,6 +122,7 @@
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "ReviewList";
             this.Text = "ReviewList";
+            this.Resize += new System.EventHandler(this.ReviewList_Resize);
             this.reviewListPanel.ResumeLayout(false);
             this.reviewListPanel.PerformLayout();
             this.gameItemPanel.ResumeLayout(false);

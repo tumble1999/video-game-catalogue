@@ -112,12 +112,13 @@ namespace VideoGameCatalogue
                     X = x + 133,
                     Y = y + 98
                 };
+                g[index].ViewGameInfo.Click -= ButtonClick;
                 g[index].ViewGameInfo.Click += ButtonClick;
                 g[index].ViewGameInfo.Game = g[index];
                 gameListPanel.Controls.Add(g[index].ViewGameInfo);
 
                 fullX = (index + 1) * gameWidth;
-                int tmpX = (gameWidth + this.x + (fullX % gameListPanel.Width)) / gameWidth;
+                int tmpX = (this.x + (fullX % gameListPanel.Width)) / gameWidth;
                 Place((tmpX-1) * gameWidth, this.y + ((fullX / gameListPanel.Width) * gameHeight),index + 1, g);
             }
         }
@@ -139,10 +140,8 @@ namespace VideoGameCatalogue
         }
         void RefreshGames()
         {
-            refreshProgressBar.Visible = true;
-            UnPlace(0, games);
+            //UnPlace(0, games);
             Place(this.x, this.y, 0, games);
-            refreshProgressBar.Visible = false;
         }
 
         private void ViewGameInfo_Click(object sender, EventArgs e)
@@ -204,6 +203,21 @@ namespace VideoGameCatalogue
         {
             reviewList = new ReviewList(CurrentUser.user);
             reviewList.Show();
+        }
+
+        private void GamesList_ResizeEnd(object sender, EventArgs e)
+        {
+            RefreshGames();
+        }
+
+        private void GamesList_ResizeBegin(object sender, EventArgs e)
+        {
+            RefreshGames();
+        }
+
+        private void GamesList_Resize(object sender, EventArgs e)
+        {
+            RefreshGames();
         }
     }
 }
