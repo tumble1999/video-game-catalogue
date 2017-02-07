@@ -251,52 +251,43 @@ namespace VideoGameCatalogue
         {
             public static Review[] Game(int gameId, string gameName)
             {
+                OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+                string sql = "SELECT * FROM Reviews WHERE GameID=" + gameId;
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                conn.Open();
 
-                try
+                OleDbDataReader reader;
+                reader = cmd.ExecuteReader();
+
+                IList<Review> tmpReviews = new List<Review>();
+                //int i = 1;
+
+                string tmpName = "";
+                ///add only game ID
+                while (reader.Read())
                 {
-                    OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                    string sql = "SELECT * FROM Reviews WHERE GameID=" + gameId;
-                    OleDbCommand cmd = new OleDbCommand(sql, conn);
-                    conn.Open();
 
-                    OleDbDataReader reader;
-                    reader = cmd.ExecuteReader();
 
-                    IList<Review> tmpReviews = new List<Review>();
-                    //int i = 1;
-
-                    string tmpName = "";
-                    ///add only game ID
-                    while (reader.Read())
+                    OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
+                    string sqlUser = "SELECT * FROM Users";
+                    OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
+                    connUser.Open();
+                    OleDbDataReader readerUser;
+                    readerUser = cmdUser.ExecuteReader();
+                    while (readerUser.Read())
                     {
-
-
-                        OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
-                        string sqlUser = "SELECT * FROM Users";
-                        OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
-                        connUser.Open();
-                        OleDbDataReader readerUser;
-                        readerUser = cmdUser.ExecuteReader();
-                        while (readerUser.Read())
-                        {
-                            tmpName = readerUser.GetString(1);
-                        }
-                        readerUser.Close();
-                        connUser.Close();
-
-
-                        // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review(reader.GetInt32(0), gameName, tmpName, reader.GetString(3), reader.GetInt32(4), "Game"));
+                        tmpName = readerUser.GetString(1);
                     }
-                    reader.Close();
-                    conn.Close();
-                    return tmpReviews.ToArray();
+                    readerUser.Close();
+                    connUser.Close();
+
+
+                    // currentGameId = reader.GetString(0);
+                    tmpReviews.Add(new Review(reader.GetInt32(0), gameName, tmpName, reader.GetString(3), reader.GetInt32(4), "Game"));
                 }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
-                    throw;
-                }
+                reader.Close();
+                conn.Close();
+                return tmpReviews.ToArray();
             }
 
             public static Review[] User(int userId, string userName)

@@ -50,29 +50,29 @@ namespace VideoGameCatalogue
             {
                 r[index].ReviewTitle.Location = new Point()
                 {
-                    X = x + r[index].ReviewTitle.Location.X,
-                    Y = y + r[index].ReviewTitle.Location.Y
+                    X = x + this.reviewTitle.Location.X,
+                    Y = y + this.reviewTitle.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewGoodBad.Location = new Point()
                 {
-                    X = x + r[index].ReviewGoodBad.Location.X,
-                    Y = y + r[index].ReviewGoodBad.Location.Y
+                    X = x + this.reviewGoodBadText.Location.X,
+                    Y = y + this.reviewGoodBadText.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewGoodBad);
 
                 r[index].ReviewText.Location = new Point()
                 {
-                    X = x + r[index].ReviewText.Location.X,
-                    Y = y + r[index].ReviewText.Location.Y
+                    X = x + this.reviewTextLabel.Location.X,
+                    Y = y + this.reviewTextLabel.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewText);
 
                 r[index].ViewFullReview.Location = new Point()
                 {
-                    X = x + r[index].ViewFullReview.Location.X,
-                    Y = y + r[index].ViewFullReview.Location.Y
+                    X = x + this.viewReviewButton.Location.X,
+                    Y = y + this.viewReviewButton.Location.Y
                 };
                 r[index].ViewFullReview.Click += ButtonClick;
                 r[index].ViewFullReview.review = r[index];

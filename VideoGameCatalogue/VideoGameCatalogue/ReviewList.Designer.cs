@@ -30,11 +30,11 @@
         {
             this.gameTitleLabel = new System.Windows.Forms.Label();
             this.reviewListPanel = new System.Windows.Forms.Panel();
+            this.gameItemPanel = new System.Windows.Forms.Panel();
             this.viewReviewButton = new System.Windows.Forms.Button();
             this.reviewGoodBadText = new System.Windows.Forms.Label();
             this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewTitle = new System.Windows.Forms.Label();
-            this.gameItemPanel = new System.Windows.Forms.Panel();
             this.reviewListPanel.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
             this.SuspendLayout();
@@ -42,9 +42,10 @@
             // gameTitleLabel
             // 
             this.gameTitleLabel.AutoSize = true;
+            this.gameTitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.gameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameTitleLabel.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.gameTitleLabel.Location = new System.Drawing.Point(29, 9);
+            this.gameTitleLabel.Location = new System.Drawing.Point(0, 0);
             this.gameTitleLabel.Name = "gameTitleLabel";
             this.gameTitleLabel.Size = new System.Drawing.Size(289, 39);
             this.gameTitleLabel.TabIndex = 1;
@@ -52,16 +53,32 @@
             // 
             // reviewListPanel
             // 
+            this.reviewListPanel.AutoScroll = true;
             this.reviewListPanel.Controls.Add(this.gameItemPanel);
-            this.reviewListPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.reviewListPanel.Location = new System.Drawing.Point(0, 51);
+            this.reviewListPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewListPanel.Location = new System.Drawing.Point(0, 39);
             this.reviewListPanel.Name = "reviewListPanel";
-            this.reviewListPanel.Size = new System.Drawing.Size(775, 520);
+            this.reviewListPanel.Size = new System.Drawing.Size(775, 532);
             this.reviewListPanel.TabIndex = 2;
+            // 
+            // gameItemPanel
+            // 
+            this.gameItemPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gameItemPanel.AutoSize = true;
+            this.gameItemPanel.BackColor = System.Drawing.Color.Transparent;
+            this.gameItemPanel.Controls.Add(this.viewReviewButton);
+            this.gameItemPanel.Controls.Add(this.reviewGoodBadText);
+            this.gameItemPanel.Controls.Add(this.reviewTextLabel);
+            this.gameItemPanel.Controls.Add(this.reviewTitle);
+            this.gameItemPanel.Location = new System.Drawing.Point(6, 9);
+            this.gameItemPanel.Name = "gameItemPanel";
+            this.gameItemPanel.Size = new System.Drawing.Size(769, 127);
+            this.gameItemPanel.TabIndex = 3;
+            this.gameItemPanel.Visible = false;
             // 
             // viewReviewButton
             // 
-            this.viewReviewButton.Location = new System.Drawing.Point(628, 101);
+            this.viewReviewButton.Location = new System.Drawing.Point(9, 101);
             this.viewReviewButton.Name = "viewReviewButton";
             this.viewReviewButton.Size = new System.Drawing.Size(138, 23);
             this.viewReviewButton.TabIndex = 3;
@@ -73,7 +90,7 @@
             this.reviewGoodBadText.AutoSize = true;
             this.reviewGoodBadText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reviewGoodBadText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.reviewGoodBadText.Location = new System.Drawing.Point(3, 34);
+            this.reviewGoodBadText.Location = new System.Drawing.Point(6, 37);
             this.reviewGoodBadText.Name = "reviewGoodBadText";
             this.reviewGoodBadText.Size = new System.Drawing.Size(104, 13);
             this.reviewGoodBadText.TabIndex = 1;
@@ -82,9 +99,9 @@
             // reviewTextLabel
             // 
             this.reviewTextLabel.AutoEllipsis = true;
-            this.reviewTextLabel.Location = new System.Drawing.Point(3, 47);
+            this.reviewTextLabel.Location = new System.Drawing.Point(6, 50);
             this.reviewTextLabel.Name = "reviewTextLabel";
-            this.reviewTextLabel.Size = new System.Drawing.Size(745, 64);
+            this.reviewTextLabel.Size = new System.Drawing.Size(745, 48);
             this.reviewTextLabel.TabIndex = 2;
             this.reviewTextLabel.Text = "reviewTextLabel";
             // 
@@ -97,21 +114,6 @@
             this.reviewTitle.Size = new System.Drawing.Size(145, 31);
             this.reviewTitle.TabIndex = 0;
             this.reviewTitle.Text = "reviewTitle";
-            // 
-            // gameItemPanel
-            // 
-            this.gameItemPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.gameItemPanel.AutoSize = true;
-            this.gameItemPanel.BackColor = System.Drawing.Color.Transparent;
-            this.gameItemPanel.Controls.Add(this.viewReviewButton);
-            this.gameItemPanel.Controls.Add(this.reviewGoodBadText);
-            this.gameItemPanel.Controls.Add(this.reviewTextLabel);
-            this.gameItemPanel.Controls.Add(this.reviewTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(6, 3);
-            this.gameItemPanel.Name = "gameItemPanel";
-            this.gameItemPanel.Size = new System.Drawing.Size(769, 127);
-            this.gameItemPanel.TabIndex = 3;
-            this.gameItemPanel.Visible = false;
             // 
             // ReviewList
             // 

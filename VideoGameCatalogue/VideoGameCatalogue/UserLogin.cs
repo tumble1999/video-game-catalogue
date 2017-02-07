@@ -34,5 +34,22 @@ namespace VideoGameCatalogue
             }
             CurrentUser.Update();
         }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
+            if (!CurrentUser.user.Exists())
+            {
+                CurrentUser.user.Register();
+                this.Hide();
+                this.Close();
+            }
+            else
+            {
+                errorLabel.Visible = true;
+                errorLabel.Text = "User Exists";
+            }
+            CurrentUser.Update();
+        }
     }
 }

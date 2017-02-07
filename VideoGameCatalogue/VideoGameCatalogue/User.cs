@@ -76,6 +76,18 @@ namespace VideoGameCatalogue
             }
         }
 
+        internal void Register()
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "INSERT INTO Users (Username, Password) VALUES ('" + username + "', '" + password + "')";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            Login();
+        }
+
         public User(string username, string password)
         {
             this.username = username;
@@ -95,7 +107,7 @@ namespace VideoGameCatalogue
 
         public bool Exists()
         {
-            return getID(username, password) != -1;
+            return getID(username) != -1;
         }
 
         public void Logout()
@@ -128,6 +140,33 @@ namespace VideoGameCatalogue
             conn.Close();
                 return output;
             
+        }
+
+        public static int getID(string u)
+        {
+            int output = -1;
+
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Users";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (reader.GetString(1) == u)
+                {
+                    output = reader.GetInt32(0);
+                    break;
+                }
+            }
+
+            reader.Close();
+            conn.Close();
+            return output;
+
         }
     }
 }

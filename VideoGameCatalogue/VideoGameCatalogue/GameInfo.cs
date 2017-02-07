@@ -27,6 +27,7 @@ namespace VideoGameCatalogue
             gameReleaseDateLabel.Text = DateToString(g.ReleaseDate);
             gameReviewBar.Value = 10 * g.AvarageReview;
             game = g;
+            reviewCountLabel.Text = g.ReviewCount + " Reviews";
             reviewList = new ReviewList(g);
         }
 

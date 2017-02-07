@@ -14,10 +14,18 @@ namespace VideoGameCatalogue
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GamesList());
-            //Application.Run(new GameInfo("GameName", "Genre", "Description", "Publisher","Platform", DateTime.Parse("8/12/2016")));
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new GamesList());
+                //Application.Run(new GameInfo("GameName", "Genre", "Description", "Publisher","Platform", DateTime.Parse("8/12/2016")));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                //throw;
+            }
         }
     }
 }

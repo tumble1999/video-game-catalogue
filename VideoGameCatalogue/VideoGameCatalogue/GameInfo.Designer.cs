@@ -36,8 +36,9 @@
             this.gameReleaseDateLabel = new System.Windows.Forms.Label();
             this.gameReviewBar = new System.Windows.Forms.ProgressBar();
             this.panelReviewbuttons = new System.Windows.Forms.Panel();
-            this.panelReviews = new System.Windows.Forms.Panel();
             this.buttonAllReviews = new System.Windows.Forms.Button();
+            this.panelReviews = new System.Windows.Forms.Panel();
+            this.reviewCountLabel = new System.Windows.Forms.Label();
             this.panelReviewbuttons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +85,7 @@
             // 
             this.gamePlatformLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gamePlatformLabel.AutoSize = true;
-            this.gamePlatformLabel.Location = new System.Drawing.Point(494, 13);
+            this.gamePlatformLabel.Location = new System.Drawing.Point(505, 13);
             this.gamePlatformLabel.Name = "gamePlatformLabel";
             this.gamePlatformLabel.Size = new System.Drawing.Size(97, 13);
             this.gamePlatformLabel.TabIndex = 4;
@@ -95,7 +96,7 @@
             // 
             this.gameReleaseDateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gameReleaseDateLabel.AutoSize = true;
-            this.gameReleaseDateLabel.Location = new System.Drawing.Point(470, 33);
+            this.gameReleaseDateLabel.Location = new System.Drawing.Point(482, 33);
             this.gameReleaseDateLabel.Name = "gameReleaseDateLabel";
             this.gameReleaseDateLabel.Size = new System.Drawing.Size(121, 13);
             this.gameReleaseDateLabel.TabIndex = 5;
@@ -104,7 +105,7 @@
             // 
             // gameReviewBar
             // 
-            this.gameReviewBar.Location = new System.Drawing.Point(388, 72);
+            this.gameReviewBar.Location = new System.Drawing.Point(491, 52);
             this.gameReviewBar.Name = "gameReviewBar";
             this.gameReviewBar.Size = new System.Drawing.Size(100, 23);
             this.gameReviewBar.TabIndex = 6;
@@ -118,14 +119,6 @@
             this.panelReviewbuttons.Size = new System.Drawing.Size(603, 39);
             this.panelReviewbuttons.TabIndex = 7;
             // 
-            // panelReviews
-            // 
-            this.panelReviews.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelReviews.Location = new System.Drawing.Point(0, 142);
-            this.panelReviews.Name = "panelReviews";
-            this.panelReviews.Size = new System.Drawing.Size(603, 308);
-            this.panelReviews.TabIndex = 8;
-            // 
             // buttonAllReviews
             // 
             this.buttonAllReviews.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -137,11 +130,31 @@
             this.buttonAllReviews.UseVisualStyleBackColor = true;
             this.buttonAllReviews.Click += new System.EventHandler(this.buttonAllReviews_Click);
             // 
+            // panelReviews
+            // 
+            this.panelReviews.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelReviews.Location = new System.Drawing.Point(0, 142);
+            this.panelReviews.Name = "panelReviews";
+            this.panelReviews.Size = new System.Drawing.Size(603, 308);
+            this.panelReviews.TabIndex = 8;
+            // 
+            // reviewCountLabel
+            // 
+            this.reviewCountLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.reviewCountLabel.AutoSize = true;
+            this.reviewCountLabel.Location = new System.Drawing.Point(510, 78);
+            this.reviewCountLabel.Name = "reviewCountLabel";
+            this.reviewCountLabel.Size = new System.Drawing.Size(92, 13);
+            this.reviewCountLabel.TabIndex = 9;
+            this.reviewCountLabel.Text = "reviewCountLabel";
+            this.reviewCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // GameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 489);
+            this.Controls.Add(this.reviewCountLabel);
             this.Controls.Add(this.panelReviews);
             this.Controls.Add(this.panelReviewbuttons);
             this.Controls.Add(this.gameReviewBar);
@@ -171,5 +184,6 @@
         private System.Windows.Forms.Panel panelReviewbuttons;
         private System.Windows.Forms.Panel panelReviews;
         private System.Windows.Forms.Button buttonAllReviews;
+        private System.Windows.Forms.Label reviewCountLabel;
     }
 }

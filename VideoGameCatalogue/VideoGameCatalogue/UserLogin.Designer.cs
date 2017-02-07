@@ -34,6 +34,9 @@
             this.passwordlabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
             this.errorLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.registerButton = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameTextBox
@@ -70,13 +73,12 @@
             // 
             // loginButton
             // 
-            this.loginButton.AutoSize = true;
             this.loginButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.loginButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.loginButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.loginButton.Location = new System.Drawing.Point(0, 90);
+            this.loginButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.loginButton.Location = new System.Drawing.Point(0, 0);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(204, 23);
+            this.loginButton.Size = new System.Drawing.Size(102, 26);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -92,13 +94,36 @@
             this.errorLabel.TabIndex = 5;
             this.errorLabel.Text = "errorLabel";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.registerButton);
+            this.panel1.Controls.Add(this.loginButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 87);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(204, 26);
+            this.panel1.TabIndex = 6;
+            // 
+            // registerButton
+            // 
+            this.registerButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.registerButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.registerButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.registerButton.Location = new System.Drawing.Point(102, 0);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(102, 26);
+            this.registerButton.TabIndex = 5;
+            this.registerButton.Text = "Register";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            // 
             // UserLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 113);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.errorLabel);
-            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordlabel);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.passwordTextBox);
@@ -108,6 +133,7 @@
             this.Name = "UserLogin";
             this.ShowIcon = false;
             this.Text = "Login";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +147,7 @@
         private System.Windows.Forms.Label passwordlabel;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button registerButton;
     }
 }

@@ -171,7 +171,7 @@ namespace VideoGameCatalogue
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new UserLogin().Show();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
