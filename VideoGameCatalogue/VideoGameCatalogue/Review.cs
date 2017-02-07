@@ -12,20 +12,7 @@ namespace VideoGameCatalogue
 {
     public class SuperReview
     {
-        private static string owner;
-
-        public string Owner
-        {
-            get
-            {
-                return owner;
-            }
-
-            set
-            {
-                owner = value;
-            }
-        }
+        
 
         public Label ReviewTitle = new Label()
         {
@@ -99,6 +86,20 @@ namespace VideoGameCatalogue
         private string goodBad;
         private string reviewUserId;
         private string gameName, userName;
+        private static string owner;
+
+        public string Owner
+        {
+            get
+            {
+                return owner;
+            }
+
+            set
+            {
+                owner = value;
+            }
+        }
 
         public int ID
         {
@@ -211,6 +212,40 @@ namespace VideoGameCatalogue
             this.ReviewText.Text = TextContent;
 
         }
+        public Review(int reviewId, string reviewGameName, string reviewUserName, string reviewText, int reviewRating, string reviewOwner)        {
+            ID = reviewId;
+            GameName = reviewGameName;
+            TextContent = reviewText;
+            Rating = reviewRating;
+            Owner = reviewOwner;
+
+            if (Rating >= 5)
+            {
+                GoodBad = "Good";
+            }
+            else if (rating < 5)
+            {
+                GoodBad = "Bad";
+            }
+            else
+            {
+                GoodBad = "I don't know.";
+            }
+
+            this.ReviewGoodBad.Text = GoodBad;
+            this.ReviewText.Text = TextContent;
+            
+            if (Owner == "Game")
+            {
+                this.ReviewTitle.Text = UserName;
+            }
+            else if (Owner == "User")
+            {
+                this.ReviewTitle.Text = GameName;
+            }
+
+
+        }
 
         public static class GetReviews
         {
@@ -251,10 +286,7 @@ namespace VideoGameCatalogue
 
 
                         // currentGameId = reader.GetString(0);
-                        tmpReviews.Add(new Review(reader.GetInt32(0), gameName, tmpName, reader.GetString(3), reader.GetInt32(4))
-                        {
-                            Owner = "Game"
-                        });
+                        tmpReviews.Add(new Review(reader.GetInt32(0), gameName, tmpName, reader.GetString(3), reader.GetInt32(4), "Game"));
                     }
                     reader.Close();
                     conn.Close();
@@ -301,10 +333,7 @@ namespace VideoGameCatalogue
 
 
                     // currentGameId = reader.GetString(0);
-                    tmpReviews.Add(new Review(reader.GetInt32(0), tmpName, userName, reader.GetString(3), reader.GetInt32(4))
-                    {
-                        Owner = "User"
-                    });
+                    tmpReviews.Add(new Review(reader.GetInt32(0), tmpName, userName, reader.GetString(3), reader.GetInt32(4), "User"));
                 }
                 reader.Close();
                 conn.Close();
@@ -330,6 +359,7 @@ namespace VideoGameCatalogue
         }
         
     }
+    
     public class ReviewButton : Button
     {
         public Review review { get; internal set; }// added review property to Button class
