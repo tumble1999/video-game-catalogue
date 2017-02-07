@@ -26,7 +26,7 @@ namespace VideoGameCatalogue
             },
             Location = new Point()
             {
-                X = 9,
+                X = 3,
                 Y = 3
             }
         };
@@ -36,8 +36,8 @@ namespace VideoGameCatalogue
             AutoSize = true,
             Location = new Point()
             {
-                X = 200,
-                Y = 18
+                X = 3,
+                Y = 34
             }
         };
         public Label ReviewText = new Label()
@@ -48,8 +48,8 @@ namespace VideoGameCatalogue
             AutoEllipsis = true,
             Location = new Point()
             {
-                X = 15,
-                Y = 34
+                X = 3,
+                Y = 47
             }
         };
         public ReviewButton ViewFullReview = new ReviewButton()
@@ -60,8 +60,8 @@ namespace VideoGameCatalogue
 
             Location = new Point()
             {
-                X = 75,
-                Y = 23
+                X = 628,
+                Y = 101
             }
         };
         public Panel ReviewContainer = new Panel()

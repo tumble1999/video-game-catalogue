@@ -30,11 +30,11 @@
         {
             this.gameTitleLabel = new System.Windows.Forms.Label();
             this.reviewListPanel = new System.Windows.Forms.Panel();
-            this.gameItemPanel = new System.Windows.Forms.Panel();
             this.viewReviewButton = new System.Windows.Forms.Button();
             this.reviewGoodBadText = new System.Windows.Forms.Label();
             this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewTitle = new System.Windows.Forms.Label();
+            this.gameItemPanel = new System.Windows.Forms.Panel();
             this.reviewListPanel.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,45 @@
             this.reviewListPanel.Size = new System.Drawing.Size(775, 520);
             this.reviewListPanel.TabIndex = 2;
             // 
+            // viewReviewButton
+            // 
+            this.viewReviewButton.Location = new System.Drawing.Point(628, 101);
+            this.viewReviewButton.Name = "viewReviewButton";
+            this.viewReviewButton.Size = new System.Drawing.Size(138, 23);
+            this.viewReviewButton.TabIndex = 3;
+            this.viewReviewButton.Text = "viewReviewButton";
+            this.viewReviewButton.UseVisualStyleBackColor = true;
+            // 
+            // reviewGoodBadText
+            // 
+            this.reviewGoodBadText.AutoSize = true;
+            this.reviewGoodBadText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reviewGoodBadText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.reviewGoodBadText.Location = new System.Drawing.Point(3, 34);
+            this.reviewGoodBadText.Name = "reviewGoodBadText";
+            this.reviewGoodBadText.Size = new System.Drawing.Size(104, 13);
+            this.reviewGoodBadText.TabIndex = 1;
+            this.reviewGoodBadText.Text = "reviewGoodBadText";
+            // 
+            // reviewTextLabel
+            // 
+            this.reviewTextLabel.AutoEllipsis = true;
+            this.reviewTextLabel.Location = new System.Drawing.Point(3, 47);
+            this.reviewTextLabel.Name = "reviewTextLabel";
+            this.reviewTextLabel.Size = new System.Drawing.Size(745, 64);
+            this.reviewTextLabel.TabIndex = 2;
+            this.reviewTextLabel.Text = "reviewTextLabel";
+            // 
+            // reviewTitle
+            // 
+            this.reviewTitle.AutoSize = true;
+            this.reviewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reviewTitle.Location = new System.Drawing.Point(3, 3);
+            this.reviewTitle.Name = "reviewTitle";
+            this.reviewTitle.Size = new System.Drawing.Size(145, 31);
+            this.reviewTitle.TabIndex = 0;
+            this.reviewTitle.Text = "reviewTitle";
+            // 
             // gameItemPanel
             // 
             this.gameItemPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -73,45 +112,6 @@
             this.gameItemPanel.Size = new System.Drawing.Size(769, 127);
             this.gameItemPanel.TabIndex = 3;
             this.gameItemPanel.Visible = false;
-            // 
-            // viewReviewButton
-            // 
-            this.viewReviewButton.Location = new System.Drawing.Point(622, 101);
-            this.viewReviewButton.Name = "viewReviewButton";
-            this.viewReviewButton.Size = new System.Drawing.Size(138, 23);
-            this.viewReviewButton.TabIndex = 3;
-            this.viewReviewButton.Text = "viewReviewButton";
-            this.viewReviewButton.UseVisualStyleBackColor = true;
-            // 
-            // reviewGoodBadText
-            // 
-            this.reviewGoodBadText.AutoSize = true;
-            this.reviewGoodBadText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reviewGoodBadText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.reviewGoodBadText.Location = new System.Drawing.Point(160, 18);
-            this.reviewGoodBadText.Name = "reviewGoodBadText";
-            this.reviewGoodBadText.Size = new System.Drawing.Size(104, 13);
-            this.reviewGoodBadText.TabIndex = 1;
-            this.reviewGoodBadText.Text = "reviewGoodBadText";
-            // 
-            // reviewTextLabel
-            // 
-            this.reviewTextLabel.AutoEllipsis = true;
-            this.reviewTextLabel.Location = new System.Drawing.Point(15, 34);
-            this.reviewTextLabel.Name = "reviewTextLabel";
-            this.reviewTextLabel.Size = new System.Drawing.Size(745, 64);
-            this.reviewTextLabel.TabIndex = 2;
-            this.reviewTextLabel.Text = "reviewTextLabel";
-            // 
-            // reviewTitle
-            // 
-            this.reviewTitle.AutoSize = true;
-            this.reviewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reviewTitle.Location = new System.Drawing.Point(9, 3);
-            this.reviewTitle.Name = "reviewTitle";
-            this.reviewTitle.Size = new System.Drawing.Size(145, 31);
-            this.reviewTitle.TabIndex = 0;
-            this.reviewTitle.Text = "reviewTitle";
             // 
             // ReviewList
             // 
@@ -136,10 +136,10 @@
 
         private System.Windows.Forms.Label gameTitleLabel;
         private System.Windows.Forms.Panel reviewListPanel;
-        private System.Windows.Forms.Panel gameItemPanel;
         private System.Windows.Forms.Button viewReviewButton;
         private System.Windows.Forms.Label reviewTextLabel;
         private System.Windows.Forms.Label reviewGoodBadText;
         private System.Windows.Forms.Label reviewTitle;
+        private System.Windows.Forms.Panel gameItemPanel;
     }
 }

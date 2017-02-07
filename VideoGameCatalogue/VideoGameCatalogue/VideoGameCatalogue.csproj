@@ -53,6 +53,12 @@
       <DependentUpon>AboutWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="FullReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FullReview.Designer.cs">
+      <DependentUpon>FullReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="AboutWindow.resx">
       <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FullReview.resx">
+      <DependentUpon>FullReview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameInfo.resx">
       <DependentUpon>GameInfo.cs</DependentUpon>

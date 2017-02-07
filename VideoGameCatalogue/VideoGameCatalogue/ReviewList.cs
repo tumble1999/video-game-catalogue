@@ -16,6 +16,7 @@ namespace VideoGameCatalogue
         private int x = 6;
         private int y = 3;
         private Review[] reviews;
+        private FullReview fullReview;
 
         public ReviewList(Game game)
         {
@@ -25,6 +26,7 @@ namespace VideoGameCatalogue
             gameTitleLabel.Text = "Reviews for " + game.Name;
             reviews = game.Reviews;
             RefreshReviews();
+            
 
         }
         public ReviewList(User user)
@@ -48,29 +50,29 @@ namespace VideoGameCatalogue
             {
                 r[index].ReviewTitle.Location = new Point()
                 {
-                    X = x + 9,
-                    Y = y + 3
+                    X = x + r[index].ReviewTitle.Location.X,
+                    Y = y + r[index].ReviewTitle.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewGoodBad.Location = new Point()
                 {
-                    X = x + 160,
-                    Y = y + 30
+                    X = x + r[index].ReviewGoodBad.Location.X,
+                    Y = y + r[index].ReviewGoodBad.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewGoodBad);
 
                 r[index].ReviewText.Location = new Point()
                 {
-                    X = x + 15,
-                    Y = y + 34
+                    X = x + r[index].ReviewText.Location.X,
+                    Y = y + r[index].ReviewText.Location.Y
                 };
                 reviewListPanel.Controls.Add(r[index].ReviewText);
 
                 r[index].ViewFullReview.Location = new Point()
                 {
-                    X = x + 622,
-                    Y = y + 101
+                    X = x + r[index].ViewFullReview.Location.X,
+                    Y = y + r[index].ViewFullReview.Location.Y
                 };
                 r[index].ViewFullReview.Click += ButtonClick;
                 r[index].ViewFullReview.review = r[index];
@@ -105,13 +107,13 @@ namespace VideoGameCatalogue
         private void ButtonClick(object sender, EventArgs e)
         {
             ReviewButton reviewBtn = (sender as ReviewButton);
-            //reviewInfo = new GameInfo(reviewBtn.Game);
-            //reviewInfo.Show();
+            fullReview = new FullReview(reviewBtn.review);
+            fullReview.Show();
         }
 
         private void ReviewList_Resize(object sender, EventArgs e)
         {
-            RefreshReviews();
+            //RefreshReviews();
         }
     }
 }
