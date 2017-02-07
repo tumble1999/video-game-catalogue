@@ -237,11 +237,11 @@ namespace VideoGameCatalogue
             
             if (Owner == "Game")
             {
-                this.ReviewTitle.Text = UserName;
+                this.ReviewTitle.Text = reviewUserName;
             }
             else if (Owner == "User")
             {
-                this.ReviewTitle.Text = GameName;
+                this.ReviewTitle.Text = reviewGameName;
             }
 
 

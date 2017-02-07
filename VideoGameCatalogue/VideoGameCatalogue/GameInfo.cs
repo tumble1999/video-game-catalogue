@@ -69,8 +69,16 @@ namespace VideoGameCatalogue
 
         private void buttonAllReviews_Click(object sender, EventArgs e)
         {
-            reviewList = new ReviewList(game);
-            reviewList.Show();
+            
+            try
+            {
+                reviewList.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
         }
     }
 }

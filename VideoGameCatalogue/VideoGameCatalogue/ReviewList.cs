@@ -51,7 +51,6 @@ namespace VideoGameCatalogue
                     X = x + 9,
                     Y = y + 3
                 };
-                
                 reviewListPanel.Controls.Add(r[index].ReviewTitle);
 
                 r[index].ReviewGoodBad.Location = new Point()
