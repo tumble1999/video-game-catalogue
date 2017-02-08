@@ -71,9 +71,17 @@ namespace VideoGameCatalogue
             {
                 accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
                 accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
-                loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-                userIDStatusLabel.Text = CurrentUser.userID.ToString();
-                usernameStatusLabel.Text = CurrentUser.username;
+                try
+                {
+                    loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+                    userIDStatusLabel.Text = CurrentUser.userID.ToString();
+                    usernameStatusLabel.Text = CurrentUser.username;
+                }
+                catch (Exception)
+                {
+
+                    //throw;
+                }
             }
         }
 

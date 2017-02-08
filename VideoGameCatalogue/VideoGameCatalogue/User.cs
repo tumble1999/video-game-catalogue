@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -84,19 +85,36 @@ namespace VideoGameCatalogue
 
         internal void Register()
         {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
-            // Create a new row.
-            VGCDataSet.UsersRow newUsersRow;
-            newUsersRow = vgcDataSet.Users.NewUsersRow();
-            newUsersRow.Username = username;
-            newUsersRow.Password = password;
+            OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password)");
+            cmd.Connection = conn;
 
-            // Add the row to the Region table
-            this.vgcDataSet.Users.Rows.Add(newUsersRow);
+            conn.Open();
 
-            // Save the new row to the database
-            this.usersTableAdapter.Update(this.vgcDataSet.Users);
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.Add("@Username", OleDbType.VarChar).Value = Username;
+                cmd.Parameters.Add("@Password", OleDbType.VarChar).Value = Password;
 
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data Added");
+                    conn.Close();
+                }
+                catch (OleDbException ex)
+                {
+                    MessageBox.Show(ex.Source);
+                    conn.Close();
+                }
+
+                
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
 
 
             Login();

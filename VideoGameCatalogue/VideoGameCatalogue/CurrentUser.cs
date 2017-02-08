@@ -23,6 +23,7 @@ namespace VideoGameCatalogue
                 user = User.empty;
                 Update();
             }
+
         }
     }
     
