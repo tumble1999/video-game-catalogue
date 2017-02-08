@@ -17,7 +17,9 @@ namespace VideoGameCatalogue
         private int id;
         private string username, password;
         private bool loggedIn;
-        internal static readonly User empty = new User("Guest","");
+        internal static readonly User empty = new User("Guest", "") {
+            loggedIn = false
+        };
         private Review[] reviews;
         private VGCDataSet vgcDataSet = new VGCDataSet();
         private UsersTableAdapter usersTableAdapter = new UsersTableAdapter();
