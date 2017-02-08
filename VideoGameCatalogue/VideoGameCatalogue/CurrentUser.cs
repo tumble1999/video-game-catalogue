@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoGameCatalogue;
 
 namespace VideoGameCatalogue
 {
@@ -18,11 +19,12 @@ namespace VideoGameCatalogue
             username = user.Username;
             password = user.Password;
             userID = user.Id;
-            if(!user.Exists() && user != User.empty)
+            if (!user.Exists() && user != User.empty)
             {
                 user = User.empty;
                 Update();
             }
+
 
         }
     }

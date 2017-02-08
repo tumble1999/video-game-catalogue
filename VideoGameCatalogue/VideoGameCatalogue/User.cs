@@ -94,8 +94,10 @@ namespace VideoGameCatalogue
 
             if (conn.State == ConnectionState.Open)
             {
-                cmd.Parameters.Add("@Username", OleDbType.VarChar).Value = Username;
-                cmd.Parameters.Add("@Password", OleDbType.VarChar).Value = Password;
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Password", Password);
+
+                MessageBox.Show(cmd.CommandText);
 
                 try
                 {
@@ -116,8 +118,38 @@ namespace VideoGameCatalogue
                 MessageBox.Show("Connection Failed");
             }
 
+            cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
+            cmd.Connection = conn;
 
-            Login();
+            conn.Open();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@id",Id);
+
+                MessageBox.Show(cmd.CommandText);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Updated");
+                    conn.Close();
+                }
+                catch (OleDbException e)
+                {
+                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                    conn.Close();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
         }
 
         public User(string username, string password)
@@ -170,7 +202,7 @@ namespace VideoGameCatalogue
             
             reader.Close();
             conn.Close();
-                return output;
+            return output;
             
         }
 

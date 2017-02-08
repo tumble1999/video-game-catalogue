@@ -67,6 +67,7 @@
             this.viewGameButton = new System.Windows.Forms.Button();
             this.gameItemPanel = new System.Windows.Forms.Panel();
             this.gameListPanel = new System.Windows.Forms.Panel();
+            this.userListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
@@ -82,7 +83,8 @@
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.refreshToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.testToolStripMenuItem,
+            this.userListToolStripMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
             this.menuBar.Size = new System.Drawing.Size(1096, 24);
@@ -390,6 +392,13 @@
             this.gameListPanel.Size = new System.Drawing.Size(1096, 502);
             this.gameListPanel.TabIndex = 3;
             // 
+            // userListToolStripMenuItem
+            // 
+            this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
+            this.userListToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.userListToolStripMenuItem.Text = "UserList";
+            this.userListToolStripMenuItem.Click += new System.EventHandler(this.userListToolStripMenuItem_Click);
+            // 
             // GamesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +467,7 @@
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripProgressBar refreshProgressBar;
         private System.Windows.Forms.Panel gameListPanel;
+        private System.Windows.Forms.ToolStripMenuItem userListToolStripMenuItem;
     }
 }
 

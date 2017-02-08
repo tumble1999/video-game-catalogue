@@ -21,16 +21,21 @@ namespace VideoGameCatalogue
         int y = 24;
 
         AboutWindow aboutWindow = new AboutWindow();
+        UserList userList = new UserList();
         GameInfo gameInfo;
 
         Game[] games;
         private int fullX;
         private ReviewList reviewList;
+        private Thread updateLoop;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public GamesList()
         {
             InitializeComponent();
-            Thread updateLoop = new Thread(new ThreadStart(UpdateLoop));
+            this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             CurrentUser.Update();
             accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
             accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
@@ -65,23 +70,21 @@ namespace VideoGameCatalogue
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void UpdateLoop()
         {
             while (true)
             {
-                accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
-                accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
-                try
-                {
-                    loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-                    userIDStatusLabel.Text = CurrentUser.userID.ToString();
-                    usernameStatusLabel.Text = CurrentUser.username;
-                }
-                catch (Exception)
-                {
-
-                    //throw;
-                }
+                this.accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
+                this.accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
+                /*
+                this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+                this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+                this.usernameStatusLabel.Text = CurrentUser.username;
+                */
+                System.Threading.Thread.Sleep(1000);
             }
         }
 
@@ -226,6 +229,14 @@ namespace VideoGameCatalogue
         private void GamesList_Resize(object sender, EventArgs e)
         {
             RefreshGames();
+            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+            this.usernameStatusLabel.Text = CurrentUser.username;
+        }
+
+        private void userListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            userList.ShowDialog();
         }
     }
 }
