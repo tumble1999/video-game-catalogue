@@ -87,7 +87,7 @@ namespace VideoGameCatalogue
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
-            OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password)");
+            OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password) ");
             cmd.Connection = conn;
 
             conn.Open();
@@ -103,7 +103,6 @@ namespace VideoGameCatalogue
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data Added");
-                    conn.Close();
                 }
                 catch (OleDbException ex)
                 {
@@ -117,11 +116,9 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
-
+            /*
             cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
             cmd.Connection = conn;
-
-            conn.Open();
 
             if (conn.State == ConnectionState.Open)
             {
@@ -149,6 +146,7 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
+            */
 
         }
 
