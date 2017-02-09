@@ -116,7 +116,7 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
-            /*
+            
             cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
             cmd.Connection = conn;
 
@@ -146,7 +146,7 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
-            */
+            
 
         }
 

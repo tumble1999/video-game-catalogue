@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
@@ -84,7 +85,7 @@ namespace VideoGameCatalogue
 
         private string text;
         private string goodBad;
-        private string reviewUserId;
+        private int reviewUserId, reviewGameId;
         private string gameName, userName;
         private static string owner;
 
@@ -153,7 +154,7 @@ namespace VideoGameCatalogue
             }
         }
 
-        public string ReviewUserId
+        public int ReviewUserId
         {
             get
             {
@@ -192,10 +193,26 @@ namespace VideoGameCatalogue
             }
         }
 
-        public Review(int reviewId, string reviewGameName, string reviewUserName, string reviewText, int reviewRating)
+        public int ReviewGameId
+        {
+            get
+            {
+                return reviewGameId;
+            }
+
+            set
+            {
+                reviewGameId = value;
+            }
+        }
+
+        public Review(int reviewId, Game g, User u, string reviewText, int reviewRating)
         {
             ID = reviewId;
-            GameName = reviewGameName;
+            GameName = g.Name;
+            UserName = u.Name;
+            ReviewUserId = u.Id;
+            reviewGameId = g.Id;
             TextContent = reviewText;
             Rating = reviewRating;
             
@@ -212,12 +229,16 @@ namespace VideoGameCatalogue
             this.ReviewText.Text = TextContent;
 
         }
-        public Review(int reviewId, string reviewGameName, string reviewUserName, string reviewText, int reviewRating, string reviewOwner)        {
+        public Review(int reviewId, Game g, User u, string reviewText, int reviewRating, string reviewOwner)        {
             ID = reviewId;
-            GameName = reviewGameName;
+            GameName = g.Name;
+            UserName = u.Name;
+            ReviewUserId = u.Id;
+            reviewGameId = g.Id;
             TextContent = reviewText;
             Rating = reviewRating;
             Owner = reviewOwner;
+            
 
             if (Rating >= 5)
             {
@@ -249,10 +270,10 @@ namespace VideoGameCatalogue
 
         public static class GetReviews
         {
-            public static Review[] Game(int gameId, string gameName)
+            public static Review[] Game(Game g)
             {
                 OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                string sql = "SELECT * FROM Reviews WHERE GameID=" + gameId;
+                string sql = "SELECT * FROM Reviews WHERE GameID=" + g.Id;
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 conn.Open();
 
@@ -262,7 +283,7 @@ namespace VideoGameCatalogue
                 IList<Review> tmpReviews = new List<Review>();
                 //int i = 1;
 
-                string tmpName = "";
+                User tmpUser = null;
                 ///add only game ID
                 while (reader.Read())
                 {
@@ -276,24 +297,24 @@ namespace VideoGameCatalogue
                     readerUser = cmdUser.ExecuteReader();
                     while (readerUser.Read())
                     {
-                        tmpName = readerUser.GetString(1);
+                        tmpUser = new User(reader.GetString(1), reader.GetString(2));
                     }
                     readerUser.Close();
                     connUser.Close();
 
 
                     // currentGameId = reader.GetString(0);
-                    tmpReviews.Add(new Review(reader.GetInt32(0), gameName, tmpName, reader.GetString(3), reader.GetInt32(4), "Game"));
+                    tmpReviews.Add(new Review(reader.GetInt32(0), g, tmpUser, reader.GetString(3), reader.GetInt32(4), "Game"));
                 }
                 reader.Close();
                 conn.Close();
                 return tmpReviews.ToArray();
             }
 
-            public static Review[] User(int userId, string userName)
+            public static Review[] User(User u)
             {
                 OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                string sql = "SELECT * FROM Reviews WHERE UserID=" + userId;
+                string sql = "SELECT * FROM Reviews WHERE UserID=" + u.Id;
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 conn.Open();
 
@@ -303,28 +324,69 @@ namespace VideoGameCatalogue
                 IList<Review> tmpReviews = new List<Review>();
                 //int i = 1;
 
-                string tmpName = "";
+                Game tmpGame = null;
                 ///add only game ID
                 while (reader.Read())
                 {
 
 
-                    OleDbConnection connGame = new OleDbConnection(new Settings().VGCConnectionString);
-                    string sqlGame = "SELECT * FROM Games";
-                    OleDbCommand cmdUser = new OleDbCommand(sqlGame, connGame);
-                    connGame.Open();
-                    OleDbDataReader readerGame;
-                    readerGame = cmdUser.ExecuteReader();
-                    while (readerGame.Read())
+                    OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
+                    string sqlUser = "SELECT * FROM Games";
+                    OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
+                    connUser.Open();
+                    OleDbDataReader readerUser;
+                    readerUser = cmdUser.ExecuteReader();
+                    while (readerUser.Read())
                     {
-                        tmpName = readerGame.GetString(1);
+                        tmpGame = new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
                     }
-                    readerGame.Close();
-                    connGame.Close();
+                    readerUser.Close();
+                    connUser.Close();
 
 
                     // currentGameId = reader.GetString(0);
-                    tmpReviews.Add(new Review(reader.GetInt32(0), tmpName, userName, reader.GetString(3), reader.GetInt32(4), "User"));
+                    tmpReviews.Add(new Review(reader.GetInt32(0), tmpGame, u, reader.GetString(3), reader.GetInt32(4), "Game"));
+                }
+                reader.Close();
+                conn.Close();
+                return tmpReviews.ToArray();
+            }
+
+            internal static Review[] Game(int id, string name)
+            {
+                OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+                string sql = "SELECT * FROM Reviews WHERE GameID=" + id;
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                conn.Open();
+
+                OleDbDataReader reader;
+                reader = cmd.ExecuteReader();
+
+                IList<Review> tmpReviews = new List<Review>();
+                //int i = 1;
+
+                User tmpUser = null;
+                ///add only game ID
+                while (reader.Read())
+                {
+
+
+                    OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
+                    string sqlUser = "SELECT * FROM Users";
+                    OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
+                    connUser.Open();
+                    OleDbDataReader readerUser;
+                    readerUser = cmdUser.ExecuteReader();
+                    while (readerUser.Read())
+                    {
+                        tmpUser = new User(reader.GetString(1), reader.GetString(2));
+                    }
+                    readerUser.Close();
+                    connUser.Close();
+
+
+                    // currentGameId = reader.GetString(0);
+                    tmpReviews.Add(new Review(reader.GetInt32(0), g, tmpUser, reader.GetString(3), reader.GetInt32(4), "Game"));
                 }
                 reader.Close();
                 conn.Close();
@@ -348,7 +410,76 @@ namespace VideoGameCatalogue
                 return a / rArray.Length;
             }
         }
-        
+
+        internal void SaveToDatabase()
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+
+            OleDbCommand cmd = new OleDbCommand("INSERT into Review (UserID, GameID, ReviewText, Raiting) Values(@UserID, @GameID, @ReviewText, @Raiting) ");
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.AddWithValue("@UserID", ReviewUserId);
+                cmd.Parameters.AddWithValue("@GameID", ReviewGameId);
+                cmd.Parameters.AddWithValue("@ReviewText", ReviewText);
+                cmd.Parameters.AddWithValue("@Raiting", Rating);
+
+                MessageBox.Show(cmd.CommandText);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Data Added");
+                }
+                catch (OleDbException ex)
+                {
+                    MessageBox.Show(ex.Source);
+                    conn.Close();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
+            cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
+            cmd.Connection = conn;
+
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@id", Id);
+
+                MessageBox.Show(cmd.CommandText);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Updated");
+                    conn.Close();
+                }
+                catch (OleDbException e)
+                {
+                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                    conn.Close();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
+
+        }
+
     }
     
     public class ReviewButton : Button

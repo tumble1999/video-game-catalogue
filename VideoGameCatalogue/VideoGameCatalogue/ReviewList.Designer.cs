@@ -35,6 +35,7 @@
             this.reviewGoodBadText = new System.Windows.Forms.Label();
             this.reviewTextLabel = new System.Windows.Forms.Label();
             this.reviewTitle = new System.Windows.Forms.Label();
+            this.buttonNewReview = new System.Windows.Forms.Button();
             this.reviewListPanel.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +71,7 @@
             this.gameItemPanel.Controls.Add(this.reviewGoodBadText);
             this.gameItemPanel.Controls.Add(this.reviewTextLabel);
             this.gameItemPanel.Controls.Add(this.reviewTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(6, 9);
+            this.gameItemPanel.Location = new System.Drawing.Point(3, 3);
             this.gameItemPanel.Name = "gameItemPanel";
             this.gameItemPanel.Size = new System.Drawing.Size(769, 127);
             this.gameItemPanel.TabIndex = 3;
@@ -115,11 +116,22 @@
             this.reviewTitle.TabIndex = 0;
             this.reviewTitle.Text = "reviewTitle";
             // 
+            // buttonNewReview
+            // 
+            this.buttonNewReview.Location = new System.Drawing.Point(553, 0);
+            this.buttonNewReview.Name = "buttonNewReview";
+            this.buttonNewReview.Size = new System.Drawing.Size(222, 36);
+            this.buttonNewReview.TabIndex = 3;
+            this.buttonNewReview.Text = "buttonNewReview";
+            this.buttonNewReview.UseVisualStyleBackColor = true;
+            this.buttonNewReview.Click += new System.EventHandler(this.buttonNewReview_Click);
+            // 
             // ReviewList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 571);
+            this.Controls.Add(this.buttonNewReview);
             this.Controls.Add(this.reviewListPanel);
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "ReviewList";
@@ -143,5 +155,6 @@
         private System.Windows.Forms.Label reviewGoodBadText;
         private System.Windows.Forms.Label reviewTitle;
         private System.Windows.Forms.Panel gameItemPanel;
+        private System.Windows.Forms.Button buttonNewReview;
     }
 }

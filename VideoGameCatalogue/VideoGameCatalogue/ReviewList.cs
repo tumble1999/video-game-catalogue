@@ -17,9 +17,12 @@ namespace VideoGameCatalogue
         private int y = 3;
         private Review[] reviews;
         private FullReview fullReview;
+        private NewReview newReview;
+        private Game game;
 
         public ReviewList(Game game)
         {
+            this.game = game;
             InitializeComponent();
 
             this.Text = "Reviews - " + game.Name;
@@ -114,6 +117,12 @@ namespace VideoGameCatalogue
         private void ReviewList_Resize(object sender, EventArgs e)
         {
             //RefreshReviews();
+        }
+
+        private void buttonNewReview_Click(object sender, EventArgs e)
+        {
+            newReview = new NewReview(game);
+            newReview.ShowDialog();
         }
     }
 }

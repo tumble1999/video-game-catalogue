@@ -44,27 +44,8 @@ namespace VideoGameCatalogue
             userIDStatusLabel.Text = CurrentUser.userID.ToString();
             usernameStatusLabel.Text = CurrentUser.username;
             updateLoop.Start();
-            
-            //List games
-            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-            string sql = "SELECT * FROM Games";
-            OleDbCommand cmd = new OleDbCommand(sql, conn);
-            conn.Open();
 
-            OleDbDataReader reader;
-            reader = cmd.ExecuteReader();
-
-            IList<Game> tmpGames = new List<Game>();
-            //int i = 1;
-            while (reader.Read())
-            {
-                // currentGameId = reader.GetString(0);
-                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
-
-            }
-            games = tmpGames.ToArray();
-            reader.Close();
-            conn.Close();
+            FetchGames();
 
             RefreshGames();
             
@@ -237,6 +218,30 @@ namespace VideoGameCatalogue
         private void userListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             userList.ShowDialog();
+        }
+
+        public void FetchGames()
+        {
+            //List games
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Games";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            IList<Game> tmpGames = new List<Game>();
+            //int i = 1;
+            while (reader.Read())
+            {
+                // currentGameId = reader.GetString(0);
+                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
+
+            }
+            games = tmpGames.ToArray();
+            reader.Close();
+            conn.Close();
         }
     }
 }
