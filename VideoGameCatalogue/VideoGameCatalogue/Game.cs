@@ -231,7 +231,7 @@ namespace VideoGameCatalogue
             Publisher = gamePublisher;
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
-            Reviews = Review.GetReviews.Game(Id, name);
+            Reviews = Review.GetReviews.Game(this);
             avarageReview = Review.GetAverage(Reviews);
             reviewCount = Reviews.Length;
 

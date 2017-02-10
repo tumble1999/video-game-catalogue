@@ -164,7 +164,7 @@ namespace VideoGameCatalogue
             
             loggedIn = id != -1;
 
-            Reviews = Review.GetReviews.User(id, username);
+            Reviews = Review.GetReviews.User(this);
         }
 
         public bool Exists()

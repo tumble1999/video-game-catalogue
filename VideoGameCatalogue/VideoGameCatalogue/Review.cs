@@ -229,7 +229,7 @@ namespace VideoGameCatalogue
             this.ReviewText.Text = TextContent;
 
         }
-        public Review(int reviewId, Game g, User u, string reviewText, int reviewRating, string reviewOwner)        {
+        public Review(int reviewId, Game g, User u, string reviewText, int reviewRating, string reviewOwner) {
             ID = reviewId;
             GameName = g.Name;
             UserName = u.Name;
@@ -258,11 +258,11 @@ namespace VideoGameCatalogue
             
             if (Owner == "Game")
             {
-                this.ReviewTitle.Text = reviewUserName;
+                this.ReviewTitle.Text = u.Name;
             }
             else if (Owner == "User")
             {
-                this.ReviewTitle.Text = reviewGameName;
+                this.ReviewTitle.Text = g.Name;
             }
 
 
@@ -290,7 +290,7 @@ namespace VideoGameCatalogue
 
 
                     OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
-                    string sqlUser = "SELECT * FROM Users";
+                    string sqlUser = "SELECT * FROM Users WHERE UserID=" + reader.GetInt32(1);
                     OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
                     connUser.Open();
                     OleDbDataReader readerUser;
@@ -352,46 +352,7 @@ namespace VideoGameCatalogue
                 return tmpReviews.ToArray();
             }
 
-            internal static Review[] Game(int id, string name)
-            {
-                OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-                string sql = "SELECT * FROM Reviews WHERE GameID=" + id;
-                OleDbCommand cmd = new OleDbCommand(sql, conn);
-                conn.Open();
-
-                OleDbDataReader reader;
-                reader = cmd.ExecuteReader();
-
-                IList<Review> tmpReviews = new List<Review>();
-                //int i = 1;
-
-                User tmpUser = null;
-                ///add only game ID
-                while (reader.Read())
-                {
-
-
-                    OleDbConnection connUser = new OleDbConnection(new Settings().VGCConnectionString);
-                    string sqlUser = "SELECT * FROM Users";
-                    OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
-                    connUser.Open();
-                    OleDbDataReader readerUser;
-                    readerUser = cmdUser.ExecuteReader();
-                    while (readerUser.Read())
-                    {
-                        tmpUser = new User(reader.GetString(1), reader.GetString(2));
-                    }
-                    readerUser.Close();
-                    connUser.Close();
-
-
-                    // currentGameId = reader.GetString(0);
-                    tmpReviews.Add(new Review(reader.GetInt32(0), g, tmpUser, reader.GetString(3), reader.GetInt32(4), "Game"));
-                }
-                reader.Close();
-                conn.Close();
-                return tmpReviews.ToArray();
-            }
+           
         }
         public static int GetAverage(Review[] rArray)
         {
@@ -447,14 +408,16 @@ namespace VideoGameCatalogue
                 MessageBox.Show("Connection Failed");
             }
 
-            cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
+            cmd = new OleDbCommand("UPDATE Reviews SET UserID = @UserID, GameID = @GameID, ReviewText = @ReviewText, Raiting = @Raiting WHERE ReviewID = @id");
             cmd.Connection = conn;
 
             if (conn.State == ConnectionState.Open)
             {
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
-                cmd.Parameters.AddWithValue("@id", Id);
+                cmd.Parameters.AddWithValue("@UserID", ReviewUserId);
+                cmd.Parameters.AddWithValue("@GameID", ReviewGameId);
+                cmd.Parameters.AddWithValue("@ReviewText", ReviewText);
+                cmd.Parameters.AddWithValue("@Raiting", Rating);
+                cmd.Parameters.AddWithValue("@id", ID);
 
                 MessageBox.Show(cmd.CommandText);
 
