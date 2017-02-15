@@ -18,7 +18,7 @@ namespace VideoGameCatalogue
         private int id;
         private string username, password;
         private bool loggedIn;
-        internal static readonly User empty = new User("Guest", "") {
+        public static readonly User empty = new User("Guest", "") {
             loggedIn = false
         };
         private Review[] reviews;
@@ -156,6 +156,13 @@ namespace VideoGameCatalogue
             this.password = password;
             this.id = -1;
             
+        }
+        public User(int id, string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+            this.id = id;
+
         }
 
         public void Login()

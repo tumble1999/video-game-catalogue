@@ -19,12 +19,14 @@ namespace VideoGameCatalogue
         private FullReview fullReview;
         private NewReview newReview;
         private Game game;
+        private User user;
 
         public ReviewList(Game game)
         {
             this.game = game;
             InitializeComponent();
 
+            buttonNewReview.Show();
             this.Text = "Reviews - " + game.Name;
             gameTitleLabel.Text = "Reviews for " + game.Name;
             reviews = game.Reviews;
@@ -34,8 +36,10 @@ namespace VideoGameCatalogue
         }
         public ReviewList(User user)
         {
+            this.user = user;
             InitializeComponent();
 
+            buttonNewReview.Hide();
             this.Text = "Reviews - " + user.Name;
             gameTitleLabel.Text = "Reviews from " + user.Name;
             reviews = user.Reviews;
@@ -121,7 +125,7 @@ namespace VideoGameCatalogue
 
         private void buttonNewReview_Click(object sender, EventArgs e)
         {
-            newReview = new NewReview(game);
+            newReview = new NewReview(game, CurrentUser.user);
             newReview.ShowDialog();
         }
     }

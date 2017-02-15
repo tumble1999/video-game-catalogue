@@ -232,7 +232,7 @@ namespace VideoGameCatalogue
         public Review(int reviewId, Game g, User u, string reviewText, int reviewRating, string reviewOwner) {
             ID = reviewId;
             GameName = g.Name;
-            UserName = u.Name;
+            UserName = u.Username;
             ReviewUserId = u.Id;
             reviewGameId = g.Id;
             TextContent = reviewText;
@@ -268,6 +268,45 @@ namespace VideoGameCatalogue
 
         }
 
+        public Review(Game g, User u, string reviewText, int reviewRating)
+        {
+            GameName = g.Name;
+            UserName = u.Username;
+            ReviewUserId = u.Id;
+            reviewGameId = g.Id;
+            TextContent = reviewText;
+            Rating = reviewRating;
+
+
+            if (Rating >= 5)
+            {
+                GoodBad = "Good";
+            }
+            else if (rating < 5)
+            {
+                GoodBad = "Bad";
+            }
+            else
+            {
+                GoodBad = "I don't know.";
+            }
+
+            this.ReviewGoodBad.Text = GoodBad;
+            this.ReviewText.Text = TextContent;
+
+            if (Owner == "Game")
+            {
+                this.ReviewTitle.Text = u.Name;
+            }
+            else if (Owner == "User")
+            {
+                this.ReviewTitle.Text = g.Name;
+            }
+            this.SaveToDatabase();
+
+
+        }
+
         public static class GetReviews
         {
             public static Review[] Game(Game g)
@@ -283,7 +322,7 @@ namespace VideoGameCatalogue
                 IList<Review> tmpReviews = new List<Review>();
                 //int i = 1;
 
-                User tmpUser = null;
+                User tmpUser = VideoGameCatalogue.User.empty;
                 ///add only game ID
                 while (reader.Read())
                 {
@@ -297,7 +336,7 @@ namespace VideoGameCatalogue
                     readerUser = cmdUser.ExecuteReader();
                     while (readerUser.Read())
                     {
-                        tmpUser = new User(reader.GetString(1), reader.GetString(2));
+                       tmpUser = new User(readerUser.GetInt32(0), readerUser.GetString(1), readerUser.GetString(2));
                     }
                     readerUser.Close();
                     connUser.Close();
@@ -334,13 +373,13 @@ namespace VideoGameCatalogue
                     string sqlUser = "SELECT * FROM Games";
                     OleDbCommand cmdUser = new OleDbCommand(sqlUser, connUser);
                     connUser.Open();
-                    OleDbDataReader readerUser;
-                    readerUser = cmdUser.ExecuteReader();
-                    while (readerUser.Read())
+                    OleDbDataReader readerGame;
+                    readerGame = cmdUser.ExecuteReader();
+                    while (readerGame.Read())
                     {
-                        tmpGame = new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6));
+                        tmpGame = new Game(readerGame.GetInt32(0), readerGame.GetString(1), readerGame.GetString(2), readerGame.GetString(3), readerGame.GetString(4), readerGame.GetString(5), readerGame.GetDateTime(6));
                     }
-                    readerUser.Close();
+                    readerGame.Close();
                     connUser.Close();
 
 
