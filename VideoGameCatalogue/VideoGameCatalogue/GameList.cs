@@ -22,7 +22,7 @@ namespace VideoGameCatalogue
 
         AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
-        GameInfo gameInfo;
+        //GameInfo gameInfo;
 
         Game[] games;
         private int fullX;
@@ -151,7 +151,7 @@ namespace VideoGameCatalogue
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
         }
 
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        public void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new UserLogin().Show();
         }
@@ -182,8 +182,7 @@ namespace VideoGameCatalogue
         private void ButtonClick(object sender, EventArgs e)
         {
             GameButton gameBtn = (sender as GameButton);
-            gameInfo = new GameInfo(gameBtn.Game);
-            gameInfo.Show();
+            new GameInfo(gameBtn.Game).Show();
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)

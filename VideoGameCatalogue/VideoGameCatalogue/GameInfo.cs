@@ -12,23 +12,16 @@ namespace VideoGameCatalogue
 {
     public partial class GameInfo : Form
     {
-        private ReviewList reviewList;
+        //private ReviewList reviewList;
         Game game;
 
         public GameInfo(Game g)
         {
             InitializeComponent();
-            this.Text = g.Name;
-            gameTitleLabel.Text = g.Name;
-            gameGenreLabel.Text = g.Genre;
-            gameDescriptionLabel.Text = g.Description;
-            gamePublisherLabel.Text = g.Publisher;
-            gamePlatformLabel.Text = g.Platform;
-            gameReleaseDateLabel.Text = DateToString(g.ReleaseDate);
-            gameReviewBar.Value = 10 * g.AvarageReview;
+
             game = g;
-            reviewCountLabel.Text = g.ReviewCount + " Reviews";
-            reviewList = new ReviewList(g);
+
+            
         }
 
         public static string DateToString(DateTime date)
@@ -73,13 +66,25 @@ namespace VideoGameCatalogue
             
             try
             {
-                reviewList.ShowDialog();
+                new ReviewList(game, this).Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 throw;
             }
+        }
+        public void RefreshGameInfo()
+        {
+            this.Text = game.Name;
+            gameTitleLabel.Text = game.Name;
+            gameGenreLabel.Text = game.Genre;
+            gameDescriptionLabel.Text = game.Description;
+            gamePublisherLabel.Text = game.Publisher;
+            gamePlatformLabel.Text = game.Platform;
+            gameReleaseDateLabel.Text = DateToString(game.ReleaseDate);
+            gameReviewBar.Value = 10 * game.AvarageReview;
+            reviewCountLabel.Text = game.ReviewCount + " Reviews";
         }
     }
 }

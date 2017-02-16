@@ -84,7 +84,7 @@ namespace VideoGameCatalogue
         
         private string name, genre, description, publisher, platform;
         private int id = -1;
-        private int avarageReview = -1;
+        //private int avarageReview = -1;
         private int reviewCount = -1;
         //Review[] reviews;
         DateTime releaseDate;
@@ -184,12 +184,7 @@ namespace VideoGameCatalogue
         {
             get
             {
-                return avarageReview;
-            }
-
-            set
-            {
-                avarageReview = value;
+                return Review.GetAverage(Reviews);
             }
         }
 
@@ -227,7 +222,7 @@ namespace VideoGameCatalogue
             Publisher = gamePublisher;
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
-            avarageReview = Review.GetAverage(Reviews);
+            //avarageReview = Review.GetAverage(Reviews);
             reviewCount = Reviews.Length;
 
 

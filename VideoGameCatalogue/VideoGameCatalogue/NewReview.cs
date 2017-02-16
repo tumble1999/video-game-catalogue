@@ -14,13 +14,18 @@ namespace VideoGameCatalogue
     {
         private Game g;
         private User u;
+        private Review review;
+        public ReviewList reviewList;
+
         //private List<Review> tmpList;
 
-        public NewReview(Game g, User u)
+        public NewReview(Game g, User u, ReviewList reviewList)
         {
             InitializeComponent();
             this.g = g;
             this.u = u;
+            this.reviewList = reviewList;
+            MessageBox.Show("User: " + u.Name + "\nGame: " + g.Name);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,12 +35,19 @@ namespace VideoGameCatalogue
 
         private void buttonGood_Click(object sender, EventArgs e)
         {
-            new Review(g, u, reviewTextTextBox.Text, 10);
+            review = new Review(g, u, reviewTextTextBox.Text, 10);
+            review.SaveToDatabase();
+            reviewList.RefreshReviews();
+            this.Close();
         }
 
         private void buttonBad_Click(object sender, EventArgs e)
         {
-            new Review(g, u, reviewTextTextBox.Text, 1);
+            review = new Review(g, u, reviewTextTextBox.Text, 1);
+            review.SaveToDatabase();
+            reviewList.RefreshReviews();
+
+            this.Close();
         }
     }
 }

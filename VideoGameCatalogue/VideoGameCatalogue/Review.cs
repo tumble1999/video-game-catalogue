@@ -302,7 +302,6 @@ namespace VideoGameCatalogue
             {
                 this.ReviewTitle.Text = g.Name;
             }
-            this.SaveToDatabase();
 
 
         }
@@ -415,17 +414,17 @@ namespace VideoGameCatalogue
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
-            OleDbCommand cmd = new OleDbCommand("INSERT into Review (UserID, GameID, ReviewText, Raiting) Values(@UserID, @GameID, @ReviewText, @Raiting) ");
+            OleDbCommand cmd = new OleDbCommand("INSERT into Reviews (UserID, GameID, ReviewText, Rating) Values(@UserID, @GameID, @ReviewText, @Rating) ");
             cmd.Connection = conn;
 
             conn.Open();
 
             if (conn.State == ConnectionState.Open)
             {
-                cmd.Parameters.AddWithValue("@UserID", ReviewUserId);
-                cmd.Parameters.AddWithValue("@GameID", ReviewGameId);
-                cmd.Parameters.AddWithValue("@ReviewText", ReviewText);
-                cmd.Parameters.AddWithValue("@Raiting", Rating);
+                cmd.Parameters.AddWithValue("@UserID", reviewUserId);
+                cmd.Parameters.AddWithValue("@GameID", reviewGameId);
+                cmd.Parameters.AddWithValue("@ReviewText", text);
+                cmd.Parameters.AddWithValue("@Rating", rating);
 
                 MessageBox.Show(cmd.CommandText);
 
@@ -433,13 +432,12 @@ namespace VideoGameCatalogue
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Data Added");
-                }
+                 }
                 catch (OleDbException ex)
                 {
                     MessageBox.Show(ex.Source);
                     conn.Close();
                 }
-
 
             }
             else
@@ -447,7 +445,7 @@ namespace VideoGameCatalogue
                 MessageBox.Show("Connection Failed");
             }
 
-            cmd = new OleDbCommand("UPDATE Reviews SET UserID = @UserID, GameID = @GameID, ReviewText = @ReviewText, Raiting = @Raiting WHERE ReviewID = @id");
+            cmd = new OleDbCommand("UPDATE Reviews SET UserID = @UserID, GameID = @GameID, ReviewText = @ReviewText, Rating = @Rating WHERE ReviewID = @id");
             cmd.Connection = conn;
 
             if (conn.State == ConnectionState.Open)
@@ -455,7 +453,7 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@UserID", ReviewUserId);
                 cmd.Parameters.AddWithValue("@GameID", ReviewGameId);
                 cmd.Parameters.AddWithValue("@ReviewText", ReviewText);
-                cmd.Parameters.AddWithValue("@Raiting", Rating);
+                cmd.Parameters.AddWithValue("@Rating", Rating);
                 cmd.Parameters.AddWithValue("@id", ID);
 
                 MessageBox.Show(cmd.CommandText);

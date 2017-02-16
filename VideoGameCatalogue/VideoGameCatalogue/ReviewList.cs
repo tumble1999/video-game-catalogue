@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VideoGameCatalogue;
 
 namespace VideoGameCatalogue
 {
@@ -16,20 +17,21 @@ namespace VideoGameCatalogue
         private int x = 6;
         private int y = 3;
         private Review[] reviews;
-        private FullReview fullReview;
-        private NewReview newReview;
+        //private FullReview fullReview;
+        //private NewReview newReview;
         private Game game;
         private User user;
+        private GameInfo gameInfo;
 
-        public ReviewList(Game game)
+        public ReviewList(Game game, GameInfo gameInfo)
         {
             this.game = game;
+            this.gameInfo = gameInfo;
             InitializeComponent();
 
             buttonNewReview.Show();
             this.Text = "Reviews - " + game.Name;
             gameTitleLabel.Text = "Reviews for " + game.Name;
-            reviews = game.Reviews;
             RefreshReviews();
             
 
@@ -84,7 +86,7 @@ namespace VideoGameCatalogue
                 r[index].ViewFullReview.Click += ButtonClick;
                 r[index].ViewFullReview.review = r[index];
                 reviewListPanel.Controls.Add(r[index].ViewFullReview);
-                Place(x, this.y + reviewHeight, index + 1, r);
+                Place(x, (index+1) * reviewHeight, index + 1, r);
             }
         }
         void UnPlace(int index, Review[] r)
@@ -103,19 +105,19 @@ namespace VideoGameCatalogue
                 UnPlace(index + 1, r);
             }
         }
-        void RefreshReviews()
+        public void RefreshReviews()
         {
             // refreshProgressBar.Visible = true;
-            UnPlace(0, reviews);
-            Place(this.x, this.y, 0, reviews);
+            UnPlace(0, game.Reviews);
+            Place(this.x, this.y, 0, game.Reviews);
             //refreshProgressBar.Visible = false;
+            gameInfo.RefreshGameInfo();
         }
 
         private void ButtonClick(object sender, EventArgs e)
         {
             ReviewButton reviewBtn = (sender as ReviewButton);
-            fullReview = new FullReview(reviewBtn.review);
-            fullReview.Show();
+            new FullReview(reviewBtn.review).Show();
         }
 
         private void ReviewList_Resize(object sender, EventArgs e)
@@ -125,8 +127,16 @@ namespace VideoGameCatalogue
 
         private void buttonNewReview_Click(object sender, EventArgs e)
         {
-            newReview = new NewReview(game, CurrentUser.user);
-            newReview.ShowDialog();
+            if (CurrentUser.user.LoggedIn)
+            {
+                new NewReview(game, CurrentUser.user, this).Show();
+            }
+            else
+            {
+                MessageBox.Show("Your not logged in");
+                new UserLogin().Show();
+
+            }
         }
     }
 }

@@ -122,7 +122,7 @@
             this.buttonNewReview.Name = "buttonNewReview";
             this.buttonNewReview.Size = new System.Drawing.Size(222, 36);
             this.buttonNewReview.TabIndex = 3;
-            this.buttonNewReview.Text = "buttonNewReview";
+            this.buttonNewReview.Text = "New Review";
             this.buttonNewReview.UseVisualStyleBackColor = true;
             this.buttonNewReview.Click += new System.EventHandler(this.buttonNewReview_Click);
             // 
