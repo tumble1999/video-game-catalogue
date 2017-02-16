@@ -426,12 +426,12 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@ReviewText", text);
                 cmd.Parameters.AddWithValue("@Rating", rating);
 
-                MessageBox.Show(cmd.CommandText);
+                //MessageBox.Show(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Data Added");
+                    //MessageBox.Show("Data Added");
                  }
                 catch (OleDbException ex)
                 {
@@ -456,12 +456,12 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@Rating", Rating);
                 cmd.Parameters.AddWithValue("@id", ID);
 
-                MessageBox.Show(cmd.CommandText);
+                //MessageBox.Show(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    //MessageBox.Show("Updated");
                     conn.Close();
                 }
                 catch (OleDbException e)

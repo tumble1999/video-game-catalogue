@@ -25,7 +25,7 @@ namespace VideoGameCatalogue
             this.g = g;
             this.u = u;
             this.reviewList = reviewList;
-            MessageBox.Show("User: " + u.Name + "\nGame: " + g.Name);
+            //MessageBox.Show("User: " + u.Name + "\nGame: " + g.Name);
         }
 
         private void button1_Click(object sender, EventArgs e)

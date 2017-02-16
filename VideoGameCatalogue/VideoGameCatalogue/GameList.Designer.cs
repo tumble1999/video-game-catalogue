@@ -54,6 +54,7 @@
             this.aboutVideoGameCatalogueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.userInfoLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.userIDStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,7 +68,6 @@
             this.viewGameButton = new System.Windows.Forms.Button();
             this.gameItemPanel = new System.Windows.Forms.Panel();
             this.gameListPanel = new System.Windows.Forms.Panel();
-            this.userListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
@@ -273,6 +273,13 @@
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
+            // userListToolStripMenuItem
+            // 
+            this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
+            this.userListToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.userListToolStripMenuItem.Text = "UserList";
+            this.userListToolStripMenuItem.Click += new System.EventHandler(this.userListToolStripMenuItem_Click);
+            // 
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -391,13 +398,6 @@
             this.gameListPanel.Name = "gameListPanel";
             this.gameListPanel.Size = new System.Drawing.Size(1096, 502);
             this.gameListPanel.TabIndex = 3;
-            // 
-            // userListToolStripMenuItem
-            // 
-            this.userListToolStripMenuItem.Name = "userListToolStripMenuItem";
-            this.userListToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.userListToolStripMenuItem.Text = "UserList";
-            this.userListToolStripMenuItem.Click += new System.EventHandler(this.userListToolStripMenuItem_Click);
             // 
             // GamesList
             // 

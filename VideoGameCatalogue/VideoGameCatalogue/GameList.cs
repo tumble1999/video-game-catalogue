@@ -45,8 +45,9 @@ namespace VideoGameCatalogue
             usernameStatusLabel.Text = CurrentUser.username;
             updateLoop.Start();
 
-            FetchGames();
+            reviewList = new ReviewList(CurrentUser.user);
 
+            FetchGames();
             RefreshGames();
             
         }
@@ -60,18 +61,15 @@ namespace VideoGameCatalogue
             {
                 this.accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
                 this.accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
-                /*
-                this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-                this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
-                this.usernameStatusLabel.Text = CurrentUser.username;
-                */
-                System.Threading.Thread.Sleep(1000);
+                //RefreshGames();
             }
         }
 
         void Place(int x, int y, int index, Game[] g)
         {
-            refreshProgressBar.Value += (index + 1) / (g.Length * 200);
+
+            refreshProgressBar.Value = 50+(50 * index/g.Length);
+
             if (index == g.Length)
             {
                 return;
@@ -111,12 +109,13 @@ namespace VideoGameCatalogue
 
                 fullX = (index + 1) * gameWidth;
                 int tmpX = (this.x + (fullX % gameListPanel.Width)) / gameWidth;
+                
                 Place((tmpX-1) * gameWidth, this.y + ((fullX / gameListPanel.Width) * gameHeight),index + 1, g);
             }
         }
         void UnPlace(int index, Game[] g)
         {
-            refreshProgressBar.Value += (index + 1) / (g.Length * 200);
+            refreshProgressBar.Value =  index*50 / g.Length;
             if (index == g.Length)
             {
                 return;
@@ -132,8 +131,11 @@ namespace VideoGameCatalogue
         }
         void RefreshGames()
         {
-            //UnPlace(0, games);
+            refreshProgressBar.Visible = true;
+            UnPlace(0, games);
+            
             Place(this.x, this.y, 0, games);
+            refreshProgressBar.Visible = false;
         }
 
         private void ViewGameInfo_Click(object sender, EventArgs e)
@@ -158,7 +160,6 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,8 +193,7 @@ namespace VideoGameCatalogue
 
         private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            reviewList = new ReviewList(CurrentUser.user);
-            reviewList.Show();
+            reviewList.ShowDialog();
         }
 
         private void GamesList_ResizeEnd(object sender, EventArgs e)

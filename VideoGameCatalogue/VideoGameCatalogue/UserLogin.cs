@@ -27,14 +27,15 @@ namespace VideoGameCatalogue
                 if(CurrentUser.user.LoggedIn)
                 {
                     MessageBox.Show("Logged in");
-                    
+
+                    this.Hide();
+                    this.Close();
+
                 }
                 else
                 {
                     MessageBox.Show("There was an errror logging in");
                 }
-                this.Hide();
-                this.Close();
             }
             else
             {
@@ -53,6 +54,19 @@ namespace VideoGameCatalogue
                 if (CurrentUser.user.Exists())
                 {
                     MessageBox.Show("Registed");
+                    CurrentUser.user.Login();
+                    if (CurrentUser.user.LoggedIn)
+                    {
+
+                        this.Hide();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was an errror logging in");
+                    }
+
                 }
                 else
                 {

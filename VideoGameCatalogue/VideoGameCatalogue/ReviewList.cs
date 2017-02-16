@@ -107,11 +107,19 @@ namespace VideoGameCatalogue
         }
         public void RefreshReviews()
         {
-            // refreshProgressBar.Visible = true;
-            UnPlace(0, game.Reviews);
-            Place(this.x, this.y, 0, game.Reviews);
-            //refreshProgressBar.Visible = false;
-            gameInfo.RefreshGameInfo();
+            if (game != null)
+            {
+                // refreshProgressBar.Visible = true;
+                UnPlace(0, game.Reviews);
+                Place(this.x, this.y, 0, game.Reviews);
+                //refreshProgressBar.Visible = false;
+                gameInfo.RefreshGameInfo();
+            } else if (user != null){
+                UnPlace(0, .Reviews);
+                Place(this.x, this.y, 0, game.Reviews);
+                //refreshProgressBar.Visible = false;
+                gameInfo.RefreshGameInfo();
+            }
         }
 
         private void ButtonClick(object sender, EventArgs e)

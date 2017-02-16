@@ -97,12 +97,12 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@Username", Username);
                 cmd.Parameters.AddWithValue("@Password", Password);
 
-                MessageBox.Show(cmd.CommandText);
+                //MessageBox.Show(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Data Added");
+                    //MessageBox.Show("Data Added");
                 }
                 catch (OleDbException ex)
                 {
@@ -126,12 +126,12 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@Password", Password);
                 cmd.Parameters.AddWithValue("@id",Id);
 
-                MessageBox.Show(cmd.CommandText);
+                //MessageBox.Show(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    //MessageBox.Show("Updated");
                     conn.Close();
                 }
                 catch (OleDbException e)

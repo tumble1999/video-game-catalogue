@@ -20,6 +20,7 @@ namespace VideoGameCatalogue
             InitializeComponent();
 
             game = g;
+            RefreshGameInfo();
 
             
         }
