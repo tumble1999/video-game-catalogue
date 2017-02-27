@@ -64,10 +64,9 @@
             // 
             // gameDescriptionLabel
             // 
-            this.gameDescriptionLabel.AutoSize = true;
-            this.gameDescriptionLabel.Location = new System.Drawing.Point(13, 91);
+            this.gameDescriptionLabel.Location = new System.Drawing.Point(12, 102);
             this.gameDescriptionLabel.Name = "gameDescriptionLabel";
-            this.gameDescriptionLabel.Size = new System.Drawing.Size(112, 13);
+            this.gameDescriptionLabel.Size = new System.Drawing.Size(574, 267);
             this.gameDescriptionLabel.TabIndex = 2;
             this.gameDescriptionLabel.Text = "gameDescriptionLabel";
             // 
@@ -126,16 +125,16 @@
             this.buttonAllReviews.Name = "buttonAllReviews";
             this.buttonAllReviews.Size = new System.Drawing.Size(603, 39);
             this.buttonAllReviews.TabIndex = 0;
-            this.buttonAllReviews.Text = "All Reviews";
+            this.buttonAllReviews.Text = "Reviews";
             this.buttonAllReviews.UseVisualStyleBackColor = true;
             this.buttonAllReviews.Click += new System.EventHandler(this.buttonAllReviews_Click);
             // 
             // panelReviews
             // 
             this.panelReviews.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelReviews.Location = new System.Drawing.Point(0, 142);
+            this.panelReviews.Location = new System.Drawing.Point(0, 381);
             this.panelReviews.Name = "panelReviews";
-            this.panelReviews.Size = new System.Drawing.Size(603, 308);
+            this.panelReviews.Size = new System.Drawing.Size(603, 69);
             this.panelReviews.TabIndex = 8;
             // 
             // reviewCountLabel

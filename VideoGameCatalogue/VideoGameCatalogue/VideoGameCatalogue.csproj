@@ -115,6 +115,9 @@
     <Compile Include="UserLogin.Designer.cs">
       <DependentUpon>UserLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="VGCDataSet.cs">
+      <DependentUpon>VGCDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="VGCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
