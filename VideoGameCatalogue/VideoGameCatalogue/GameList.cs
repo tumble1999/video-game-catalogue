@@ -107,10 +107,10 @@ namespace VideoGameCatalogue
                 g[index].ViewGameInfo.Game = g[index];
                 gameListPanel.Controls.Add(g[index].ViewGameInfo);
 
-                fullX = (index + 1) * gameWidth;
-                int tmpX = (this.x + (fullX % gameListPanel.Width)) / gameWidth;
+                fullX = (index + 2) * gameWidth;
+                int tmpX = (this.x - 1 + (fullX % gameListPanel.Width)) / gameWidth;
                 
-                Place((tmpX-1) * gameWidth, this.y + ((fullX / gameListPanel.Width) * gameHeight),index + 1, g);
+                Place((tmpX) * gameWidth, this.y + ((fullX / gameListPanel.Width) * gameHeight),index + 1, g);
             }
         }
         void UnPlace(int index, Game[] g)
