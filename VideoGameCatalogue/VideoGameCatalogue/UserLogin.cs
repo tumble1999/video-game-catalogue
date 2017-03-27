@@ -20,65 +20,97 @@ namespace VideoGameCatalogue
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
-            if (CurrentUser.user.Exists())
+            if (usernameTextBox.Text != "")
             {
-                CurrentUser.user.Login();
-                if(CurrentUser.user.LoggedIn)
+                if (passwordTextBox.Text != "")
                 {
-                    MessageBox.Show("Logged in");
+                    CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
+                    if (CurrentUser.user.Exists())
+                    {
+                        CurrentUser.user.Login();
+                        if (CurrentUser.user.LoggedIn)
+                        {
+                            MessageBox.Show("Logged in");
 
-                    this.Hide();
-                    this.Close();
+                            this.Hide();
+                            this.Close();
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("LOGIN: There was an errror logging in");
+                        }
+                    }
+                    else
+                    {
+                        errorLabel.Visible = true;
+                        errorLabel.Text = "LOGIN: Username or Password Incorect";
+                    }
+                    CurrentUser.Update();
                 }
                 else
                 {
-                    MessageBox.Show("There was an errror logging in");
+                    errorLabel.Visible = true;
+                    errorLabel.Text = "LOGIN: Password cannot be blank";
                 }
             }
             else
             {
                 errorLabel.Visible = true;
-                errorLabel.Text = "Username or Password Incorect";
+                errorLabel.Text = "LOGIN: Username cannot be blank";
             }
-            CurrentUser.Update();
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
-            if (!CurrentUser.user.Exists())
+            if (usernameTextBox.Text != "")
             {
-                CurrentUser.user.Register();
-                if (CurrentUser.user.Exists())
+                if (passwordTextBox.Text != "")
                 {
-                    MessageBox.Show("Registed");
-                    CurrentUser.user.Login();
-                    if (CurrentUser.user.LoggedIn)
+                    CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
+                    if (!CurrentUser.user.Exists())
                     {
+                        CurrentUser.user.Register();
+                        if (CurrentUser.user.Exists())
+                        {
+                            MessageBox.Show("Registed");
+                            CurrentUser.user.Login();
+                            if (CurrentUser.user.LoggedIn)
+                            {
 
-                        this.Hide();
-                        this.Close();
+                                this.Hide();
+                                this.Close();
 
+                            }
+                            else
+                            {
+                                MessageBox.Show("REGISTER: There was an errror logging in");
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("REGISTER: There was an errror registing");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("There was an errror logging in");
+                        errorLabel.Visible = true;
+                        errorLabel.Text = "REGISTER: User Exists";
                     }
-
+                    CurrentUser.Update();
                 }
                 else
                 {
-                    MessageBox.Show("There was an errror registing");
+                    errorLabel.Visible = true;
+                    errorLabel.Text = "REGISTER: Password cannot be blank";
                 }
             }
             else
             {
                 errorLabel.Visible = true;
-                errorLabel.Text = "User Exists";
+                errorLabel.Text = "REGISTER: Username cannot be blank";
             }
-            CurrentUser.Update();
         }
     }
 }

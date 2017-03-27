@@ -30,55 +30,33 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserList));
-            this.vGCDataSet = new VideoGameCatalogue.VGCDataSet();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new VideoGameCatalogue.VGCDataSetTableAdapters.UsersTableAdapter();
-            this.tableAdapterManager = new VideoGameCatalogue.VGCDataSetTableAdapters.TableAdapterManager();
             this.usersBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.usersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.usersDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.vGCDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vGCDataSet = new VideoGameCatalogue.VGCDataSet();
+            this.usersTableAdapter = new VideoGameCatalogue.VGCDataSetTableAdapters.UsersTableAdapter();
+            this.tableAdapterManager = new VideoGameCatalogue.VGCDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingNavigator)).BeginInit();
             this.usersBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGCDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // vGCDataSet
-            // 
-            this.vGCDataSet.DataSetName = "VGCDataSet";
-            this.vGCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.vGCDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.GamesTableAdapter = null;
-            this.tableAdapterManager.ReviewsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = VideoGameCatalogue.VGCDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             // 
             // usersBindingNavigator
             // 
@@ -109,6 +87,33 @@
             this.usersBindingNavigator.Size = new System.Drawing.Size(898, 25);
             this.usersBindingNavigator.TabIndex = 0;
             this.usersBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Visible = false;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Visible = false;
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -142,17 +147,10 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 15);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 6);
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -160,7 +158,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -169,39 +167,22 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 6);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // usersBindingNavigatorSaveItem
             // 
             this.usersBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.usersBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("usersBindingNavigatorSaveItem.Image")));
             this.usersBindingNavigatorSaveItem.Name = "usersBindingNavigatorSaveItem";
-            this.usersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
+            this.usersBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.usersBindingNavigatorSaveItem.Text = "Save Data";
+            this.usersBindingNavigatorSaveItem.Visible = false;
             this.usersBindingNavigatorSaveItem.Click += new System.EventHandler(this.usersBindingNavigatorSaveItem_Click);
             // 
             // usersDataGridView
@@ -216,6 +197,7 @@
             this.usersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usersDataGridView.Location = new System.Drawing.Point(0, 25);
             this.usersDataGridView.Name = "usersDataGridView";
+            this.usersDataGridView.ReadOnly = true;
             this.usersDataGridView.Size = new System.Drawing.Size(898, 442);
             this.usersDataGridView.TabIndex = 1;
             // 
@@ -224,35 +206,61 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "UserID";
             this.dataGridViewTextBoxColumn1.HeaderText = "UserID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Username";
             this.dataGridViewTextBoxColumn2.HeaderText = "Username";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Password";
             this.dataGridViewTextBoxColumn3.HeaderText = "Password";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // Form1
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.vGCDataSet;
+            // 
+            // vGCDataSet
+            // 
+            this.vGCDataSet.DataSetName = "VGCDataSet";
+            this.vGCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.GamesTableAdapter = null;
+            this.tableAdapterManager.PublishersTableAdapter = null;
+            this.tableAdapterManager.ReviewsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = VideoGameCatalogue.VGCDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
+            // 
+            // UserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 467);
             this.Controls.Add(this.usersDataGridView);
             this.Controls.Add(this.usersBindingNavigator);
-            this.Name = "Form1";
+            this.Name = "UserList";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.vGCDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingNavigator)).EndInit();
             this.usersBindingNavigator.ResumeLayout(false);
             this.usersBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGCDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
