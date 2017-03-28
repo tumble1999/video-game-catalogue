@@ -74,6 +74,12 @@
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="MdiContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiContainer.Designer.cs">
+      <DependentUpon>MdiContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewReview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiContainer.resx">
+      <DependentUpon>MdiContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewReview.resx">
       <DependentUpon>NewReview.cs</DependentUpon>

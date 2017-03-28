@@ -18,7 +18,9 @@ namespace VideoGameCatalogue
             {*/
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GamesList());
+
+            Application.Run(new MdiContainer());
+            //Application.Run(new GamesList());
             //Application.Run(new GameInfo("GameName", "Genre", "Description", "Publisher","Platform", DateTime.Parse("8/12/2016")));
             /*}
             catch (Exception e)
