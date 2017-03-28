@@ -12,37 +12,76 @@ namespace VideoGameCatalogue
 {
     public partial class ChangePassword : Form
     {
-        User u;
-        public ChangePassword(User u)
+        string type;
+        public ChangePassword()
         {
             InitializeComponent();
-            this.u = u;
         }
 
         public void New(string password)
         {
+            type = "New";
+            this.Text = "New Password";
             labelOldPassword.Visible = textBoxOldPassword.Visible = false;
-            if(password == "")
+            this.Show();
+            if (password == "")
             {
                 //user did not type a password on registration
+                textBoxNewPassword.Focus();
 
             }
             else
             {
                 //user did enter a password on registartion
+                textBoxNewPassword.Text = password;
+                textBoxConfirmPassword.Focus();
             }
-            this.Show();
         }
 
         public void Change()
         {
+            type = "Change";
+            this.Text = "Change Password";
             labelOldPassword.Visible = textBoxOldPassword.Visible = true;
             this.Show();
+            textBoxOldPassword.Focus();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonOk_Click(object sender, EventArgs e)
         {
+            if (type == "Change")
+            {
 
+            }
+            if (type == "New")
+            {
+                if (textBoxConfirmPassword.Text == textBoxNewPassword.Text & textBoxConfirmPassword.Text != "")
+                {
+                    CurrentUser.user.Password = textBoxNewPassword.Text;
+                    CurrentUser.user.Register();
+                    if (CurrentUser.user.Exists())
+                    {
+                        MessageBox.Show("Registed");
+                        CurrentUser.user.Login();
+                        if (CurrentUser.user.LoggedIn)
+                        {
+
+                            this.Hide();
+                            this.Close();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("REGISTER: There was an error logging in");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("REGISTER: There was an error registing");
+                    }
+                }
+            }
         }
     }
 }

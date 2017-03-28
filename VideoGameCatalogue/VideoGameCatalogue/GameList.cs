@@ -160,6 +160,9 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            new ChangePassword().New("");
+            new ChangePassword().New("face");
+            new ChangePassword().Change(); ;
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)

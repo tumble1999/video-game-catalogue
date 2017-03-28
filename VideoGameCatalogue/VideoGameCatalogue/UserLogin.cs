@@ -65,47 +65,24 @@ namespace VideoGameCatalogue
         {
             if (usernameTextBox.Text != "")
             {
-                new ChangePassword().New();
-                if (passwordTextBox.Text != "")
+                CurrentUser.user = new User(usernameTextBox.Text, "");
+                if (!CurrentUser.user.Exists())
                 {
-                    CurrentUser.user = new User(usernameTextBox.Text, passwordTextBox.Text);
-                    if (!CurrentUser.user.Exists())
+                    new ChangePassword().New(passwordTextBox.Text);
+                    if (CurrentUser.user.LoggedIn)
                     {
-                        CurrentUser.user.Register();
-                        if (CurrentUser.user.Exists())
-                        {
-                            MessageBox.Show("Registed");
-                            CurrentUser.user.Login();
-                            if (CurrentUser.user.LoggedIn)
-                            {
 
-                                this.Hide();
-                                this.Close();
+                        this.Hide();
+                        this.Close();
 
-                            }
-                            else
-                            {
-                                MessageBox.Show("REGISTER: There was an errror logging in");
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("REGISTER: There was an errror registing");
-                        }
                     }
-                    else
-                    {
-                        errorLabel.Visible = true;
-                        errorLabel.Text = "REGISTER: User Exists";
-                    }
-                    CurrentUser.Update();
                 }
                 else
                 {
                     errorLabel.Visible = true;
-                    errorLabel.Text = "REGISTER: Password cannot be blank";
+                    errorLabel.Text = "REGISTER: User Exists";
                 }
+                CurrentUser.Update();
             }
             else
             {

@@ -48,7 +48,7 @@
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
-            this.buttonOk.Click += new System.EventHandler(this.button1_Click);
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 
@@ -63,6 +63,7 @@
             // 
             // textBoxOldPassword
             // 
+            this.textBoxOldPassword.AcceptsTab = true;
             this.textBoxOldPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxOldPassword.Location = new System.Drawing.Point(131, 43);
             this.textBoxOldPassword.Name = "textBoxOldPassword";
@@ -71,6 +72,7 @@
             // 
             // textBoxNewPassword
             // 
+            this.textBoxNewPassword.AcceptsTab = true;
             this.textBoxNewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxNewPassword.Location = new System.Drawing.Point(131, 69);
             this.textBoxNewPassword.Name = "textBoxNewPassword";
@@ -79,6 +81,7 @@
             // 
             // textBoxConfirmPassword
             // 
+            this.textBoxConfirmPassword.AcceptsTab = true;
             this.textBoxConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxConfirmPassword.Location = new System.Drawing.Point(131, 95);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
@@ -141,6 +144,7 @@
             this.Controls.Add(this.textBoxOldPassword);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.HelpButton = true;
             this.KeyPreview = true;
             this.MaximizeBox = false;
