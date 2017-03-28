@@ -112,5 +112,10 @@ namespace VideoGameCatalogue
                 errorLabel.Text = "REGISTER: Username cannot be blank";
             }
         }
+
+        private void UserLogin_Load(object sender, EventArgs e)
+        {
+            usernameTextBox.Focus();
+        }
     }
 }
