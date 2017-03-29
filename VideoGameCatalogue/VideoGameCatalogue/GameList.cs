@@ -13,7 +13,7 @@ using VideoGameCatalogue.Properties;
 
 namespace VideoGameCatalogue
 {
-    public partial class GamesList : Form
+    public partial class GamesList : MdiChild
     {
         public static int gameWidth = 278;
         int gameHeight = 127;

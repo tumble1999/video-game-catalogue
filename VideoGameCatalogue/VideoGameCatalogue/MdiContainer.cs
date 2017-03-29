@@ -127,10 +127,14 @@ namespace VideoGameCatalogue
             userList.ShowDialog();
         }
 
-        public void OpenWindow(Form form)
+        public void OpenWindow(MdiChild form)
         {
             form.MdiParent = this;
             form.Show();
         }
+    }
+    public class MdiChild : Form
+    {
+        MdiContainer parent;
     }
 }
