@@ -353,7 +353,6 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "MdiContainer";
             this.Text = "Video Game Catalogue";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResizeBegin += new System.EventHandler(this.GamesList_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.GamesList_ResizeEnd);
             this.menuBar.ResumeLayout(false);

@@ -136,6 +136,7 @@
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "ReviewList";
             this.Text = "ReviewList";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Resize += new System.EventHandler(this.ReviewList_Resize);
             this.reviewListPanel.ResumeLayout(false);
             this.reviewListPanel.PerformLayout();

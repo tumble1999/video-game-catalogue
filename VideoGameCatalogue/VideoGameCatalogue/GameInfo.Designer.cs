@@ -165,6 +165,7 @@
             this.Controls.Add(this.gameTitleLabel);
             this.Name = "GameInfo";
             this.Text = "GameInfo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelReviewbuttons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

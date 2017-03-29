@@ -19,12 +19,14 @@ namespace VideoGameCatalogue
         AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
         private Thread updateLoop;
+        public static MdiContainer mdiContainer;
 
         /// <summary>
         /// 
         /// </summary>
         public MdiContainer()
         {
+            mdiContainer = this;
             InitializeComponent();
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             CurrentUser.Update();
@@ -93,12 +95,6 @@ namespace VideoGameCatalogue
         }
         
 
-        private void ButtonClick(object sender, EventArgs e)
-        {
-            GameButton gameBtn = (sender as GameButton);
-            new GameInfo(gameBtn.Game).Show();
-        }
-
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
@@ -127,14 +123,10 @@ namespace VideoGameCatalogue
             userList.ShowDialog();
         }
 
-        public void OpenWindow(MdiChild form)
+        public static void OpenWindow(Form form)
         {
-            form.MdiParent = this;
+            form.MdiParent = mdiContainer;
             form.Show();
         }
-    }
-    public class MdiChild : Form
-    {
-        MdiContainer parent;
     }
 }
