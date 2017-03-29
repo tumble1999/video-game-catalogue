@@ -47,15 +47,16 @@ namespace VideoGameCatalogue
             labelOldPassword.Visible = textBoxOldPassword.Visible = true;
             this.Show();
             textBoxOldPassword.Focus();
+
+            MessageBox.Show("Coming Soon");
+            this.Hide();
+            this.Close();
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
             if (type == "Change")
             {
-                MessageBox.Show("Coming Soon");
-                this.Hide();
-                this.Close();
             }
             if (type == "New")
             {

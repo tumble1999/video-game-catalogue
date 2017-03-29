@@ -144,7 +144,7 @@ namespace VideoGameCatalogue
             else
             {
                 MessageBox.Show("Your not logged in");
-                MdiContainer.OpenWindow(new UserLogin()).Show();
+                new UserLogin().Show();
 
             }
         }
