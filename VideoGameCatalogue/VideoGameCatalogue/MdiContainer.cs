@@ -19,7 +19,7 @@ namespace VideoGameCatalogue
         AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
 
-        //private ReviewList reviewList;
+        private ReviewList reviewList;
         private Thread updateLoop;
         public static MdiContainer mdiContainer;
 
