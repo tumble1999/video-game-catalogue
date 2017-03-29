@@ -67,7 +67,7 @@ namespace VideoGameCatalogue
             
             try
             {
-                new ReviewList(game, this).Show();
+                MdiContainer.OpenWindow(new ReviewList(game, this));
             }
             catch (Exception ex)
             {

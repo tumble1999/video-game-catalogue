@@ -15,6 +15,7 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
+
         public static int gameWidth = 278;
         int gameHeight = 127;
         int x = 0;
@@ -26,7 +27,6 @@ namespace VideoGameCatalogue
 
         Game[] games;
         private int fullX;
-        private ReviewList reviewList;
         private Thread updateLoop;
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace VideoGameCatalogue
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             updateLoop.Start();
 
-            reviewList = new ReviewList(CurrentUser.user);
+            //reviewList = new ReviewList(CurrentUser.user);
 
             FetchGames();
             RefreshGames();
@@ -161,7 +161,6 @@ namespace VideoGameCatalogue
 
         private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MdiContainer.OpenWindow(reviewList);
         }
 
         private void GamesList_ResizeEnd(object sender, EventArgs e)

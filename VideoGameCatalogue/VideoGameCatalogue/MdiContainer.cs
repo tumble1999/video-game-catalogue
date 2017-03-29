@@ -18,6 +18,8 @@ namespace VideoGameCatalogue
 
         AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
+
+        //private ReviewList reviewList;
         private Thread updateLoop;
         public static MdiContainer mdiContainer;
 
@@ -31,6 +33,10 @@ namespace VideoGameCatalogue
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             CurrentUser.Update();
             accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
+
+
+            reviewList = new ReviewList(CurrentUser.user);
+
             accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
             loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
@@ -80,12 +86,20 @@ namespace VideoGameCatalogue
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new UserLogin().Show();
+
+            CurrentUser.Update();
+            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+            this.usernameStatusLabel.Text = CurrentUser.username;
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentUser.user.Logout();
             CurrentUser.Update();
+            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+            this.usernameStatusLabel.Text = CurrentUser.username;
         }
 
         private void aboutVideoGameCatalogueToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,6 +118,8 @@ namespace VideoGameCatalogue
 
         private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            MdiContainer.OpenWindow(reviewList);
         }
 
         private void GamesList_ResizeEnd(object sender, EventArgs e)
@@ -116,6 +132,7 @@ namespace VideoGameCatalogue
 
         private void GamesList_Resize(object sender, EventArgs e)
         {
+            CurrentUser.Update();
         }
 
         private void userListToolStripMenuItem_Click(object sender, EventArgs e)

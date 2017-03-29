@@ -127,7 +127,7 @@ namespace VideoGameCatalogue
         private void ButtonClick(object sender, EventArgs e)
         {
             ReviewButton reviewBtn = (sender as ReviewButton);
-            new FullReview(reviewBtn.review).Show();
+            MdiContainer.OpenWindow(new FullReview(reviewBtn.review));
         }
 
         private void ReviewList_Resize(object sender, EventArgs e)

@@ -125,13 +125,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(0, 24);
             this.ClientSize = new System.Drawing.Size(1096, 550);
+            this.ControlBox = false;
             this.Controls.Add(this.gameItemPanel);
             this.Controls.Add(this.gameListPanel);
             this.Controls.Add(this.menuBar);
             this.MainMenuStrip = this.menuBar;
             this.Name = "GamesList";
             this.Text = "Games List";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResizeBegin += new System.EventHandler(this.GamesList_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.GamesList_ResizeEnd);
             this.Resize += new System.EventHandler(this.GamesList_Resize);
