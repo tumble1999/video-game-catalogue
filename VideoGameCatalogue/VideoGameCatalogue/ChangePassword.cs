@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace VideoGameCatalogue
 {
-    public partial class ChangePassword : Form
-    {
+    public partial class  ChangePassword : Form
+    { 
         string type;
         User user;
-        public ChangePassword(User u)
+        public ChangePassword(ref User u)
         {
             InitializeComponent();
             user = u;
@@ -57,6 +57,7 @@ namespace VideoGameCatalogue
         {
             if (type == "Change")
             {
+                
             }
             if (type == "New")
             {
@@ -87,6 +88,13 @@ namespace VideoGameCatalogue
                     }
                 }
             }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            this.Close();
         }
     }
 }

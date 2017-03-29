@@ -73,6 +73,7 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Company.cs" />
     <Compile Include="CurrentUser.cs" />
     <Compile Include="MdiContainer.cs">
       <SubType>Form</SubType>
@@ -200,7 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VGC.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

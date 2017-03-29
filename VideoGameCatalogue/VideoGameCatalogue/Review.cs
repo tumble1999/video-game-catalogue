@@ -84,7 +84,7 @@ namespace VideoGameCatalogue
         private int iD, rating;
 
         private string text;
-        private string goodBad;
+        //private string goodBad;
         private int reviewUserId, reviewGameId;
         private string gameName, userName;
         private static string owner;
@@ -145,12 +145,18 @@ namespace VideoGameCatalogue
         {
             get
             {
-                return goodBad;
-            }
-
-            set
-            {
-                goodBad = value;
+                if (Rating >= 5)
+                {
+                    return"Good";
+                }
+                else if (rating < 5)
+                {
+                    return "Bad";
+                }
+                else
+                {
+                    return "I don't know.";
+                }
             }
         }
 
@@ -216,14 +222,6 @@ namespace VideoGameCatalogue
             TextContent = reviewText;
             Rating = reviewRating;
             
-            if (Rating >= 5)
-            {
-                GoodBad = "Good";
-            } else if (rating < 5) {
-                GoodBad = "Bad";
-            } else {
-                GoodBad = "I don't know.";
-            }
             
             this.ReviewGoodBad.Text = GoodBad;
             this.ReviewText.Text = TextContent;
@@ -238,22 +236,9 @@ namespace VideoGameCatalogue
             TextContent = reviewText;
             Rating = reviewRating;
             Owner = reviewOwner;
-            
 
-            if (Rating >= 5)
-            {
-                GoodBad = "Good";
-            }
-            else if (rating < 5)
-            {
-                GoodBad = "Bad";
-            }
-            else
-            {
-                GoodBad = "I don't know.";
-            }
-
-            this.ReviewGoodBad.Text = GoodBad;
+ 
+            this.ReviewGoodBad.Text = this.GoodBad;
             this.ReviewText.Text = TextContent;
             
             if (Owner == "Game")
@@ -276,20 +261,6 @@ namespace VideoGameCatalogue
             reviewGameId = g.Id;
             TextContent = reviewText;
             Rating = reviewRating;
-
-
-            if (Rating >= 5)
-            {
-                GoodBad = "Good";
-            }
-            else if (rating < 5)
-            {
-                GoodBad = "Bad";
-            }
-            else
-            {
-                GoodBad = "I don't know.";
-            }
 
             this.ReviewGoodBad.Text = GoodBad;
             this.ReviewText.Text = TextContent;
