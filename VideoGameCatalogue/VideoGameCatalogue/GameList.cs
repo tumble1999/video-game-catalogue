@@ -137,21 +137,18 @@ namespace VideoGameCatalogue
         
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ChangePassword().New("");
-            new ChangePassword().New("face");
-            new ChangePassword().Change(); ;
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MdiContainer.OpenWindow(new UserLogin());
+            MdiContainer.OpenWindow(new UserLogin()).Show();
         }
         
 
         private void ButtonClick(object sender, EventArgs e)
         {
             GameButton gameBtn = (sender as GameButton);
-            MdiContainer.OpenWindow(new GameInfo(gameBtn.Game));
+            MdiContainer.OpenWindow(new GameInfo(gameBtn.Game)).Show(); ;
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)

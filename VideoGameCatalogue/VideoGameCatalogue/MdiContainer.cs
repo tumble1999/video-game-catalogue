@@ -15,11 +15,9 @@ namespace VideoGameCatalogue
 {
     public partial class MdiContainer : Form
     {
-
-        AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
 
-        private ReviewList reviewList;
+        //private ReviewList reviewList;
         private Thread updateLoop;
         public static MdiContainer mdiContainer;
 
@@ -33,9 +31,7 @@ namespace VideoGameCatalogue
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             CurrentUser.Update();
             accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
-
-
-            reviewList = new ReviewList(CurrentUser.user);
+            
 
             accountLoggedOutToolStripMenuItem.Visible = !CurrentUser.user.LoggedIn;
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
@@ -43,7 +39,7 @@ namespace VideoGameCatalogue
             userIDStatusLabel.Text = CurrentUser.userID.ToString();
             usernameStatusLabel.Text = CurrentUser.username;
             updateLoop.Start();
-            OpenWindow(new GamesList());
+            OpenWindow(new GamesList()).Show();
            
             
         }
@@ -78,9 +74,9 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ChangePassword().New("");
-            new ChangePassword().New("face");
-            new ChangePassword().Change(); ;
+            new ChangePassword(User.empty).New("");
+            new ChangePassword(User.empty).New("face");
+            new ChangePassword(User.empty).Change(); ;
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,7 +101,7 @@ namespace VideoGameCatalogue
         private void aboutVideoGameCatalogueToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            aboutWindow.ShowDialog();
+            new AboutWindow().ShowDialog();
         }
         
 
@@ -119,7 +115,7 @@ namespace VideoGameCatalogue
         private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            MdiContainer.OpenWindow(reviewList);
+            OpenWindow(new ReviewList(CurrentUser.user)).Show();
         }
 
         private void GamesList_ResizeEnd(object sender, EventArgs e)
@@ -137,13 +133,18 @@ namespace VideoGameCatalogue
 
         private void userListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            userList.ShowDialog();
+            MdiContainer.OpenWindow(new UserList()).Show();
         }
 
-        public static void OpenWindow(Form form)
+        public static Form OpenWindow(Form form)
         {
             form.MdiParent = mdiContainer;
-            form.Show();
+            return form;
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ChangePassword(CurrentUser.user).Change(); ;
         }
     }
 }

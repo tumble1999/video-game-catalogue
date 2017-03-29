@@ -68,7 +68,7 @@ namespace VideoGameCatalogue
                 CurrentUser.user = new User(usernameTextBox.Text, "");
                 if (!CurrentUser.user.Exists())
                 {
-                    new ChangePassword().New(passwordTextBox.Text);
+                    new ChangePassword(CurrentUser.user).New(passwordTextBox.Text);
                     if (CurrentUser.user.LoggedIn)
                     {
 

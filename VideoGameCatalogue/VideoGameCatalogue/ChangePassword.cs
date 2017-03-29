@@ -13,9 +13,11 @@ namespace VideoGameCatalogue
     public partial class ChangePassword : Form
     {
         string type;
-        public ChangePassword()
+        User user;
+        public ChangePassword(User u)
         {
             InitializeComponent();
+            user = u;
         }
 
         public void New(string password)
@@ -51,19 +53,21 @@ namespace VideoGameCatalogue
         {
             if (type == "Change")
             {
-
+                MessageBox.Show("Coming Soon");
+                this.Hide();
+                this.Close();
             }
             if (type == "New")
             {
                 if (textBoxConfirmPassword.Text == textBoxNewPassword.Text & textBoxConfirmPassword.Text != "")
                 {
-                    CurrentUser.user.Password = textBoxNewPassword.Text;
-                    CurrentUser.user.Register();
-                    if (CurrentUser.user.Exists())
+                    user.Password = textBoxNewPassword.Text;
+                    user.Register();
+                    if (user.Exists())
                     {
                         MessageBox.Show("Registed");
-                        CurrentUser.user.Login();
-                        if (CurrentUser.user.LoggedIn)
+                        user.Login();
+                        if (user.LoggedIn)
                         {
 
                             this.Hide();

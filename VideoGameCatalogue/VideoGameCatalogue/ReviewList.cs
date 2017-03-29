@@ -120,14 +120,14 @@ namespace VideoGameCatalogue
                 UnPlace(0, user.Reviews);
                 Place(this.x, this.y, 0, user.Reviews);
                 //refreshProgressBar.Visible = false;
-                gameInfo.RefreshGameInfo();
+                //.RefreshGameInfo();
             }
         }
 
         private void ButtonClick(object sender, EventArgs e)
         {
             ReviewButton reviewBtn = (sender as ReviewButton);
-            MdiContainer.OpenWindow(new FullReview(reviewBtn.review));
+            MdiContainer.OpenWindow(new FullReview(reviewBtn.review)).Show();
         }
 
         private void ReviewList_Resize(object sender, EventArgs e)
@@ -144,7 +144,7 @@ namespace VideoGameCatalogue
             else
             {
                 MessageBox.Show("Your not logged in");
-                new UserLogin().Show();
+                MdiContainer.OpenWindow(new UserLogin()).Show();
 
             }
         }

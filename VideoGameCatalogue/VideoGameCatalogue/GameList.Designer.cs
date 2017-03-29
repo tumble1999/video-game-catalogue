@@ -132,6 +132,7 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "GamesList";
             this.Text = "Games List";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResizeBegin += new System.EventHandler(this.GamesList_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.GamesList_ResizeEnd);
             this.Resize += new System.EventHandler(this.GamesList_Resize);
