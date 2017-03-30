@@ -31,5 +31,20 @@ namespace VideoGameCatalogue
             this.usersTableAdapter.Fill(this.vGCDataSet.Users);
 
         }
+
+        private void usersBindingSource1BindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.usersBindingSource1.EndEdit();
+            this.tableAdapterManager1.UpdateAll(this.vGCDataSet1);
+
+        }
+
+        private void UserList_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'vGCDataSet1.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter1.Fill(this.vGCDataSet1.Users);
+
+        }
     }
 }

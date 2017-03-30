@@ -82,12 +82,14 @@ namespace VideoGameCatalogue
 
         //int x, y;
         
-        private string name, genre, description, publisher, platform;
+        private string name, genre, description, platform;
         private int id = -1;
+        private int companyId;
         //private int avarageReview = -1;
         //private int reviewCount = -1;
         //Review[] reviews;
         DateTime releaseDate;
+
 
         public string Name
         {
@@ -125,19 +127,6 @@ namespace VideoGameCatalogue
             set
             {
                 description = value;
-            }
-        }
-
-        public string Publisher
-        {
-            get
-            {
-                return publisher;
-            }
-
-            set
-            {
-                publisher = value;
             }
         }
 
@@ -204,8 +193,28 @@ namespace VideoGameCatalogue
                 return Reviews.Length;
             }
         }
+        public Company Company
+        {
+            get
+            {
+                return Company.GetCompany(this.companyId);
+            }
+        }
 
-        public Game(/*int x, int y,*/int gameId, string gameTitle, string gameGenre, string gameDescription, string gamePublisher, string gamePlatform, DateTime gameReleaseDate)
+        public int CompanyId
+        {
+            get
+            {
+                return companyId;
+            }
+
+            set
+            {
+                companyId = value;
+            }
+        }
+
+        public Game(/*int x, int y,*/int gameId, string gameTitle, string gameGenre, string gameDescription, string gamePlatform, DateTime gameReleaseDate, int gameCompanyId)
         {
             //this.x = x;
             ///this.y = y;
@@ -214,9 +223,9 @@ namespace VideoGameCatalogue
             Name = gameTitle;
             Genre = gameGenre;
             Description = gameDescription;
-            Publisher = gamePublisher;
             Platform = gamePlatform;
             ReleaseDate = gameReleaseDate;
+            CompanyId = gameCompanyId;
             //avarageReview = Review.GetAverage(Reviews);
             //reviewCount = Reviews.Length;
 

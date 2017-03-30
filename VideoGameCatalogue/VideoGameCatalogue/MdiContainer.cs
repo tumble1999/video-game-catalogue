@@ -16,6 +16,7 @@ namespace VideoGameCatalogue
     public partial class MdiContainer : Form
     {
         UserList userList = new UserList();
+        //ReviewList reviewlist;
 
         //private ReviewList reviewList;
         private Thread updateLoop;
@@ -39,7 +40,9 @@ namespace VideoGameCatalogue
             userIDStatusLabel.Text = CurrentUser.userID.ToString();
             usernameStatusLabel.Text = CurrentUser.username;
             updateLoop.Start();
-            OpenWindow(new GamesList()).Show();
+            OpenWindow(new GamesList() {
+                ControlBox = false
+            }).Show();
            
             
         }
@@ -115,6 +118,7 @@ namespace VideoGameCatalogue
         private void listReviewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            
             OpenWindow(new ReviewList(CurrentUser.user)).Show();
         }
 

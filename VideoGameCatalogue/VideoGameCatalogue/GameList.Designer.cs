@@ -46,6 +46,7 @@
             this.refreshToolStripMenuItem});
             this.menuBar.Location = new System.Drawing.Point(0, 0);
             this.menuBar.Name = "menuBar";
+            this.menuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuBar.Size = new System.Drawing.Size(1096, 24);
             this.menuBar.TabIndex = 0;
             this.menuBar.Text = "menuStrip1";
@@ -125,11 +126,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(0, 24);
             this.ClientSize = new System.Drawing.Size(1096, 550);
-            this.ControlBox = false;
             this.Controls.Add(this.gameItemPanel);
             this.Controls.Add(this.gameListPanel);
             this.Controls.Add(this.menuBar);
-            this.MainMenuStrip = this.menuBar;
+            this.HelpButton = true;
             this.Name = "GamesList";
             this.Text = "Games List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -21,7 +21,8 @@ namespace VideoGameCatalogue
         public static readonly User empty = new User("Guest", "") {
             loggedIn = false
         };
-        private Review[] reviews;
+        //private Review[] reviews;
+        //private Company[] companies
         private VGCDataSet vgcDataSet = new VGCDataSet();
         private UsersTableAdapter usersTableAdapter = new UsersTableAdapter();
 
@@ -74,19 +75,26 @@ namespace VideoGameCatalogue
         {
             get
             {
-                return reviews;
+                return Review.GetReviews.User(this);
             }
+        }
 
-            set
+        public Company[] Companies
+        {
+            get
             {
-                reviews = value;
+                return Company.GetCompanies(this);
             }
         }
 
         internal void Update()
         {
-            cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+
+            OleDbCommand cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
             cmd.Connection = conn;
+
+            conn.Open();
 
             if (conn.State == ConnectionState.Open)
             {
@@ -99,7 +107,7 @@ namespace VideoGameCatalogue
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Updated");
+                    MessageBox.Show("Updated");
                     conn.Close();
                 }
                 catch (OleDbException e)
@@ -175,8 +183,6 @@ namespace VideoGameCatalogue
             id = getID(username, password);
             
             loggedIn = id != -1;
-
-            Reviews = Review.GetReviews.User(this);
         }
 
         public bool Exists()

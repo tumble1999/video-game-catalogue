@@ -15,7 +15,6 @@ namespace VideoGameCatalogue
 {
     public partial class GamesList : Form
     {
-
         public static int gameWidth = 278;
         int gameHeight = 127;
         int x = 0;
@@ -39,11 +38,21 @@ namespace VideoGameCatalogue
             updateLoop.Start();
 
             //reviewList = new ReviewList(CurrentUser.user);
-
             FetchGames();
-            RefreshGames();
             
         }
+        public GamesList(Company company)
+        {
+            InitializeComponent();
+            this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
+            updateLoop.Start();
+
+            //reviewList = new ReviewList(CurrentUser.user);
+
+            FetchGames(company);
+            RefreshGames();
+        }
+
 
         /// <summary>
         /// 
@@ -174,7 +183,6 @@ namespace VideoGameCatalogue
         {
             RefreshGames();
         }
-
         public void FetchGames()
         {
             //List games
@@ -191,7 +199,31 @@ namespace VideoGameCatalogue
             while (reader.Read())
             {
                 // currentGameId = reader.GetString(0);
-                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetDateTime(6)));
+                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetDateTime(6), reader.GetInt32(7)));
+
+            }
+            games = tmpGames.ToArray();
+            reader.Close();
+            conn.Close();
+        }
+        public void FetchGames(Company c)
+        {
+            this.Text = c.CompanyName;
+            //List games
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Games Where CompanyID=" + c.Id;
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            IList<Game> tmpGames = new List<Game>();
+            //int i = 1;
+            while (reader.Read())
+            {
+                // currentGameId = reader.GetString(0);
+                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetDateTime(6), reader.GetInt32(7)));
 
             }
             games = tmpGames.ToArray();

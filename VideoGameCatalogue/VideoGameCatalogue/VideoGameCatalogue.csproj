@@ -74,6 +74,12 @@
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Company.cs" />
+    <Compile Include="CompanyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyList.Designer.cs">
+      <DependentUpon>CompanyList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurrentUser.cs" />
     <Compile Include="MdiContainer.cs">
       <SubType>Form</SubType>

@@ -347,7 +347,7 @@ namespace VideoGameCatalogue
                     readerGame = cmdUser.ExecuteReader();
                     while (readerGame.Read())
                     {
-                        tmpGame = new Game(readerGame.GetInt32(0), readerGame.GetString(1), readerGame.GetString(2), readerGame.GetString(3), readerGame.GetString(4), readerGame.GetString(5), readerGame.GetDateTime(6));
+                        tmpGame = new Game(readerGame.GetInt32(0), readerGame.GetString(1), readerGame.GetString(2), readerGame.GetString(3), readerGame.GetString(4), readerGame.GetDateTime(6), readerGame.GetInt32(5));
                     }
                     readerGame.Close();
                     connUser.Close();

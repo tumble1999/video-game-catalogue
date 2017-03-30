@@ -48,9 +48,9 @@ namespace VideoGameCatalogue
             this.Show();
             textBoxOldPassword.Focus();
 
-            MessageBox.Show("Coming Soon");
+            /*MessageBox.Show("Coming Soon");
             this.Hide();
-            this.Close();
+            this.Close();*/
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -70,6 +70,10 @@ namespace VideoGameCatalogue
                     {
                         MessageBox.Show("There was an error somewhere!");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Either Textboxes are empty \n old password  is wrong \n or new passwords dont match.");
                 }
             }
             if (type == "New")

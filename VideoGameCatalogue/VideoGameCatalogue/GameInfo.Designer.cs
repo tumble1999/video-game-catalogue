@@ -31,7 +31,6 @@
             this.gameTitleLabel = new System.Windows.Forms.Label();
             this.gameGenreLabel = new System.Windows.Forms.Label();
             this.gameDescriptionLabel = new System.Windows.Forms.Label();
-            this.gamePublisherLabel = new System.Windows.Forms.Label();
             this.gamePlatformLabel = new System.Windows.Forms.Label();
             this.gameReleaseDateLabel = new System.Windows.Forms.Label();
             this.gameReviewBar = new System.Windows.Forms.ProgressBar();
@@ -39,6 +38,7 @@
             this.buttonAllReviews = new System.Windows.Forms.Button();
             this.panelReviews = new System.Windows.Forms.Panel();
             this.reviewCountLabel = new System.Windows.Forms.Label();
+            this.linkLabelCompany = new System.Windows.Forms.LinkLabel();
             this.panelReviewbuttons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,16 +69,6 @@
             this.gameDescriptionLabel.Size = new System.Drawing.Size(574, 267);
             this.gameDescriptionLabel.TabIndex = 2;
             this.gameDescriptionLabel.Text = "gameDescriptionLabel";
-            // 
-            // gamePublisherLabel
-            // 
-            this.gamePublisherLabel.AutoSize = true;
-            this.gamePublisherLabel.Location = new System.Drawing.Point(12, 52);
-            this.gamePublisherLabel.Name = "gamePublisherLabel";
-            this.gamePublisherLabel.Size = new System.Drawing.Size(102, 13);
-            this.gamePublisherLabel.TabIndex = 3;
-            this.gamePublisherLabel.Text = "gamePublisherLabel";
-            this.gamePublisherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // gamePlatformLabel
             // 
@@ -148,18 +138,29 @@
             this.reviewCountLabel.Text = "reviewCountLabel";
             this.reviewCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // linkLabelCompany
+            // 
+            this.linkLabelCompany.AutoSize = true;
+            this.linkLabelCompany.Location = new System.Drawing.Point(12, 62);
+            this.linkLabelCompany.Name = "linkLabelCompany";
+            this.linkLabelCompany.Size = new System.Drawing.Size(93, 13);
+            this.linkLabelCompany.TabIndex = 10;
+            this.linkLabelCompany.TabStop = true;
+            this.linkLabelCompany.Text = "linkLabelCompany";
+            this.linkLabelCompany.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCompany_LinkClicked);
+            // 
             // GameInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 489);
+            this.Controls.Add(this.linkLabelCompany);
             this.Controls.Add(this.reviewCountLabel);
             this.Controls.Add(this.panelReviews);
             this.Controls.Add(this.panelReviewbuttons);
             this.Controls.Add(this.gameReviewBar);
             this.Controls.Add(this.gameReleaseDateLabel);
             this.Controls.Add(this.gamePlatformLabel);
-            this.Controls.Add(this.gamePublisherLabel);
             this.Controls.Add(this.gameDescriptionLabel);
             this.Controls.Add(this.gameGenreLabel);
             this.Controls.Add(this.gameTitleLabel);
@@ -177,7 +178,6 @@
         private System.Windows.Forms.Label gameTitleLabel;
         private System.Windows.Forms.Label gameGenreLabel;
         private System.Windows.Forms.Label gameDescriptionLabel;
-        private System.Windows.Forms.Label gamePublisherLabel;
         private System.Windows.Forms.Label gamePlatformLabel;
         private System.Windows.Forms.Label gameReleaseDateLabel;
         private System.Windows.Forms.ProgressBar gameReviewBar;
@@ -185,5 +185,6 @@
         private System.Windows.Forms.Panel panelReviews;
         private System.Windows.Forms.Button buttonAllReviews;
         private System.Windows.Forms.Label reviewCountLabel;
+        private System.Windows.Forms.LinkLabel linkLabelCompany;
     }
 }

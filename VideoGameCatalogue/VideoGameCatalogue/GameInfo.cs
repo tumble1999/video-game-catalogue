@@ -81,11 +81,17 @@ namespace VideoGameCatalogue
             gameTitleLabel.Text = game.Name;
             gameGenreLabel.Text = game.Genre;
             gameDescriptionLabel.Text = game.Description;
-            gamePublisherLabel.Text = game.Publisher;
+            linkLabelCompany.Text = game.Company.CompanyName;
             gamePlatformLabel.Text = game.Platform;
             gameReleaseDateLabel.Text = DateToString(game.ReleaseDate);
             gameReviewBar.Value = 10 * game.AvarageReview;
             reviewCountLabel.Text = game.ReviewCount + " Reviews";
+        }
+
+        private void linkLabelCompany_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            MdiContainer.OpenWindow(new GamesList(game.Company)).Show();
         }
     }
 }
