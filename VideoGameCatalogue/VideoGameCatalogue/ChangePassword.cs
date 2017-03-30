@@ -57,7 +57,20 @@ namespace VideoGameCatalogue
         {
             if (type == "Change")
             {
-                
+                if(textBoxOldPassword.Text == user.Password & textBoxConfirmPassword.Text == textBoxNewPassword.Text & textBoxConfirmPassword.Text != "")
+                {
+                    user.Password = textBoxNewPassword.Text;
+                    user.Update();
+                    if(user.Password == textBoxNewPassword.Text)
+                    {
+
+                        this.Hide();
+                        this.Close();
+                    } else
+                    {
+                        MessageBox.Show("There was an error somewhere!");
+                    }
+                }
             }
             if (type == "New")
             {
