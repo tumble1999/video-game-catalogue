@@ -39,5 +39,15 @@ namespace VideoGameCatalogue
         {
             buttonDelete.Enabled = listBoxCompanies.SelectedItems.Count >= 1;
         }
+
+        private void listBoxCompanies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Companies_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
