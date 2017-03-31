@@ -11,10 +11,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoGameCatalogue.Properties;
 
+
 namespace VideoGameCatalogue
 {
     public partial class MdiContainer : Form
     {
+        
         UserList userList = new UserList();
         //ReviewList reviewlist;
 
@@ -160,6 +162,25 @@ namespace VideoGameCatalogue
         private void companyManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenWindow(new CompanyManager(ref CurrentUser.user)).Show();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Clipboard.SetText(this.SelectedText);
+
+            //this.SelectedText = string.Empty;
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Clipboard.SetText(this.SelectedText);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //string xx = Clipboard.GetText();
+
+           //this.Text = this.Text.Insert(this.SelectionStart, xx);
         }
     }
 }

@@ -43,6 +43,7 @@
             this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountLoggedInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listReviewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.companyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@
             this.loggedInStatusLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.companyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -120,37 +120,40 @@
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(100, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // accountLoggedOutToolStripMenuItem
             // 
@@ -164,14 +167,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
@@ -190,26 +193,33 @@
             // listReviewsToolStripMenuItem
             // 
             this.listReviewsToolStripMenuItem.Name = "listReviewsToolStripMenuItem";
-            this.listReviewsToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.listReviewsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.listReviewsToolStripMenuItem.Text = "List Reviews";
             this.listReviewsToolStripMenuItem.Click += new System.EventHandler(this.listReviewsToolStripMenuItem_Click);
+            // 
+            // companyManagerToolStripMenuItem
+            // 
+            this.companyManagerToolStripMenuItem.Name = "companyManagerToolStripMenuItem";
+            this.companyManagerToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.companyManagerToolStripMenuItem.Text = "Company Manager";
+            this.companyManagerToolStripMenuItem.Click += new System.EventHandler(this.companyManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(173, 6);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -343,13 +353,6 @@
             // 
             this.refreshProgressBar.Name = "refreshProgressBar";
             this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
-            // 
-            // companyManagerToolStripMenuItem
-            // 
-            this.companyManagerToolStripMenuItem.Name = "companyManagerToolStripMenuItem";
-            this.companyManagerToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.companyManagerToolStripMenuItem.Text = "Company Manager";
-            this.companyManagerToolStripMenuItem.Click += new System.EventHandler(this.companyManagerToolStripMenuItem_Click);
             // 
             // MdiContainer
             // 

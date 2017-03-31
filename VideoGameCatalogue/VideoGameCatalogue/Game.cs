@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoGameCatalogue;
+using VideoGameCatalogue.Properties;
 
 namespace VideoGameCatalogue
 {
@@ -244,6 +245,28 @@ namespace VideoGameCatalogue
                 X = GameContainer.Location.X * x,
                 Y = GameContainer.Location.Y * y
             };*/
+        }
+
+        public static Game[] GetGames(Company c)
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Games WHERE GameID=" + c.Id;
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            IList<Game> tmpGames = new List<Game>();
+            //int i = 1;
+
+            while (reader.Read())
+            {
+                tmpGames.Add(new Game(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetDateTime(6), reader.GetInt32(7)));
+            }
+            reader.Close();
+            conn.Close();
+            return tmpGames.ToArray();
         }
 
     }

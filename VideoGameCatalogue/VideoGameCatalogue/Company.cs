@@ -56,6 +56,14 @@ namespace VideoGameCatalogue
             }
         }
 
+        public Game[] Games
+        {
+            get
+            {
+                return Game.GetGames(this);
+            }
+        }
+
         public int UserID
         {
             get
