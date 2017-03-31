@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
+            // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.LabelEdit = true;
+            this.listView1.Location = new System.Drawing.Point(35, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(698, 356);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // CompanyManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 396);
+            this.Controls.Add(this.listView1);
             this.DoubleBuffered = true;
             this.Name = "CompanyManager";
             this.Text = "Company Manager";
@@ -43,5 +55,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView listView1;
     }
 }

@@ -15,6 +15,10 @@ namespace VideoGameCatalogue
         public CompanyManager(ref User u)
         {
             InitializeComponent();
+            foreach (Company company in u.Companies)
+            {
+                listView1.Items.Add(company.CompanyName);
+            }
         }
     }
 }

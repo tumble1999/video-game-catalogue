@@ -159,7 +159,7 @@ namespace VideoGameCatalogue
 
         private void companyManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenWindow(new CompanyManager(ref CurrentUser.user));
+            OpenWindow(new CompanyManager(ref CurrentUser.user)).Show();
         }
     }
 }
