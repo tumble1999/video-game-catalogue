@@ -156,5 +156,10 @@ namespace VideoGameCatalogue
             this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
             this.usernameStatusLabel.Text = CurrentUser.username;
         }
+
+        private void companyManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenWindow(new CompanyManager(ref CurrentUser.user));
+        }
     }
 }

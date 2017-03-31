@@ -70,6 +70,7 @@
             this.textBoxOldPassword.Name = "textBoxOldPassword";
             this.textBoxOldPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxOldPassword.TabIndex = 2;
+            this.textBoxOldPassword.UseSystemPasswordChar = true;
             // 
             // textBoxNewPassword
             // 
@@ -79,6 +80,7 @@
             this.textBoxNewPassword.Name = "textBoxNewPassword";
             this.textBoxNewPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxNewPassword.TabIndex = 3;
+            this.textBoxNewPassword.UseSystemPasswordChar = true;
             // 
             // textBoxConfirmPassword
             // 
@@ -88,6 +90,7 @@
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(100, 20);
             this.textBoxConfirmPassword.TabIndex = 4;
+            this.textBoxConfirmPassword.UseSystemPasswordChar = true;
             // 
             // labelOldPassword
             // 

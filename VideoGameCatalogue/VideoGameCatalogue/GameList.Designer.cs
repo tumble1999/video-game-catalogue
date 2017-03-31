@@ -36,18 +36,21 @@
             this.viewGameButton = new System.Windows.Forms.Button();
             this.gameItemPanel = new System.Windows.Forms.Panel();
             this.gameListPanel = new System.Windows.Forms.Panel();
+            this.labelGameListTitle = new System.Windows.Forms.Label();
             this.menuBar.SuspendLayout();
             this.gameItemPanel.SuspendLayout();
+            this.gameListPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
             // 
+            this.menuBar.Dock = System.Windows.Forms.DockStyle.None;
             this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshToolStripMenuItem});
-            this.menuBar.Location = new System.Drawing.Point(0, 0);
+            this.menuBar.Location = new System.Drawing.Point(485, 231);
             this.menuBar.Name = "menuBar";
             this.menuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuBar.Size = new System.Drawing.Size(1096, 24);
+            this.menuBar.Size = new System.Drawing.Size(66, 24);
             this.menuBar.TabIndex = 0;
             this.menuBar.Text = "menuStrip1";
             // 
@@ -104,7 +107,7 @@
             this.gameItemPanel.Controls.Add(this.gameDescriptionLabel);
             this.gameItemPanel.Controls.Add(this.genreText);
             this.gameItemPanel.Controls.Add(this.gameTitle);
-            this.gameItemPanel.Location = new System.Drawing.Point(0, 26);
+            this.gameItemPanel.Location = new System.Drawing.Point(6, 34);
             this.gameItemPanel.Name = "gameItemPanel";
             this.gameItemPanel.Size = new System.Drawing.Size(278, 127);
             this.gameItemPanel.TabIndex = 2;
@@ -114,11 +117,26 @@
             // 
             this.gameListPanel.AutoScroll = true;
             this.gameListPanel.AutoSize = true;
+            this.gameListPanel.Controls.Add(this.gameItemPanel);
+            this.gameListPanel.Controls.Add(this.labelGameListTitle);
+            this.gameListPanel.Controls.Add(this.menuBar);
             this.gameListPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gameListPanel.Location = new System.Drawing.Point(0, 24);
+            this.gameListPanel.Location = new System.Drawing.Point(0, 0);
             this.gameListPanel.Name = "gameListPanel";
-            this.gameListPanel.Size = new System.Drawing.Size(1096, 526);
+            this.gameListPanel.Size = new System.Drawing.Size(1096, 550);
             this.gameListPanel.TabIndex = 3;
+            // 
+            // labelGameListTitle
+            // 
+            this.labelGameListTitle.AutoSize = true;
+            this.labelGameListTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelGameListTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGameListTitle.Location = new System.Drawing.Point(0, 0);
+            this.labelGameListTitle.Name = "labelGameListTitle";
+            this.labelGameListTitle.Size = new System.Drawing.Size(239, 31);
+            this.labelGameListTitle.TabIndex = 4;
+            this.labelGameListTitle.Text = "labelGameListTitle";
+            this.labelGameListTitle.Click += new System.EventHandler(this.labelGameListTitle_Click);
             // 
             // GamesList
             // 
@@ -126,9 +144,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScrollMargin = new System.Drawing.Size(0, 24);
             this.ClientSize = new System.Drawing.Size(1096, 550);
-            this.Controls.Add(this.gameItemPanel);
             this.Controls.Add(this.gameListPanel);
-            this.Controls.Add(this.menuBar);
             this.HelpButton = true;
             this.Name = "GamesList";
             this.Text = "Games List";
@@ -140,6 +156,8 @@
             this.menuBar.PerformLayout();
             this.gameItemPanel.ResumeLayout(false);
             this.gameItemPanel.PerformLayout();
+            this.gameListPanel.ResumeLayout(false);
+            this.gameListPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +173,7 @@
         private System.Windows.Forms.Panel gameItemPanel;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.Panel gameListPanel;
+        private System.Windows.Forms.Label labelGameListTitle;
     }
 }
 

@@ -18,7 +18,7 @@ namespace VideoGameCatalogue
         public static int gameWidth = 278;
         int gameHeight = 127;
         int x = 0;
-        int y = 24;
+        int y = 0;
 
         AboutWindow aboutWindow = new AboutWindow();
         UserList userList = new UserList();
@@ -34,6 +34,8 @@ namespace VideoGameCatalogue
         public GamesList()
         {
             InitializeComponent();
+
+            labelGameListTitle.Visible = false;
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             updateLoop.Start();
 
@@ -44,6 +46,9 @@ namespace VideoGameCatalogue
         public GamesList(Company company)
         {
             InitializeComponent();
+
+            y = 34;
+            labelGameListTitle.Text = company.CompanyName;
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
             updateLoop.Start();
 
@@ -229,6 +234,11 @@ namespace VideoGameCatalogue
             games = tmpGames.ToArray();
             reader.Close();
             conn.Close();
+        }
+
+        private void labelGameListTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

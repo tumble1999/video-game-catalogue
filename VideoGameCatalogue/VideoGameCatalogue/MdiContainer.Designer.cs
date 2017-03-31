@@ -63,6 +63,7 @@
             this.loggedInStatusLabelLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.loggedInStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.refreshProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.companyManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -178,6 +179,7 @@
             // 
             this.accountLoggedInToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listReviewsToolStripMenuItem,
+            this.companyManagerToolStripMenuItem,
             this.toolStripSeparator3,
             this.changePasswordToolStripMenuItem,
             this.logOutToolStripMenuItem});
@@ -342,6 +344,13 @@
             this.refreshProgressBar.Name = "refreshProgressBar";
             this.refreshProgressBar.Size = new System.Drawing.Size(100, 18);
             // 
+            // companyManagerToolStripMenuItem
+            // 
+            this.companyManagerToolStripMenuItem.Name = "companyManagerToolStripMenuItem";
+            this.companyManagerToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.companyManagerToolStripMenuItem.Text = "Company Manager";
+            this.companyManagerToolStripMenuItem.Click += new System.EventHandler(this.companyManagerToolStripMenuItem_Click);
+            // 
             // MdiContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +359,7 @@
             this.ClientSize = new System.Drawing.Size(1096, 550);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.menuBar);
+            this.DoubleBuffered = true;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuBar;
             this.Name = "MdiContainer";
@@ -402,6 +412,7 @@
         private System.Windows.Forms.ToolStripProgressBar refreshProgressBar;
         private System.Windows.Forms.ToolStripMenuItem userListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem companyManagerToolStripMenuItem;
     }
 }
 
