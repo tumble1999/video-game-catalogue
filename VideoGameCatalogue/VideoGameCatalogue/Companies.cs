@@ -54,7 +54,7 @@ namespace VideoGameCatalogue
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            new NewCompany(user)
+            new NewCompany(user);
         }
 
         private void listBoxCompanies_DoubleClick(object sender, EventArgs e)
