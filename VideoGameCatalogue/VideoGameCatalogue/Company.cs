@@ -25,7 +25,6 @@ namespace VideoGameCatalogue
         }
         public Company(string companyName, int userID)
         {
-            this.id = getID(companyName,userID);
             this.companyName = companyName;
             this.userID = userID;
         }
@@ -34,12 +33,7 @@ namespace VideoGameCatalogue
         {
             get
             {
-                return id;
-            }
-
-            set
-            {
-                id = value;
+                return getID(companyName, userID); ;
             }
         }
 
@@ -82,7 +76,7 @@ namespace VideoGameCatalogue
             int output = -1;
 
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-            string sql = "SELECT * FROM Companys";
+            string sql = "SELECT * FROM Companies";
             OleDbCommand cmd = new OleDbCommand(sql, conn);
             conn.Open();
 
