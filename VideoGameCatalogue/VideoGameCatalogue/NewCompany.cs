@@ -47,5 +47,11 @@ namespace VideoGameCatalogue
                 MessageBox.Show(labelName.Text + "is empty.");
             }
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
+        }
     }
 }
