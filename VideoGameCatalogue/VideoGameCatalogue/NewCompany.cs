@@ -42,7 +42,7 @@ namespace VideoGameCatalogue
                     }
                     else
                     {
-                        MessageBox.Show("Company Exists")
+                        MessageBox.Show("Company Exists");
                     }
                 }
                 else if (t == "edit")
