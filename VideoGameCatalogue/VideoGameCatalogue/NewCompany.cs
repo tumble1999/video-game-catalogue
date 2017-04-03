@@ -43,7 +43,7 @@ namespace VideoGameCatalogue
                 }
             } else
             {
-                MessageBox.Show(labelName.Text + "is empty.")
+                MessageBox.Show(labelName.Text + "is empty.");
             }
         }
     }

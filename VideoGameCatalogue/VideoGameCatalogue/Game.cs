@@ -269,7 +269,7 @@ namespace VideoGameCatalogue
             return tmpGames.ToArray();
         }
 
-        internal void Update()
+        /*internal void Update()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
@@ -304,9 +304,9 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
-        }
+        }*/
 
-        internal void Register()
+        /*internal void New()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
@@ -343,7 +343,7 @@ namespace VideoGameCatalogue
             Update();
 
 
-        }
+        }*/
 
     }
     public class GameButton : Button

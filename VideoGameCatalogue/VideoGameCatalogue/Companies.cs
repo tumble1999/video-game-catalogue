@@ -51,5 +51,18 @@ namespace VideoGameCatalogue
                 listBoxCompanies.Items.Add(company.CompanyName);
             }
         }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            new NewCompany(user)
+        }
+
+        private void listBoxCompanies_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBoxCompanies.SelectedItem != null)
+            {
+                new NewCompany(user.Companies[listBoxCompanies.SelectedIndex]);
+            }
+        }
     }
 }
