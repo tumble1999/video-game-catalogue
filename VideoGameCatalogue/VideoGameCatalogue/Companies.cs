@@ -21,6 +21,7 @@ namespace VideoGameCatalogue
             {
                 listBoxCompanies.Items.Add(company.CompanyName);
             }
+            listBoxCompanies.Items.`
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
