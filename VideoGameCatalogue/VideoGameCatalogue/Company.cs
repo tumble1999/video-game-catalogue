@@ -215,5 +215,9 @@ namespace VideoGameCatalogue
 
 
         }
+        public bool Exists()
+        {
+            return getID(companyName, userID) != -1;
+        }
     }
 }

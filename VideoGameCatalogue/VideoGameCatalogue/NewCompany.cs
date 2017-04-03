@@ -35,7 +35,15 @@ namespace VideoGameCatalogue
             if (textBoxName.Text != "") {
                 if (t == "new")
                 {
-                    new Company(textBoxName.Text, user.Id).New();
+                    Company c = new Company(textBoxName.Text, user.Id);
+                    if (!c.Exists())
+                    {
+                        c.New();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Company Exists")
+                    }
                 }
                 else if (t == "edit")
                 {
