@@ -158,17 +158,17 @@ namespace VideoGameCatalogue
 
                 //MessageBox.Show(cmd.CommandText);
 
-                try
-                {
+                //try
+                //{
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Updated");
                     conn.Close();
-                }
-                catch (OleDbException e)
-                {
-                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
-                    conn.Close();
-                }
+                //}
+                //catch (OleDbException e)
+                //{
+                //    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                //    conn.Close();
+                //}
 
 
             }
