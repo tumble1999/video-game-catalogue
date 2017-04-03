@@ -21,7 +21,6 @@ namespace VideoGameCatalogue
             {
                 listBoxCompanies.Items.Add(company.CompanyName);
             }
-            listBoxCompanies.Items.`
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -47,6 +46,7 @@ namespace VideoGameCatalogue
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
+            listBoxCompanies.Items.Clear();
             foreach (var company in user.Companies)
             {
                 listBoxCompanies.Items.Add(company.CompanyName);
