@@ -210,9 +210,10 @@ namespace VideoGameCatalogue
             {
                 MessageBox.Show("Connection Failed");
             }
-
-            Update();
-
+            if (this.Exists())
+            {
+                Update();
+            }
 
         }
         public bool Exists()
