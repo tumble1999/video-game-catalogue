@@ -27,6 +27,7 @@ namespace VideoGameCatalogue
             InitializeComponent();
             this.company = c;
             this.t = "edit";
+            textBoxName.Text = company.CompanyName;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

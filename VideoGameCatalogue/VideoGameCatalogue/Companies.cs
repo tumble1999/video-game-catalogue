@@ -54,14 +54,14 @@ namespace VideoGameCatalogue
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            new NewCompany(user);
+            new NewCompany(user).Show();
         }
 
         private void listBoxCompanies_DoubleClick(object sender, EventArgs e)
         {
             if (listBoxCompanies.SelectedItem != null)
             {
-                new NewCompany(user.Companies[listBoxCompanies.SelectedIndex]);
+                new NewCompany(user.Companies[listBoxCompanies.SelectedIndex]).Show();
             }
         }
     }
