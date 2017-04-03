@@ -269,6 +269,82 @@ namespace VideoGameCatalogue
             return tmpGames.ToArray();
         }
 
+        internal void Update()
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+
+            OleDbCommand cmd = new OleDbCommand("UPDATE Games SET Username = @Username, [Password] = @Password WHERE GameID = @id");
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@id", Id);
+
+                //MessageBox.Show(cmd.CommandText);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Updated");
+                    conn.Close();
+                }
+                catch (OleDbException e)
+                {
+                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                    conn.Close();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
+        }
+
+        internal void Register()
+        {
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+
+            OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password) ");
+            cmd.Connection = conn;
+
+            conn.Open();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                cmd.Parameters.AddWithValue("@Username", Username);
+                cmd.Parameters.AddWithValue("@Password", Password);
+
+                //MessageBox.Show(cmd.CommandText);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Data Added");
+                }
+                catch (OleDbException ex)
+                {
+                    MessageBox.Show(ex.Source);
+                    conn.Close();
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Connection Failed");
+            }
+
+            Update();
+
+
+        }
+
     }
     public class GameButton : Button
     {

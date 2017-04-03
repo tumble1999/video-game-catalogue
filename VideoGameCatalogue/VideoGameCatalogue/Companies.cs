@@ -25,14 +25,8 @@ namespace VideoGameCatalogue
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
             this.Hide();
             this.Close();
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void listBoxCompanies_SelectedValueChanged(object sender, EventArgs e)
@@ -48,6 +42,14 @@ namespace VideoGameCatalogue
         private void Companies_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            foreach (var company in user.Companies)
+            {
+                listBoxCompanies.Items.Add(company.CompanyName);
+            }
         }
     }
 }

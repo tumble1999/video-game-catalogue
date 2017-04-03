@@ -158,6 +158,8 @@
             this.Controls.Add(this.labelGameGenre);
             this.Controls.Add(this.textBoxGameName);
             this.Controls.Add(this.labelGameName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "NewGame";
             this.Text = "NewGame";
             this.ResumeLayout(false);

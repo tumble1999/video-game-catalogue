@@ -41,6 +41,7 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonCompanies = new System.Windows.Forms.Button();
+            this.columnHeaderGameID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listViewGames
@@ -52,7 +53,8 @@
             this.columnHeaderGameGenre,
             this.columnHeaderPlatform,
             this.columnHeaderReleaseDate,
-            this.columnHeaderDescription});
+            this.columnHeaderDescription,
+            this.columnHeaderGameID});
             this.listViewGames.Dock = System.Windows.Forms.DockStyle.Top;
             this.listViewGames.GridLines = true;
             this.listViewGames.LabelEdit = true;
@@ -100,6 +102,7 @@
             this.buttonNewGame.TabIndex = 1;
             this.buttonNewGame.Text = "New";
             this.buttonNewGame.UseVisualStyleBackColor = true;
+            this.buttonNewGame.Click += new System.EventHandler(this.buttonNewGame_Click);
             // 
             // buttonEditGame
             // 
@@ -111,6 +114,7 @@
             this.buttonEditGame.TabIndex = 2;
             this.buttonEditGame.Text = "Edit";
             this.buttonEditGame.UseVisualStyleBackColor = true;
+            this.buttonEditGame.Click += new System.EventHandler(this.buttonEditGame_Click);
             // 
             // buttonDeleteGame
             // 
@@ -155,6 +159,10 @@
             this.buttonCompanies.UseVisualStyleBackColor = true;
             this.buttonCompanies.Click += new System.EventHandler(this.buttonCompanies_Click);
             // 
+            // columnHeaderGameID
+            // 
+            this.columnHeaderGameID.Text = "ID";
+            // 
             // CompanyManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +178,7 @@
             this.DoubleBuffered = true;
             this.Name = "CompanyManager";
             this.Text = "Company Manager";
+            this.Load += new System.EventHandler(this.CompanyManager_Load);
             this.ResumeLayout(false);
 
         }
@@ -189,5 +198,6 @@
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonCompanies;
+        private System.Windows.Forms.ColumnHeader columnHeaderGameID;
     }
 }
