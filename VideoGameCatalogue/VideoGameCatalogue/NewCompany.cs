@@ -61,5 +61,10 @@ namespace VideoGameCatalogue
             this.Hide();
             this.Close();
         }
+
+        private void NewCompany_Load(object sender, EventArgs e)
+        {
+            textBoxName.Focus();
+        }
     }
 }

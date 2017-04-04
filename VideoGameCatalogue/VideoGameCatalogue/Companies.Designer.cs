@@ -52,6 +52,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonAdd.Location = new System.Drawing.Point(13, 296);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
@@ -74,6 +75,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(565, 296);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -94,8 +96,10 @@
             // 
             // Companies
             // 
+            this.AcceptButton = this.buttonRefresh;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(652, 331);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonCancel);
@@ -104,7 +108,9 @@
             this.Controls.Add(this.listBoxCompanies);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Companies";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Companies";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Companies_Load);
             this.ResumeLayout(false);
 

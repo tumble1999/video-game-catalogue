@@ -32,6 +32,7 @@ namespace VideoGameCatalogue
                         {
                             MessageBox.Show("Logged in");
 
+                            CurrentUser.Update();
                             MdiContainer.mdiContainer.RefreshStatus();
                             this.Hide();
                             this.Close();
@@ -70,11 +71,23 @@ namespace VideoGameCatalogue
 
                 if (!CurrentUser.user.Exists())
                 {
-                     new ChangePassword(ref CurrentUser.user).New(passwordTextBox.Text);
+                    ChangePassword tmp =  new ChangePassword(ref CurrentUser.user);
+                    tmp.New(passwordTextBox.Text);
 
+                    tmp.ShowDialog();
+                    CurrentUser.user.Login();
                     if (CurrentUser.user.LoggedIn)
                     {
-
+                        this.Hide();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("REGISTER: There was an error logging in");
+                    }
+                    if (CurrentUser.user.LoggedIn)
+                    {
+                        CurrentUser.Update();
                         MdiContainer.mdiContainer.RefreshStatus();
                         this.Hide();
                         this.Close();

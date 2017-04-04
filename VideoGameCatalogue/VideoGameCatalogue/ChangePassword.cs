@@ -13,44 +13,30 @@ namespace VideoGameCatalogue
     public partial class  ChangePassword : Form
     { 
         string type;
-        User user;
+        public User user;
+        string newPassword;
         public ChangePassword(ref User u)
         {
             InitializeComponent();
             user = u;
         }
 
-        public void New(string password)
+        public ChangePassword New(string password)
         {
             type = "New";
+            newPassword = password;
             this.Text = "New Password";
-            labelOldPassword.Visible = textBoxOldPassword.Visible = false;
-            this.Show();
-            if (password == "")
-            {
-                //user did not type a password on registration
-                textBoxNewPassword.Focus();
-
-            }
-            else
-            {
-                //user did enter a password on registartion
-                textBoxNewPassword.Text = password;
-                textBoxConfirmPassword.Focus();
-            }
+            return this;
         }
 
-        public void Change()
+        public ChangePassword Change()
         {
             type = "Change";
-            this.Text = "Change Password";
-            labelOldPassword.Visible = textBoxOldPassword.Visible = true;
-            this.Show();
-            textBoxOldPassword.Focus();
 
             /*MessageBox.Show("Coming Soon");
             this.Hide();
             this.Close();*/
+            return this;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -85,20 +71,9 @@ namespace VideoGameCatalogue
                     if (user.Exists())
                     {
                         MessageBox.Show("Registed");
-                        user.Login();
-                        if (user.LoggedIn)
-                        {
-
-                            this.Hide();
-                            this.Close();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("REGISTER: There was an error logging in");
-                        }
-
-                    }
+                        this.Hide();
+                        this.Close();
+                }
                     else
                     {
                         MessageBox.Show("REGISTER: There was an error registing");
@@ -109,9 +84,34 @@ namespace VideoGameCatalogue
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-
             this.Hide();
             this.Close();
+        }
+
+        private void ChangePassword_Load(object sender, EventArgs e)
+        {
+            if (type == "Change")
+            {
+                this.Text = "Change Password";
+                labelOldPassword.Visible = textBoxOldPassword.Visible = true;
+                textBoxOldPassword.Focus();
+            }
+            if (type == "New")
+            {
+                labelOldPassword.Visible = textBoxOldPassword.Visible = false;
+                if (newPassword == "")
+                {
+                    //user did not type a password on registration
+                    textBoxNewPassword.Focus();
+
+                }
+                else
+                {
+                    //user did enter a password on registartion
+                    textBoxNewPassword.Text = newPassword;
+                    textBoxConfirmPassword.Focus();
+                }
+            }
         }
     }
 }

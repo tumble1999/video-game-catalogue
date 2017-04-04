@@ -35,13 +35,13 @@
             this.columnHeaderPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderReleaseDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderGameID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.buttonEditGame = new System.Windows.Forms.Button();
             this.buttonDeleteGame = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonCompanies = new System.Windows.Forms.Button();
-            this.columnHeaderGameID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listViewGames
@@ -70,6 +70,7 @@
             // columnHeaderCompany
             // 
             this.columnHeaderCompany.Text = "Company";
+            this.columnHeaderCompany.Width = 205;
             // 
             // columnHeaderGameName
             // 
@@ -92,6 +93,10 @@
             // 
             this.columnHeaderDescription.Text = "Description";
             this.columnHeaderDescription.Width = 349;
+            // 
+            // columnHeaderGameID
+            // 
+            this.columnHeaderGameID.Text = "ID";
             // 
             // buttonNewGame
             // 
@@ -158,10 +163,6 @@
             this.buttonCompanies.Text = "Companies";
             this.buttonCompanies.UseVisualStyleBackColor = true;
             this.buttonCompanies.Click += new System.EventHandler(this.buttonCompanies_Click);
-            // 
-            // columnHeaderGameID
-            // 
-            this.columnHeaderGameID.Text = "ID";
             // 
             // CompanyManager
             // 

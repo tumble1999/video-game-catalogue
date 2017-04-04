@@ -74,7 +74,7 @@ namespace VideoGameCatalogue
 
         public void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new UserLogin().Show();
+            new UserLogin().ShowDialog();
             CurrentUser.Update();
             this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
             this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
@@ -87,9 +87,11 @@ namespace VideoGameCatalogue
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new UserLogin().Show();
+            new UserLogin().ShowDialog();
             CurrentUser.Update();
-            RefreshStatus();
+            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+            this.usernameStatusLabel.Text = CurrentUser.username;
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -146,7 +148,14 @@ namespace VideoGameCatalogue
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new ChangePassword(ref CurrentUser.user).Change(); ;
+            ChangePassword tmp = new ChangePassword(ref CurrentUser.user);
+            tmp.Change();
+            tmp.ShowDialog();
+            CurrentUser.Update();
+            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
+            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
+            this.usernameStatusLabel.Text = CurrentUser.username;
+
         }
         public void RefreshStatus()
         {

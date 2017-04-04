@@ -58,6 +58,7 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.AcceptsTab = true;
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Location = new System.Drawing.Point(54, 6);
@@ -87,6 +88,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewCompany";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.NewCompany_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
