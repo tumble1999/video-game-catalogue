@@ -39,6 +39,8 @@ namespace VideoGameCatalogue
                     if (!c.Exists())
                     {
                         c.New();
+                        this.Hide();
+                        this.Close();
                     }
                     else
                     {

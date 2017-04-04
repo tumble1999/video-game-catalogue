@@ -13,8 +13,10 @@ namespace VideoGameCatalogue
     public partial class Companies : Form
     {
         User user;
+        public static Companies companies;
         public Companies(ref User u)
         {
+            companies = this;
             user = u;
             InitializeComponent();
             foreach (var company in u.Companies)
@@ -55,7 +57,8 @@ namespace VideoGameCatalogue
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            new NewCompany(user).Show();
+            new NewCompany(user).ShowDialog();
+            Refresh();
         }
 
         private void listBoxCompanies_DoubleClick(object sender, EventArgs e)

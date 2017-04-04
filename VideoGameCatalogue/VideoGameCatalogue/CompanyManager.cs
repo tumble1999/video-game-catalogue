@@ -14,8 +14,10 @@ namespace VideoGameCatalogue
     {
         User user;
         Game[] games;
+        public static CompanyManager companyManager;
         public CompanyManager(ref User u)
         {
+            companyManager = this;
             user = u;
             InitializeComponent();
             List<Game> tmpGames = new List<Game>();
