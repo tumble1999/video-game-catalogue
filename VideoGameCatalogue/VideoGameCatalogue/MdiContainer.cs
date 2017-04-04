@@ -89,18 +89,14 @@ namespace VideoGameCatalogue
         {
             new UserLogin().Show();
             CurrentUser.Update();
-            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-            this.userIDStatusLabel.Text = CurrentUser.user.Id.ToString();
-            this.usernameStatusLabel.Text = CurrentUser.user.Username;
+            RefreshStatus();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentUser.user.Logout();
             CurrentUser.Update();
-            this.loggedInStatusLabel.Text = CurrentUser.user.LoggedIn.ToString();
-            this.userIDStatusLabel.Text = CurrentUser.userID.ToString();
-            this.usernameStatusLabel.Text = CurrentUser.username;
+            RefreshStatus();
         }
 
         private void aboutVideoGameCatalogueToolStripMenuItem_Click(object sender, EventArgs e)

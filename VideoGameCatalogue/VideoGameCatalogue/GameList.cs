@@ -155,7 +155,6 @@ namespace VideoGameCatalogue
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MdiContainer.OpenWindow(new UserLogin()).Show();
         }
         
 

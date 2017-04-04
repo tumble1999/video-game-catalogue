@@ -161,7 +161,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "NewGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewGame";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

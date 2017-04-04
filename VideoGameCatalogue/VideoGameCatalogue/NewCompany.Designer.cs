@@ -84,7 +84,9 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Name = "NewCompany";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewCompany";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

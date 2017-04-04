@@ -32,6 +32,7 @@ namespace VideoGameCatalogue
                         {
                             MessageBox.Show("Logged in");
 
+                            MdiContainer.mdiContainer.RefreshStatus();
                             this.Hide();
                             this.Close();
 
@@ -73,6 +74,8 @@ namespace VideoGameCatalogue
 
                     if (CurrentUser.user.LoggedIn)
                     {
+
+                        MdiContainer.mdiContainer.RefreshStatus();
                         this.Hide();
                         this.Close();
                     }

@@ -124,6 +124,7 @@
             this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(239, 142);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.usernameTextBox);
@@ -131,12 +132,14 @@
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.passwordlabel);
             this.Controls.Add(this.passwordTextBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "UserLogin";
-            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.UserLogin_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

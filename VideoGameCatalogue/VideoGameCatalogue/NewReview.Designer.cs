@@ -105,8 +105,11 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.reviewTextTextBox);
+            this.KeyPreview = true;
             this.Name = "NewReview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewReview";
+            this.TopMost = true;
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
