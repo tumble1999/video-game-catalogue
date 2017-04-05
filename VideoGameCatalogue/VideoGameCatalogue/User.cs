@@ -109,6 +109,8 @@ namespace VideoGameCatalogue
 
         internal void Update()
         {
+
+            HashedPassword = Hash(password);
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
             OleDbCommand cmd = new OleDbCommand("UPDATE Users SET Username = @Username, [Password] = @Password WHERE UserID = @id");
@@ -147,7 +149,7 @@ namespace VideoGameCatalogue
         internal void Register()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
-
+            HashedPassword = Hash(password);
             OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password) ");
             cmd.Connection = conn;
 
@@ -189,6 +191,12 @@ namespace VideoGameCatalogue
             this.password = password;
             this.id = -1;
             
+        }
+        public User(int id, string username)
+        {
+            this.username = username;
+            this.id = id;
+
         }
         public User(int id, string username, string password)
         {
@@ -283,7 +291,9 @@ namespace VideoGameCatalogue
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                output = new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                output = new User(reader.GetInt32(0), reader.GetString(1)) {
+                    hashedPassword = reader.GetString(2)
+                };
             }
 
             reader.Close();
@@ -294,13 +304,13 @@ namespace VideoGameCatalogue
 
 
 
-        public string Hash(string input)
+        public static string Hash(string input)
         {
             SHA512Managed hasher = new SHA512Managed();
             byte[] byteArray = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
-            string wow = Encoding.ASCII.GetString(byteArray);
-            MessageBox.Show(wow);
-            return wow;
+            string output = Encoding.ASCII.GetString(byteArray);
+            MessageBox.Show("OUTPUT: " + output, "INPUT: " + input);
+            return output;
         }
     }
 }
