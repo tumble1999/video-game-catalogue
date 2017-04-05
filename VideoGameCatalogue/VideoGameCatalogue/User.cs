@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using VideoGameCatalogue;
 using VideoGameCatalogue.Properties;
 using VideoGameCatalogue.VGCDataSetTableAdapters;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace VideoGameCatalogue
 {
@@ -16,7 +18,7 @@ namespace VideoGameCatalogue
     public class User
     {
         private int id;
-        private string username, password;
+        private string username, password, hashedPassword;
         private bool loggedIn;
         public static readonly User empty = new User("Guest", "") {
             loggedIn = false
@@ -26,6 +28,10 @@ namespace VideoGameCatalogue
         private VGCDataSet vgcDataSet = new VGCDataSet();
         private UsersTableAdapter usersTableAdapter = new UsersTableAdapter();
 
+
+        //HASHING VARS
+
+        //
         public int Id
         {
             get
@@ -54,12 +60,26 @@ namespace VideoGameCatalogue
         {
             get
             {
-                return password;
+
+                return Hash(password);
             }
 
             set
             {
                 password = value;
+            }
+        }
+
+        public string HashedPassword
+        {
+            get
+            {
+                return hashedPassword;
+            }
+
+            set
+            {
+                hashedPassword = Hash(value);
             }
         }
 
@@ -99,7 +119,7 @@ namespace VideoGameCatalogue
             if (conn.State == ConnectionState.Open)
             {
                 cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Password", HashedPassword);
                 cmd.Parameters.AddWithValue("@id", Id);
 
                 //MessageBox.Show(cmd.CommandText);
@@ -136,7 +156,7 @@ namespace VideoGameCatalogue
             if (conn.State == ConnectionState.Open)
             {
                 cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Password", HashedPassword);
 
                 //MessageBox.Show(cmd.CommandText);
 
@@ -180,7 +200,8 @@ namespace VideoGameCatalogue
 
         public void Login()
         {
-            id = getID(username, password);
+
+            id = getID(username, HashedPassword);
             
             loggedIn = id != -1;
         }
@@ -247,6 +268,39 @@ namespace VideoGameCatalogue
             conn.Close();
             return output;
 
+        }
+
+        public User getUser(int id)
+        {
+            User output = User.empty;
+
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Users WHERE UserID=" + id;
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                output = new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+            }
+
+            reader.Close();
+            conn.Close();
+
+            return output;
+        }
+
+
+
+        public string Hash(string input)
+        {
+            SHA512Managed hasher = new SHA512Managed();
+            byte[] byteArray = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
+            string wow = Encoding.ASCII.GetString(byteArray);
+            MessageBox.Show(wow);
+            return wow;
         }
     }
 }
