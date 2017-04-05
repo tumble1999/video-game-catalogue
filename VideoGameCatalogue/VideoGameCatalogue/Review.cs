@@ -147,15 +147,15 @@ namespace VideoGameCatalogue
             {
                 if (Rating >= 5)
                 {
-                    return"Good";
+                    return"J";//GOOD
                 }
                 else if (rating < 5)
                 {
-                    return "Bad";
+                    return "L";//bad
                 }
                 else
                 {
-                    return "I don't know.";
+                    return "K";//UKNOWN
                 }
             }
         }
