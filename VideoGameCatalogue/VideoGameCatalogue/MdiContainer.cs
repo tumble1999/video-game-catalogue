@@ -83,6 +83,7 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)

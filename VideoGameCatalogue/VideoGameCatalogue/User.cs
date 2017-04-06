@@ -309,7 +309,19 @@ namespace VideoGameCatalogue
             SHA512Managed hasher = new SHA512Managed();
             byte[] byteArray = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
             string output = Encoding.ASCII.GetString(byteArray);
-            MessageBox.Show("OUTPUT: " + output, "INPUT: " + input);
+
+            Form message = new Form()
+            {
+                Text = "INPUT: " + input
+            };
+            TextBox textBox = new TextBox()
+            {
+                Text = "OUTPUT: " + output
+            };
+            message.Controls.Add(textBox);
+            message.Show();
+
+            //MessageBox.Show("OUTPUT: " + output, "INPUT: " + input);
             return output;
         }
     }
