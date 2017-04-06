@@ -238,7 +238,7 @@ namespace VideoGameCatalogue
 
             while (reader.Read())
             {
-                if(reader.GetString(1) == u && reader.GetString(2) == p)
+                if(reader.GetString(1) == u && reader.GetString(2) == Hash(p))
                 {
                     output = reader.GetInt32(0);
                     break;
