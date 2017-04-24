@@ -21,6 +21,7 @@ namespace VideoGameCatalogue
             InitializeComponent();
             this.user = u;
             this.t = "new";
+            this.Text = "New Company";
         }
         public NewCompany(Company c)
         {
@@ -28,6 +29,7 @@ namespace VideoGameCatalogue
             this.company = c;
             this.t = "edit";
             textBoxName.Text = company.CompanyName;
+            this.Text = "Rename " + company.CompanyName;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace VideoGameCatalogue
                     if (!c.Exists())
                     {
                         c.New();
+
+                        Companies.companies.RefreshCompanies();
                         this.Hide();
                         this.Close();
                     }

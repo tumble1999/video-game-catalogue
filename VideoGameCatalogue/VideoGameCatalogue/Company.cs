@@ -152,16 +152,17 @@ namespace VideoGameCatalogue
 
             if (conn.State == ConnectionState.Open)
             {
+                Console.WriteLine("ID: " + userID);
                 cmd.Parameters.AddWithValue("@CompanyName", companyName);
                 cmd.Parameters.AddWithValue("@UserID", userID);
                 cmd.Parameters.AddWithValue("@id", Id);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 //try
                 //{
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    Console.WriteLine("Updated");
                     conn.Close();
                 //}
                 //catch (OleDbException e)

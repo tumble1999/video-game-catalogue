@@ -124,17 +124,17 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@Password", HashedPassword);
                 cmd.Parameters.AddWithValue("@id", Id);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    Console.WriteLine("Updated");
                     conn.Close();
                 }
                 catch (OleDbException e)
                 {
-                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                    Console.WriteLine("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
                     conn.Close();
                 }
 
@@ -142,7 +142,7 @@ namespace VideoGameCatalogue
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                Console.WriteLine("Connection Failed");
             }
         }
 
@@ -160,16 +160,16 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@Username", Username);
                 cmd.Parameters.AddWithValue("@Password", HashedPassword);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Data Added");
+                    Console.WriteLine("Data Added");
                 }
                 catch (OleDbException ex)
                 {
-                    MessageBox.Show(ex.Source);
+                    Console.WriteLine(ex.Source);
                     conn.Close();
                 }
 
@@ -177,7 +177,7 @@ namespace VideoGameCatalogue
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                Console.WriteLine("Connection Failed");
             }
             
             Update();
@@ -210,7 +210,7 @@ namespace VideoGameCatalogue
         {
 
             id = getID(username, password);
-            MessageBox.Show("ID:" + id);
+            Console.WriteLine("ID:" + id);
             loggedIn = id != -1;
         }
 
@@ -235,7 +235,6 @@ namespace VideoGameCatalogue
 
             OleDbDataReader reader;
             reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 if(reader.GetString(1) == u && reader.GetString(2) == Hash(p))
@@ -307,14 +306,14 @@ namespace VideoGameCatalogue
         public static string Hash(string input)
         {
             SHA512Managed hasher = new SHA512Managed();
-            byte[] byteArray = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
-            string output = Encoding.ASCII.GetString(byteArray);
+            byte[] byteArray = hasher.ComputeHash(Encoding.ASCII.GetBytes(input));
+            string output = Convert.ToBase64String(byteArray);
 
-            Form message = new Form()
+            /*Form message = new Form()
             {
                 Text = "INPUT: " + input
             };
-            /*TextBox textBox = new TextBox()
+            TextBox textBox = new TextBox()
             {
                 Text = output,
                 Multiline = true,
@@ -328,8 +327,8 @@ namespace VideoGameCatalogue
 
             Console.WriteLine("");
             Console.WriteLine("HASHING...");
-            Console.WriteLine("INPUT: " + input);
-            Console.WriteLine("OUTPUT: " + output);
+            Console.WriteLine("INPUT: " + @input);
+            Console.WriteLine("OUTPUT: " + @output);
             return output;
         }
     }

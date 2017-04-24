@@ -69,6 +69,7 @@ namespace VideoGameCatalogue
                     X = x + this.reviewGoodBadText.Location.X,
                     Y = y + this.reviewGoodBadText.Location.Y
                 };
+                r[index].ReviewGoodBad.Font = this.reviewGoodBadText.Font;
                 reviewListPanel.Controls.Add(r[index].ReviewGoodBad);
 
                 r[index].ReviewText.Location = new Point()

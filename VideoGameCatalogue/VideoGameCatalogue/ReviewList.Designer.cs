@@ -89,20 +89,20 @@
             // reviewGoodBadText
             // 
             this.reviewGoodBadText.AutoSize = true;
-            this.reviewGoodBadText.Font = new System.Drawing.Font("Wingdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.reviewGoodBadText.Font = new System.Drawing.Font("Wingdings", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.reviewGoodBadText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.reviewGoodBadText.Location = new System.Drawing.Point(6, 37);
             this.reviewGoodBadText.Name = "reviewGoodBadText";
-            this.reviewGoodBadText.Size = new System.Drawing.Size(169, 12);
+            this.reviewGoodBadText.Size = new System.Drawing.Size(292, 21);
             this.reviewGoodBadText.TabIndex = 1;
             this.reviewGoodBadText.Text = "reviewGoodBadText";
             // 
             // reviewTextLabel
             // 
             this.reviewTextLabel.AutoEllipsis = true;
-            this.reviewTextLabel.Location = new System.Drawing.Point(6, 50);
+            this.reviewTextLabel.Location = new System.Drawing.Point(9, 58);
             this.reviewTextLabel.Name = "reviewTextLabel";
-            this.reviewTextLabel.Size = new System.Drawing.Size(745, 48);
+            this.reviewTextLabel.Size = new System.Drawing.Size(745, 40);
             this.reviewTextLabel.TabIndex = 2;
             this.reviewTextLabel.Text = "reviewTextLabel";
             // 

@@ -48,17 +48,12 @@ namespace VideoGameCatalogue
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            listBoxCompanies.Items.Clear();
-            foreach (var company in user.Companies)
-            {
-                listBoxCompanies.Items.Add(company.CompanyName);
-            }
+            RefreshCompanies();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             new NewCompany(user).ShowDialog();
-            Refresh();
         }
 
         private void listBoxCompanies_DoubleClick(object sender, EventArgs e)
@@ -66,6 +61,14 @@ namespace VideoGameCatalogue
             if (listBoxCompanies.SelectedItem != null)
             {
                 new NewCompany(user.Companies[listBoxCompanies.SelectedIndex]).Show();
+            }
+        }
+        public void RefreshCompanies()
+        {
+            listBoxCompanies.Items.Clear();
+            foreach (var company in user.Companies)
+            {
+                listBoxCompanies.Items.Add(company.CompanyName);
             }
         }
     }

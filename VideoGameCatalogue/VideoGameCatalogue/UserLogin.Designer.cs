@@ -76,7 +76,6 @@
             // loginButton
             // 
             this.loginButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.loginButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.loginButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.loginButton.Location = new System.Drawing.Point(0, 0);
             this.loginButton.Name = "loginButton";

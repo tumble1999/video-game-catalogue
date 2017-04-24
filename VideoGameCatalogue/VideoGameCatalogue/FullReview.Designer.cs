@@ -36,11 +36,11 @@
             // reviewGoodBadText
             // 
             this.reviewGoodBadText.AutoSize = true;
-            this.reviewGoodBadText.Font = new System.Drawing.Font("Wingdings", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.reviewGoodBadText.Font = new System.Drawing.Font("Wingdings", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.reviewGoodBadText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.reviewGoodBadText.Location = new System.Drawing.Point(27, 51);
             this.reviewGoodBadText.Name = "reviewGoodBadText";
-            this.reviewGoodBadText.Size = new System.Drawing.Size(169, 12);
+            this.reviewGoodBadText.Size = new System.Drawing.Size(451, 32);
             this.reviewGoodBadText.TabIndex = 1;
             this.reviewGoodBadText.Text = "reviewGoodBadText";
             // 

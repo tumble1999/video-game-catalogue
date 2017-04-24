@@ -43,7 +43,6 @@
             this.listBoxCompanies.Name = "listBoxCompanies";
             this.listBoxCompanies.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxCompanies.Size = new System.Drawing.Size(628, 264);
-            this.listBoxCompanies.Sorted = true;
             this.listBoxCompanies.TabIndex = 0;
             this.listBoxCompanies.SelectedIndexChanged += new System.EventHandler(this.listBoxCompanies_SelectedIndexChanged);
             this.listBoxCompanies.SelectedValueChanged += new System.EventHandler(this.listBoxCompanies_SelectedValueChanged);
