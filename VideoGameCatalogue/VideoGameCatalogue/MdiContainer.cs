@@ -16,7 +16,7 @@ namespace VideoGameCatalogue
 {
     public partial class MdiContainer : Form
     {
-        
+
         UserList userList = new UserList();
         //ReviewList reviewlist;
 
@@ -24,14 +24,20 @@ namespace VideoGameCatalogue
         private Thread updateLoop;
         public static MdiContainer mdiContainer;
 
+        DeveloperConsole console = new DeveloperConsole();
+
+
         /// <summary>
         /// 
         /// </summary>
         public MdiContainer()
         {
+            console.Show();
             mdiContainer = this;
             InitializeComponent();
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
+            
+
             CurrentUser.Update();
             accountLoggedInToolStripMenuItem.Visible = CurrentUser.user.LoggedIn;
             
@@ -83,7 +89,8 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Console.WriteLine("hello");
+            MessageBox.Show(Console.ReadLine());
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)

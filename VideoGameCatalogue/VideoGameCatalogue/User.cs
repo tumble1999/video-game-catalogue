@@ -61,7 +61,7 @@ namespace VideoGameCatalogue
             get
             {
 
-                return Hash(password);
+                return password;
             }
 
             set
@@ -79,7 +79,7 @@ namespace VideoGameCatalogue
 
             set
             {
-                hashedPassword = Hash(value);
+                hashedPassword = value;
             }
         }
 
@@ -209,8 +209,8 @@ namespace VideoGameCatalogue
         public void Login()
         {
 
-            id = getID(username, HashedPassword);
-            
+            id = getID(username, password);
+            MessageBox.Show("ID:" + id);
             loggedIn = id != -1;
         }
 
@@ -316,7 +316,10 @@ namespace VideoGameCatalogue
             };
             TextBox textBox = new TextBox()
             {
-                Text = "OUTPUT: " + output
+                Text = output,
+                Multiline = true,
+                //WordWrap = true,
+                Dock = DockStyle.Fill
             };
             message.Controls.Add(textBox);
             message.Show();

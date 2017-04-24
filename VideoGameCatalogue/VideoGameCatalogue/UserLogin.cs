@@ -40,7 +40,8 @@ namespace VideoGameCatalogue
                         }
                         else
                         {
-                            MessageBox.Show("LOGIN: There was an errror logging in");
+                            errorLabel.Visible = true;
+                            errorLabel.Text = "LOGIN: There was an errror logging in";
                         }
                     }
                     else
@@ -83,7 +84,8 @@ namespace VideoGameCatalogue
                     }
                     else
                     {
-                        MessageBox.Show("REGISTER: There was an error logging in");
+                        errorLabel.Visible = true;
+                        errorLabel.Text = "REGISTER: There was an error logging in";
                     }
                     if (CurrentUser.user.LoggedIn)
                     {

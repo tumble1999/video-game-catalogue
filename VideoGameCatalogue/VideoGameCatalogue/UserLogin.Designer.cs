@@ -133,13 +133,11 @@
             this.Controls.Add(this.passwordlabel);
             this.Controls.Add(this.passwordTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "UserLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.UserLogin_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
