@@ -24,7 +24,10 @@ namespace VideoGameCatalogue
         private Thread updateLoop;
         public static MdiContainer mdiContainer;
 
-        DeveloperConsole console = new DeveloperConsole();
+        //DeveloperConsole console = new DeveloperConsole();
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool AllocConsole();
 
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace VideoGameCatalogue
         /// </summary>
         public MdiContainer()
         {
-            console.Show();
+            AllocConsole();
             mdiContainer = this;
             InitializeComponent();
             this.updateLoop = new Thread(new ThreadStart(this.UpdateLoop));
@@ -89,8 +92,10 @@ namespace VideoGameCatalogue
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("hello");
-            MessageBox.Show(Console.ReadLine());
+            Console.WriteLine("");
+            Console.WriteLine("TEST HASH");
+            Console.Write("INPUT: ");
+            Console.WriteLine("OUTPUT: " + User.Hash(Console.ReadLine()));
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)

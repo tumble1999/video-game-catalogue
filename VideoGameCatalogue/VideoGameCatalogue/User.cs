@@ -314,7 +314,7 @@ namespace VideoGameCatalogue
             {
                 Text = "INPUT: " + input
             };
-            TextBox textBox = new TextBox()
+            /*TextBox textBox = new TextBox()
             {
                 Text = output,
                 Multiline = true,
@@ -322,9 +322,14 @@ namespace VideoGameCatalogue
                 Dock = DockStyle.Fill
             };
             message.Controls.Add(textBox);
-            message.Show();
+            message.Show();*/
 
             //MessageBox.Show("OUTPUT: " + output, "INPUT: " + input);
+
+            Console.WriteLine("");
+            Console.WriteLine("HASHING...");
+            Console.WriteLine("INPUT: " + input);
+            Console.WriteLine("OUTPUT: " + output);
             return output;
         }
     }

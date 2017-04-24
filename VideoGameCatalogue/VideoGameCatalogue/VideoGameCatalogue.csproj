@@ -87,7 +87,6 @@
       <DependentUpon>CompanyManager.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
-    <Compile Include="DeveloperConsole.cs" />
     <Compile Include="MdiContainer.cs">
       <SubType>Form</SubType>
     </Compile>
