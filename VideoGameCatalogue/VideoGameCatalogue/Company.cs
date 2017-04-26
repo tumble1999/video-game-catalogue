@@ -15,7 +15,7 @@ namespace VideoGameCatalogue
         private int id;
         private string companyName;
         private int userID;
-        private string userName;
+        //private string userName;
 
         public Company(int id, string companyName, int userID)
         {
@@ -192,16 +192,16 @@ namespace VideoGameCatalogue
                 cmd.Parameters.AddWithValue("@CompanyName", CompanyName);
                 cmd.Parameters.AddWithValue("@UserID", UserID);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Data Added");
+                    Console.WriteLine("Data Added");
                 }
                 catch (OleDbException ex)
                 {
-                    MessageBox.Show(ex.Source);
+                    Console.WriteLine(ex.Source);
                     conn.Close();
                 }
 
@@ -209,7 +209,7 @@ namespace VideoGameCatalogue
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                Console.WriteLine("Connection Failed");
             }
             if (this.Exists())
             {

@@ -38,8 +38,10 @@
             this.labelGameReleaseDate = new System.Windows.Forms.Label();
             this.dateTimePickerReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.labelCompany = new System.Windows.Forms.Label();
-            this.comboBoxComapny = new System.Windows.Forms.ComboBox();
+            this.comboBoxCompany = new System.Windows.Forms.ComboBox();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxGameName
@@ -124,13 +126,13 @@
             this.labelCompany.TabIndex = 14;
             this.labelCompany.Text = "Company";
             // 
-            // comboBoxComapny
+            // comboBoxCompany
             // 
-            this.comboBoxComapny.FormattingEnabled = true;
-            this.comboBoxComapny.Location = new System.Drawing.Point(315, 113);
-            this.comboBoxComapny.Name = "comboBoxComapny";
-            this.comboBoxComapny.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxComapny.TabIndex = 15;
+            this.comboBoxCompany.FormattingEnabled = true;
+            this.comboBoxCompany.Location = new System.Drawing.Point(315, 113);
+            this.comboBoxCompany.Name = "comboBoxCompany";
+            this.comboBoxCompany.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCompany.TabIndex = 15;
             // 
             // textBoxDescription
             // 
@@ -141,12 +143,33 @@
             this.textBoxDescription.Size = new System.Drawing.Size(352, 49);
             this.textBoxDescription.TabIndex = 9;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(357, 197);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 16;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(276, 197);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 17;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 196);
-            this.Controls.Add(this.comboBoxComapny);
+            this.ClientSize = new System.Drawing.Size(444, 232);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.comboBoxCompany);
             this.Controls.Add(this.labelCompany);
             this.Controls.Add(this.dateTimePickerReleaseDate);
             this.Controls.Add(this.labelGameReleaseDate);
@@ -181,7 +204,9 @@
         private System.Windows.Forms.Label labelGameReleaseDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerReleaseDate;
         private System.Windows.Forms.Label labelCompany;
-        private System.Windows.Forms.ComboBox comboBoxComapny;
+        private System.Windows.Forms.ComboBox comboBoxCompany;
         private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

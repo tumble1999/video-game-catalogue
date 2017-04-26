@@ -62,7 +62,7 @@ namespace VideoGameCatalogue
 
         private void buttonEditGame_Click(object sender, EventArgs e)
         {
-            new NewGame(user, games[listViewGames.CheckedIndices[0]]).Show();
+            new NewGame(games[listViewGames.CheckedIndices[0]], user).Show();
         }
     }
 }

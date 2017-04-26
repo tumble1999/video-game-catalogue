@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
@@ -246,6 +247,38 @@ namespace VideoGameCatalogue
                 Y = GameContainer.Location.Y * y
             };*/
         }
+        public Game(string gameTitle, string gameGenre, string gameDescription, string gamePlatform, DateTime gameReleaseDate, int gameCompanyId)
+        {
+            //this.x = x;
+            ///this.y = y;
+
+            Name = gameTitle;
+            Genre = gameGenre;
+            Description = gameDescription;
+            Platform = gamePlatform;
+            ReleaseDate = gameReleaseDate;
+            CompanyId = gameCompanyId;
+            //avarageReview = Review.GetAverage(Reviews);
+            //reviewCount = Reviews.Length;
+
+
+            this.GameName.Text = Name;
+            this.GameGenre.Text = Genre;
+            this.GameDescription.Text = Description;
+
+            this.GameContainer.Controls.Add(this.GameName);
+            this.GameContainer.Controls.Add(this.GameGenre);
+            this.GameContainer.Controls.Add(this.GameDescription);
+            this.GameContainer.Controls.Add(this.ViewGameInfo);
+
+            /*GameContainer.Location = new Point()
+            {
+                X = GameContainer.Location.X * x,
+                Y = GameContainer.Location.Y * y
+            };*/
+        }
+
+
 
         public static Game[] GetGames(Company c)
         {
@@ -269,32 +302,36 @@ namespace VideoGameCatalogue
             return tmpGames.ToArray();
         }
 
-        /*internal void Update()
+        internal void Update()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
-            OleDbCommand cmd = new OleDbCommand("UPDATE Games SET Username = @Username, [Password] = @Password WHERE GameID = @id");
+            OleDbCommand cmd = new OleDbCommand("UPDATE Games SET Title = @Title, Genre = @Genre, Description = @Description, Platform = @Platform, ReleaseDate = @ReleaseDate, CompanyID = @CompanyID WHERE GameID = @id");
             cmd.Connection = conn;
 
             conn.Open();
 
             if (conn.State == ConnectionState.Open)
             {
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Title", name);
+                cmd.Parameters.AddWithValue("@Genre", genre);
+                cmd.Parameters.AddWithValue("@Description", description);
+                cmd.Parameters.AddWithValue("@Platform", platform);
+                cmd.Parameters.AddWithValue("@ReleaseDate", ReleaseDate);
+                cmd.Parameters.AddWithValue("@CompanyID", Company.Id);
                 cmd.Parameters.AddWithValue("@id", Id);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Updated");
+                    Console.WriteLine("Updated");
                     conn.Close();
                 }
                 catch (OleDbException e)
                 {
-                    MessageBox.Show("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
+                    Console.WriteLine("Data: " + e.Data + "\n\nHelpLink: " + e.HelpLink + "\n\nHResult: " + e.HResult + "\n\nInnerException: " + e.InnerException + "\n\nMessage: " + e.Message + "\n\nSource: " + e.Source + "\n\nStackTrace: " + e.StackTrace + "\n\nTargetSite: " + e.TargetSite);
                     conn.Close();
                 }
 
@@ -302,34 +339,39 @@ namespace VideoGameCatalogue
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                Console.WriteLine("Connection Failed");
             }
-        }*/
+        }
 
-        /*internal void New()
+        internal void New()
         {
             OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
 
-            OleDbCommand cmd = new OleDbCommand("INSERT into Users (Username, [Password]) Values(@Username, @Password) ");
+            OleDbCommand cmd = new OleDbCommand("INSERT into Games (Title, Genre, Description, Platform, ReleaseDate, CompanyID) Values(@Title, @Genre, @Description, @Platform, @ReleaseDate, @CompanyID) ");
             cmd.Connection = conn;
 
             conn.Open();
 
             if (conn.State == ConnectionState.Open)
             {
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Title", name);
+                cmd.Parameters.AddWithValue("@Genre", genre);
+                cmd.Parameters.AddWithValue("@Description", description);
+                cmd.Parameters.AddWithValue("@Platform", platform);
+                cmd.Parameters.AddWithValue("@ReleaseDate", ReleaseDate);
+                cmd.Parameters.AddWithValue("@CompanyID", Company.Id);
+                cmd.Parameters.AddWithValue("@id", Id);
 
-                //MessageBox.Show(cmd.CommandText);
+                Console.WriteLine(cmd.CommandText);
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Data Added");
+                    Console.WriteLine("Data Added");
                 }
                 catch (OleDbException ex)
                 {
-                    MessageBox.Show(ex.Source);
+                    Console.WriteLine(ex.Source);
                     conn.Close();
                 }
 
@@ -337,13 +379,44 @@ namespace VideoGameCatalogue
             }
             else
             {
-                MessageBox.Show("Connection Failed");
+                Console.WriteLine("Connection Failed");
             }
 
             Update();
 
 
-        }*/
+        }
+        public bool Exists()
+        {
+            return getID(Name, CompanyId) != -1;
+        }
+        public static int getID(string n, int c)
+        {
+            int output = -1;
+
+            OleDbConnection conn = new OleDbConnection(new Settings().VGCConnectionString);
+            string sql = "SELECT * FROM Games";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            conn.Open();
+
+            OleDbDataReader reader;
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (reader.GetString(1) == n && reader.GetInt32(7) == c)
+                {
+                    output = reader.GetInt32(0);
+                    break;
+                }
+            }
+
+            reader.Close();
+            conn.Close();
+            return output;
+
+        }
+
 
     }
     public class GameButton : Button
